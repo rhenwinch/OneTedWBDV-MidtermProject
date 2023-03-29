@@ -1,0 +1,13 @@
+/*
+ * https://www.figma.com/file/iO9Y6N3a84iEj6x4XbSAVW/OneTed-Hotel-Website?node-id=0%3A1&t=BiQGsXRUoLUkGCkg-1
+ * https://app.milanote.com/1PE8vI1dbSWU3M?p=A8sInbw4UGW
+ * 
+ * Generated using M3 Builder
+ * 
+ */
+
+@import url(tokens.css);
+@import url(colors.module.css);
+@import url(typography.module.css);
+@import url(theme.light.css) (prefers-color-scheme: light);
+@import url(theme.dark.css) (prefers-color-scheme: dark);

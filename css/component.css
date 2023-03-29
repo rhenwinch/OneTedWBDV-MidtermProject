@@ -1,0 +1,16 @@
+@import url(tokens.css);
+
+.card {
+    position: absolute;
+    width: 303px;
+    height: 232px;
+    left: 30px;
+    top: 33px;
+    display: table;
+}
+
+.card > * {
+    text-align: center; 
+    vertical-align: middle;
+    display: table-cell;
+}
