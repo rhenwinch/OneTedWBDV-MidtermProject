@@ -1,0 +1,25 @@
+[
+    {
+        "userId": 15566,
+        "email": "john.doe@example.com",
+        "password": "156156165156",
+        "bookingHistory": [
+            {
+                "roomDetails": {
+                    "roomName": "Amanda",
+                    "roomType": "Suite",
+                    "roomAddress": "5th Flr, SUITE Bldg."
+                },
+                "bookingDate": "Apr 07, 2023 Fri",
+                "bookingPrice": 0,
+                "bookingStatus": "Booked",
+                "bookingId": "1515ASDAQ35730807784",
+                "departureDate": "Apr 07, 2023 Fri",
+                "arrivalDate": "Apr 07, 2023 Fri"
+            }
+        ],
+        "name": "John Doe",
+        "phoneNumber": "",
+        "isMember": false
+    }
+]
