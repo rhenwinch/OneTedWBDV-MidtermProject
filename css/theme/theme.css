@@ -9,5 +9,27 @@
 @import url(tokens.css);
 @import url(colors.module.css);
 @import url(typography.module.css);
-@import url(theme.light.css) (prefers-color-scheme: light);
-@import url(theme.dark.css) (prefers-color-scheme: dark);
+@import url(theme.light.css);
+/* @import url(theme.dark.css) (prefers-color-scheme: dark); */
+
+
+/* Components */
+@import url('../components/common.css');
+@import url('../components/divider.css');
+@import url('../components/layout.css');
+@import url('../components/card.css');
+@import url('../components/button.css');
+@import url('../components/textfield.css');
+@import url('../components/custom-img.css');
+
+body {
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    font-family: Roboto;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--md-sys-color-on-surface);
+}

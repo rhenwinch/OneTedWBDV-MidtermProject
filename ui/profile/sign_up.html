@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../css/theme/theme.css">
+    <style>
+        /* Override global variables */
+        :root {
+            --logo-width: 8.5rem;
+            --logo-height: 8.5rem;
+            --textfield-width: 15.625rem;
+            --button-size: 1rem 2rem;
+            --gradient-image-width: 100%;
+            --gradient-image-height: 100vh;
+            --divider-height: 75vh;
+        }
+
+        .signup-form {
+            padding-left: 3.5rem;
+        }
+
+        .signup-header {
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .signup-field {
+            margin-top: 3rem;
+        }
+
+        .signup-button {
+            margin-top: 6rem;
+            margin-bottom: 4rem;
+        }
+
+        .signup-form-divider {
+            margin-left: 3.5rem;
+            margin-right: 3.5rem;
+        }
+
+        .signup-headliner-image {
+            width: 100%;
+            padding-left: 1rem;
+        }
+    </style>
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="row-container">
+        <div class="row-container center fill-parent">
+            <div class="column-item signup-form">
+                <h1 class="display-medium text-center signup-header">Sign up</h1>
+                <div class="card center ">
+                    <div class="circle">
+                        <img src="../../images/person.png" alt="Person">
+                    </div>
+
+                    <form action="" method="post">
+                        <div class="column-container">
+                            <div class="textfield-container login-field">
+                                <input type="text" name="email" class="textfield-input" placeholder=" " />
+                                <label class="textfield-label">Email</label>
+                                <div class="textfield-underline"></div>
+                            </div>
+                            
+                            <div class="textfield-container login-field">
+                                <input type="text" name="password" class="textfield-input" placeholder=" " />
+                                <label class="textfield-label">Password</label>
+                                <div class="textfield-underline"></div>
+                            </div>
+    
+                            <button type="submit" class="button signup-button">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="vertical-divider signup-form-divider"></div>
+        </div>
+        <div class="gradient-image-container signup-headliner-image">
+            <img src="../../images/image-placeholder.svg" alt="Sign up Landscape">
+        </div>
+    </div>
+</body>
+</html>

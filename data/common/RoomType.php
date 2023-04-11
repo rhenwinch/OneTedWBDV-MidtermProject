@@ -24,21 +24,6 @@ class RoomType extends Enum {
         ]
     ];
 
-    public static function fromString(string $value): ?string {
-        $value = strtolower($value); // Convert input to lowercase for case-insensitive comparison
-        $reflection = new ReflectionClass(__CLASS__);
-        $constants = $reflection->getConstants();
-
-        // Loop through constants and find a match
-        foreach ($constants as $constantValue) {
-            if (strtolower($constantValue) === $value) {
-                return $constantValue;
-            }
-        }
-
-        return null;
-    }
-
 
     /**
      * Get the room price of a room type.

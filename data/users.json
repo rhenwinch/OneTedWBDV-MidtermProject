@@ -1,8 +1,8 @@
 [
     {
         "userId": 15566,
-        "email": "john.doe@example.com",
-        "password": "156156165156",
+        "email": "admin",
+        "password": "1234",
         "bookingHistory": [
             {
                 "roomDetails": {

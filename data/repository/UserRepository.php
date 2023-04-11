@@ -113,11 +113,11 @@ class UserRepository {
     public function userExists(User $user) {
         // Check if a given user exists in the repository
         $email = $user->getEmail();
-        $user = $this->getUserByEmail($email);
+        $user_ = $this->getUserByEmail($email);
         if($user === null)
             return false;
-
-        $index = $this->getUserIndexById($user->getUserId());
+        
+        $index = $this->getUserIndexById($user_->getUserId());
         return isset($this->users[$index]) && $this->users[$index]->getPassword() === $user->getPassword();
     }
 
