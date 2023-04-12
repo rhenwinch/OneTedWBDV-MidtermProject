@@ -5,11 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="../css/theme/theme.css">
-    <link rel="stylesheet" href="../css/component.css">
+    <link rel="stylesheet" href="../../css/theme/theme.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Index</title>
+
+    <style>
+        .booking-calendar {
+            margin: 5rem 2rem 0 2rem;
+        }
+
+        .booking-calendar > input {
+            width: 30vw;
+            height: 10vh;
+            text-align: start;
+        }
+
+        .calendar-header > * {
+            margin: 1rem 0.85rem 1rem 0.85rem;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="column-container">
+        <h1 class="display-medium text-center login-header">Booking Form</h1>
+        <div class="row-container center-vertical">
+            <!-- Date of Arrival -->
+            <div class="column-container booking-calendar">
+                <!-- Calendar Picker Dialog -->
+                <label>Date of Arrival</label>
+                <input type="text" class="calendar-input" hidden>
+
+                <div class="calendar-picker">
+                    <div class="calendar-header">
+                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                        <div class="select-container">
+                            <select class="select-month select"></select>
+                        </div>
+                        <div class="select-container">
+                            <select class="select-year select"></select>
+                        </div>
+                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                    </div>
+                    <div class="calendar"></div>
+                </div>  
+            </div>
+
+            <!-- Date of Departure -->
+            <div class="column-container booking-calendar">
+                <!-- Calendar Picker Dialog -->
+                <label>Date of Departure</label>
+                <input type="text" class="calendar-input" hidden>
+
+                <div class="calendar-picker">
+                    <div class="calendar-header">
+                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                        <div class="select-container">
+                            <select class="select-month select"></select>
+                        </div>
+                        <div class="select-container">
+                            <select class="select-year select"></select>
+                        </div>
+                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                    </div>
+                    <div class="calendar"></div>
+                </div>  
+            </div>
+        </div>
+    </div>
 </body>
+<script src="scripts/calendar-picker.js"></script>
 </html>

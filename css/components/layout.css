@@ -54,12 +54,11 @@
 .column-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.column-container > * {
+/* .column-container > * {
     margin: 0 auto;
-}
+} */
 
 
 /* CSS for a row's fill-parent width attribute */
