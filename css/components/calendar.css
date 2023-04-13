@@ -3,16 +3,13 @@
     display: inline-block;
 }
 
-.calendar-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
 .calendar {
     background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: block;
+    box-shadow: 0 0 0 var(--elevation, 0.063rem) rgba(0, 0, 0, 0.14),
+        0 0 var(--elevation, 0.188rem) rgba(0, 0, 0, 0.12),
+        0 var(--elevation, 0.188rem) 0 rgba(0, 0, 0, 0.2);
+    background-color: var(--card-surface);
 }
 
 .calendar table {
@@ -27,7 +24,7 @@
     margin: 1rem 0 1rem 0;
 }
 
-.calendar-header > span {
+.calendar-header>span {
     flex-grow: 1;
     cursor: pointer;
     text-align: center;
@@ -43,11 +40,6 @@
     font-weight: bold;
 }
 
-.calendar td:not(.disabled):hover {
-    background-color: #eee;
-    cursor: pointer;
-}
-
 .calendar td.disabled {
     color: #ccc;
     cursor: default;
@@ -57,6 +49,13 @@
     background-color: var(--md-sys-color-tertiary);
     color: var(--md-sys-color-on-tertiary);
     cursor: default;
+}
+
+
+.calendar td:not(.disabled):hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 

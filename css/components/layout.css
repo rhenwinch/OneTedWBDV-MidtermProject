@@ -65,3 +65,7 @@
 .fill-parent {
     flex-grow: 1;
 }
+
+.wrap-content {
+    display: inline-block;
+}

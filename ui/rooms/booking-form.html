@@ -10,8 +10,20 @@
     <title>Index</title>
 
     <style>
-        .booking-calendar {
-            margin: 5rem 2rem 0 2rem;
+        :root {
+            --divider-width: 100%;
+            --textfield-width: 14rem;
+            --card-width: 100%;
+            --button-size: 0.65rem 0.65rem;
+        }
+
+        .booking-form {
+            margin-top: 2.5rem;
+        }
+
+        .booking-form-element {
+            margin-right: 2rem;
+            margin-left: 2rem;
         }
 
         .booking-calendar > input {
@@ -23,52 +35,151 @@
         .calendar-header > * {
             margin: 1rem 0.85rem 1rem 0.85rem;
         }
+
+        #guest-number {
+            text-align: center;
+        }
+
+        .guest-number-label {
+            width: 25%;
+        }
+
+        .special-request-margin {
+            margin: 0rem 2rem 0 2rem;
+        }
+
+        .label-margin-1 {
+            margin-right: 5rem;
+        }
+
+        .label-margin-2 {
+            margin-right: 2rem;
+        }
     </style>
 </head>
 <body>
-    <div class="column-container">
-        <h1 class="display-medium text-center login-header">Booking Form</h1>
-        <div class="row-container center-vertical">
-            <!-- Date of Arrival -->
-            <div class="column-container booking-calendar">
-                <!-- Calendar Picker Dialog -->
-                <label>Date of Arrival</label>
-                <input type="text" class="calendar-input" hidden>
+    <div class="row-container center">
+        <div class="wrap-content">
+            <div class="column-container">
+                <h1 class="display-medium text-center">Booking Form</h1>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="row-container center-vertical booking-form">
+                            <!-- Date of Arrival -->
+                            <div class="column-container booking-form-element">
+                                <!-- Calendar Picker Dialog -->
+                                <label class="label-large roboto-medium">Date of Arrival</label>
+                                <input type="text" class="calendar-input" hidden>
+                
+                                <div class="calendar-picker">
+                                    <div class="calendar-header">
+                                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                                        <div class="select-container">
+                                            <select class="select-month select"></select>
+                                        </div>
+                                        <div class="select-container">
+                                            <select class="select-year select"></select>
+                                        </div>
+                                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                                    </div>
+                                    <div class="calendar"></div>
+                                </div>  
+                            </div>
+                
+                            <!-- Date of Departure -->
+                            <div class="column-container booking-form-element">
+                                <!-- Calendar Picker Dialog -->
+                                <label class="label-large roboto-medium">Date of Departure</label>
+                                <input type="text" class="calendar-input" hidden>
+                
+                                <div class="calendar-picker">
+                                    <div class="calendar-header">
+                                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                                        <div class="select-container">
+                                            <select class="select-month select"></select>
+                                        </div>
+                                        <div class="select-container">
+                                            <select class="select-year select"></select>
+                                        </div>
+                                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                                    </div>
+                                    <div class="calendar"></div>
+                                </div>  
+                            </div>
+                        </div>
 
-                <div class="calendar-picker">
-                    <div class="calendar-header">
-                        <span class="material-symbols-outlined prev-month">navigate_before</span>
-                        <div class="select-container">
-                            <select class="select-month select"></select>
+                        <!-- Divider/Line -->
+                        <div class="horizontal-divider booking-form"></div>
+
+
+                        <div class="row-container center-vertical booking-form">
+                            <div class="row-container center-horizontal fill-parent booking-form-element">
+                                <label class="guest-number-label label-margin-1 label-large roboto-medium">Guest Number</label>
+                                <div class="column-container">
+                                    <div class="textfield-container login-field" style="--textfield-width: 5rem">
+                                        <input type="text" id="guest-number" name="email" class="textfield-input" placeholder=" " value="1" />
+                                        <div class="textfield-underline"></div>
+                                    </div>
+                                    <div class="row-container">
+                                        <button id="decrease-guest" class="button fill-parent" style="--button-size: 0.65rem 0.65rem">–</button>
+                                        <button id="increase-guest" class="button fill-parent" style="--button-size: 0.65rem 0.65rem">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-container  center-horizontal fill-parent booking-form-element">
+                                <label class="label-margin-2 label-large roboto-medium">Room Type</label>
+                                <div class="select-container">
+                                    <select class="select-month select fill-parent">
+                                        <option value="">Choose a Room Type</option>
+                                        <option value="">Standard</option>
+                                        <option value="">Deluxe</option>
+                                        <option value="">Suite</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="select-container">
-                            <select class="select-year select"></select>
+                        <div class="row-container center-vertical booking-form">
+                            <div class="row-container center-horizontal fill-parent booking-form-element">
+                                <label class="label-margin-2 label-large roboto-medium">Contact #:</label>
+                                <div class="textfield-container login-field">
+                                    <input type="text" name="contact" class="textfield-input" placeholder="09999999999" />
+                                    <div class="textfield-underline"></div>
+                                </div>
+                            </div>
+                            <div class="row-container  center-horizontal fill-parent booking-form-element">
+                                <label class="label-margin-2 label-large roboto-medium">Email:</label>
+                                <div class="textfield-container login-field">
+                                    <input type="text" name="contact" class="textfield-input" placeholder="09999999999" />
+                                    <div class="textfield-underline"></div>
+                                </div>
+                            </div>
                         </div>
-                        <span class="material-symbols-outlined next-month">navigate_next</span>
+
+                        <!-- Divider/Line -->
+                        <div class="horizontal-divider booking-form"></div>
+
+                        <div class="column-container booking-form booking-form-element">
+                            <span class="label-large roboto-medium">
+                                Special Request:
+                            </span>
+                            <div class="textfield-container " style="--textfield-width: 100%">
+                                <textarea class="textfield-input" placeholder=" " rows="5"></textarea>
+                                <div class="textfield-underline"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="calendar"></div>
-                </div>  
-            </div>
-
-            <!-- Date of Departure -->
-            <div class="column-container booking-calendar">
-                <!-- Calendar Picker Dialog -->
-                <label>Date of Departure</label>
-                <input type="text" class="calendar-input" hidden>
-
-                <div class="calendar-picker">
-                    <div class="calendar-header">
-                        <span class="material-symbols-outlined prev-month">navigate_before</span>
-                        <div class="select-container">
-                            <select class="select-month select"></select>
-                        </div>
-                        <div class="select-container">
-                            <select class="select-year select"></select>
-                        </div>
-                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                </div>
+                <div class="row-container booking-form">
+                    <div class="display-small fill-parent booking-form-element ">
+                        <span>Price:</span>
+                        <spanid="price">P99,999</span>
                     </div>
-                    <div class="calendar"></div>
-                </div>  
+                    <button id="confirm" class="button label-margin-2"  style="--button-size: 0.65rem 2rem">Confirm</button>
+                    <button id="cancel" class="button label-margin-2"  style="--button-size: 0.65rem 2rem">Cancel</button>
+                </div>
+
+                <!-- Additional margin -->
+                <div class="booking-form"></div>
             </div>
         </div>
     </div>

@@ -1,10 +1,18 @@
 :root {
     --divider-height: 100vh;
+    --divider-width: 100vw;
 }
 
 .vertical-divider {
     width: 0.063rem;
     height: var(--divider-height);
+    background-color: var(--md-sys-color-on-surface);
+    flex-grow: 0; /* In case the divider is included in the row, we must not make it take the whole place */
+}
+
+.horizontal-divider {
+    width: var(--divider-width);
+    height: 0.063rem;
     background-color: var(--md-sys-color-on-surface);
     flex-grow: 0; /* In case the divider is included in the row, we must not make it take the whole place */
 }

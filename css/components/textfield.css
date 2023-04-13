@@ -6,7 +6,6 @@
 .textfield-container {
     position: relative;
     width: var(--textfield-width);
-    margin: 0 auto;
 }
 
 /* Textfield input element */
