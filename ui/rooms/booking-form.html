@@ -7,9 +7,10 @@
     
     <link rel="stylesheet" href="../../css/theme/theme.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Index</title>
+    <title>Booking Form</title>
 
     <style>
+        /* Override global variables */
         :root {
             --divider-width: 100%;
             --textfield-width: 14rem;
@@ -68,7 +69,7 @@
                             <!-- Date of Arrival -->
                             <div class="column-container booking-form-element">
                                 <!-- Calendar Picker Dialog -->
-                                <label class="label-large roboto-medium">Date of Arrival</label>
+                                <label class="body-large roboto-medium">Date of Arrival</label>
                                 <input type="text" class="calendar-input" hidden>
                 
                                 <div class="calendar-picker">
@@ -89,7 +90,7 @@
                             <!-- Date of Departure -->
                             <div class="column-container booking-form-element">
                                 <!-- Calendar Picker Dialog -->
-                                <label class="label-large roboto-medium">Date of Departure</label>
+                                <label class="body-large roboto-medium">Date of Departure</label>
                                 <input type="text" class="calendar-input" hidden>
                 
                                 <div class="calendar-picker">
@@ -114,7 +115,7 @@
 
                         <div class="row-container center-vertical booking-form">
                             <div class="row-container center-horizontal fill-parent booking-form-element">
-                                <label class="guest-number-label label-margin-1 label-large roboto-medium">Guest Number</label>
+                                <label class="guest-number-label label-margin-1 body-large roboto-medium">Guest Number</label>
                                 <div class="column-container">
                                     <div class="textfield-container login-field" style="--textfield-width: 5rem">
                                         <input type="text" id="guest-number" name="email" class="textfield-input" placeholder=" " value="1" />
@@ -127,7 +128,7 @@
                                 </div>
                             </div>
                             <div class="row-container  center-horizontal fill-parent booking-form-element">
-                                <label class="label-margin-2 label-large roboto-medium">Room Type</label>
+                                <label class="label-margin-2 body-large roboto-medium">Room Type</label>
                                 <div class="select-container">
                                     <select class="select-month select fill-parent">
                                         <option value="">Choose a Room Type</option>
@@ -140,17 +141,19 @@
                         </div>
                         <div class="row-container center-vertical booking-form">
                             <div class="row-container center-horizontal fill-parent booking-form-element">
-                                <label class="label-margin-2 label-large roboto-medium">Contact #:</label>
+                                <label class="label-margin-2 body-large roboto-medium">Contact #:</label>
                                 <div class="textfield-container login-field">
-                                    <input type="text" name="contact" class="textfield-input" placeholder="09999999999" />
+                                    <input type="text" name="contact" id="contact" class="textfield-input" placeholder="09999999999" />
                                     <div class="textfield-underline"></div>
+                                    <span class="error-message">Invalid phone number</span>
                                 </div>
                             </div>
                             <div class="row-container  center-horizontal fill-parent booking-form-element">
-                                <label class="label-margin-2 label-large roboto-medium">Email:</label>
+                                <label class="label-margin-2 body-large roboto-medium">Email:</label>
                                 <div class="textfield-container login-field">
-                                    <input type="text" name="contact" class="textfield-input" placeholder="09999999999" />
+                                    <input type="text" name="contact" id="email" class="textfield-input" placeholder="johndoe@gmail.com" />
                                     <div class="textfield-underline"></div>
+                                    <span class="error-message">Invalid email address</span>
                                 </div>
                             </div>
                         </div>
@@ -159,14 +162,16 @@
                         <div class="horizontal-divider booking-form"></div>
 
                         <div class="column-container booking-form booking-form-element">
-                            <span class="label-large roboto-medium">
+                            <span class="body-large roboto-medium">
                                 Special Request:
                             </span>
-                            <div class="textfield-container " style="--textfield-width: 100%">
-                                <textarea class="textfield-input" placeholder=" " rows="5"></textarea>
-                                <div class="textfield-underline"></div>
+                            <div class="outlined-textfield-container" style="--textfield-width: 100%">
+                                <textarea class="outlined-textfield-input" name="special-request" placeholder="Note your special requests" rows="5"></textarea>
                             </div>
                         </div>
+                        
+                        <!-- Additional margin -->
+                        <div class="booking-form"></div>
                     </div>
                 </div>
                 <div class="row-container booking-form">
@@ -174,8 +179,8 @@
                         <span>Price:</span>
                         <spanid="price">P99,999</span>
                     </div>
-                    <button id="confirm" class="button label-margin-2"  style="--button-size: 0.65rem 2rem">Confirm</button>
-                    <button id="cancel" class="button label-margin-2"  style="--button-size: 0.65rem 2rem">Cancel</button>
+                    <button id="confirm" class="button label-margin-2"  style="--button-size: 0.65rem 3rem">Confirm</button>
+                    <button id="cancel" class="button label-margin-2"  style="--button-size: 0.65rem 3rem">Cancel</button>
                 </div>
 
                 <!-- Additional margin -->
@@ -185,4 +190,5 @@
     </div>
 </body>
 <script src="scripts/calendar-picker.js"></script>
+<script src="scripts/booking-form-validator.js"></script>
 </html>
