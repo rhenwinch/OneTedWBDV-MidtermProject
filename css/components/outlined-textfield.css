@@ -1,11 +1,11 @@
 .outlined-textfield-container {
     position: relative;
-    display: inline-flex;
-    flex-direction: column;
     width: var(--textfield-width);
+    box-sizing: border-box;
 }
 
 .outlined-textfield-input {
+    width: 100%;
     font-size: 1rem;
     border-radius: 0.25rem;
     padding: 0.625rem;
@@ -15,10 +15,12 @@
     background-color: rgb(var(--md-sys-color-surface) / 0.05);
     color: var(--md-sys-color-on-surface);
     transition: all 0.2s ease-out;
+    box-sizing: border-box;
 }
 
 .outlined-textfield-container textarea {
     resize: none; /* Make textarea non-resizable */
+    width: 100%;
     font-family: 'Roboto', sans-serif;
 }
 
