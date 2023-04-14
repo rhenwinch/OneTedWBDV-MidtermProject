@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     emailInput.addEventListener('input', (e) => {
         const parentContainer = e.target.parentElement;
-        const isValid = validateEmail(e.target.value) || e.target.value === "";
+        const isValid = validateEmail(e.target.value) || isEmpty(e.target.value);
         
         if(isValid) {
             parentContainer.classList.remove('error-container');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactInput.addEventListener('input', (e) => {
         const parentContainer = e.target.parentElement;
-        const isValid = validatePhilippinePhoneNumber(e.target.value) || e.target.value === "";
+        const isValid = validatePhilippinePhoneNumber(e.target.value) || isEmpty(e.target.value);
         
         if(isValid) {
             parentContainer.classList.remove('error-container');
@@ -91,3 +91,6 @@ function validatePhilippinePhoneNumber(phoneNumber) {
     return regex.test(phoneNumber);
 }  
   
+function isEmpty(str) {
+    return str.trim().length === 0;
+}
