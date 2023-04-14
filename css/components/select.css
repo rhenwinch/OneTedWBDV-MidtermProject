@@ -1,9 +1,15 @@
+:root {
+    --select-width: 100%;
+}
+
 .select-container {
+    width: var(--select-width);
     display: inline-block;
     position: relative;
 }
 
 .select {
+    width: 100%;
     appearance: none;
     background-color: transparent;
     border: none;
@@ -17,3 +23,15 @@
     outline: none;
     border-bottom: 0.125rem solid var(--md-sys-color-secondary);
 }
+
+/* 
+
+Use it like this:
+
+<div class="select-container">
+    <select class="select">
+        <option></option>
+    </select>
+</div>
+
+*/
