@@ -9,7 +9,6 @@
     font-size: 1rem;
     border-radius: 0.25rem;
     padding: 0.625rem;
-    margin-top: 1rem;
     outline: none;
     border: 0.063rem solid var(--md-sys-color-primary);
     background-color: rgb(var(--md-sys-color-surface) / 0.05);
