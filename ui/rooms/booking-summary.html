@@ -5,11 +5,205 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <link rel="stylesheet" href="../css/theme/theme.css">
-    <link rel="stylesheet" href="../css/component.css">
-    <title>Index</title>
+    <link rel="stylesheet" href="../../css/theme/theme.css">
+    <title>Booking Summary</title>
+
+    <style>
+        /* Override global variables */
+        :root {
+            --divider-width: 100%;
+            --textfield-width: 100%;
+            --button-size: 0.65rem 3rem;
+        }
+
+        .booking-summary-header {
+            margin-bottom: 5rem;
+        }
+
+        .booking-summary-info {
+            margin-right: 3rem;
+            width: 30vw;
+        }
+
+        .label-margin {
+            margin: 1.5rem 0 0.8rem -1.5rem;
+        }
+
+        .button-container {
+            margin-top: 2rem;
+        }
+
+        .payment-field {
+            margin-top: 1.938rem;
+        }
+
+        .field-margin {
+            margin-bottom: 2.5rem;
+        }
+
+        .field-margin-1 {
+            margin-right: 0.938rem;
+        }
+
+        .payment-field.hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div class="column-container">
+        <h1 class="display-medium text-center booking-summary-header">Booking Summary</h1>
+        <div class="row-container center">
+            <div class="wrap-content">
+                <div class="column-container booking-summary-info">
+                    <div class="row-container">
+                        <div class="body-large label-margin">
+                            <span>Duration:</span>
+                            <span id="duration" class="roboto-medium">15 Days</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Divider/Line -->
+                    <div class="horizontal-divider "></div>
     
+                    <div class="row-container">
+                        <div class="body-large label-margin">
+                            <span>Guest Number:</span>
+                            <span id="duration" class="roboto-medium">5</span>
+                        </div>
+                    </div>
+                    <!-- Divider/Line -->
+                    <div class="horizontal-divider "></div>
+    
+                    <div class="row-container">
+                        <div class="body-large label-margin">
+                            <span>Room Type:</span>
+                            <span id="duration"  class="roboto-medium">DELUXE</span>
+                        </div>
+                    </div>
+                    <!-- Divider/Line -->
+                    <div class="horizontal-divider"></div>
+    
+                    <div class="row-container   label-margin">
+                        <div class="row-container fill-parent">
+                            <div class="body-large">
+                                <span>Contact #:</span>
+                                <span id="duration"  class="roboto-medium">09091355111</span>
+                            </div>
+                        </div>
+                        <div class="row-container fill-parent">
+                            <div class="body-large">
+                                <span >Email:</span>
+                                <span id="email"  class="roboto-medium">john.doe@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Divider/Line -->
+                    <div class="horizontal-divider "></div>
+    
+                    <span class="label-margin">Special Request:</span>
+                    <div class="outlined-textfield-container fill-parent" style="--textfield-width: 100%">
+                        <textarea class="outlined-textfield-input" name="special-request" placeholder="Note your special requests" rows="5" readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum, asperiores deleniti</textarea>
+                    </div>
+                    <div class="row-container">
+                        <div class="display-small label-margin">
+                            <span>Price:</span>
+                            <span id="price">P99,999</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column-container stick-on-top">
+                <h3 class="title-large text-center">Payment Method</h3>
+                <div class="card">
+                    <div class="card-content">
+                        <form>
+                            <label>Payment method:</label>
+                            <div class="select-container">
+                                <select id="payment-method" name="payment-method" class="select">
+                                    <option value="">Select a payment method</option>
+                                    <option value="gcash">GCash</option>
+                                    <option value="paymaya">PayMaya</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="card">Card</option>
+                                    <option value="wire">Wire Transfer</option>
+                                </select>
+                            </div>
+
+                            <div class="textfield-container payment-field hidden" id="gcash-field">
+                                <input type="text" name="number" class="textfield-input" placeholder=" " />
+                                <label class="textfield-label">Account Number</label>
+                                <div class="textfield-underline"></div>
+                            </div>
+
+                            <div class="textfield-container payment-field hidden" id="paymaya-field">
+                                <input type="text" name="number" class="textfield-input" placeholder=" " />
+                                <label class="textfield-label">Account Number</label>
+                                <div class="textfield-underline"></div>
+                            </div>
+
+                            <div class="textfield-container payment-field hidden" id="paypal-field">
+                                <input type="email" name="number" class="textfield-input" placeholder=" " />
+                                <label class="textfield-label">PayPal Email</label>
+                                <div class="textfield-underline"></div>
+                            </div>
+                        
+                            <div id="card-field" class="column-container payment-field hidden">
+                                <div class="textfield-container field-margin">
+                                    <input type="text" id="cc" name="number" class="textfield-input" placeholder=" " />
+                                    <label class="textfield-label">Card Number (MC/Visa)</label>
+                                    <div class="textfield-underline"></div>
+                                    <span class="error-message">Invalid CC Number</span>
+                                </div>
+                                <div class="row-container field-margin">
+                                    <div class="textfield-container fill-parent field-margin-1" style="--textfield-width: 80%;">
+                                        <input type="text" id="exp-month" name="month" class="textfield-input" placeholder=" " />
+                                        <label class="textfield-label">Month</label>
+                                        <div class="textfield-underline"></div>
+                                        <span class="error-message">Invalid month</span>
+                                    </div>
+                                    <div class="textfield-container fill-parent" style="--textfield-width: 80%">
+                                        <input type="text" id="exp-year" name="year" class="textfield-input" placeholder=" " />
+                                        <label class="textfield-label">Year</label>
+                                        <div class="textfield-underline"></div>
+                                        <span class="error-message">Invalid year</span>
+                                    </div>
+                                </div>
+                                <div class="textfield-container field-margin">
+                                    <input type="text" name="cvv" id="cvv" class="textfield-input" placeholder=" " />
+                                    <label class="textfield-label">CVV</label>
+                                    <div class="textfield-underline"></div>
+                                </div>
+                            </div>
+                        
+                            <div id="wire-field" class="column-container payment-field hidden">
+                                <div class="textfield-container field-margin">
+                                    <input type="text" name="bank_name" class="textfield-input" placeholder=" " />
+                                    <label class="textfield-label">Bank Name</label>
+                                    <div class="textfield-underline"></div>
+                                </div>
+                                <div class="textfield-container field-margin">
+                                    <input type="text" name="acc_name" class="textfield-input" placeholder=" " />
+                                    <label class="textfield-label">Account Name</label>
+                                    <div class="textfield-underline"></div>
+                                </div>
+                                <div class="textfield-container field-margin">
+                                    <input type="text" name="number" class="textfield-input" placeholder=" " />
+                                    <label class="textfield-label">Account Number</label>
+                                    <div class="textfield-underline"></div>
+                                </div>
+                            </div>
+                        
+                            <div id="submit-container" class="row-container button-container payment-field hidden">
+                                <button type="submit" id="confirm" class="button fill-parent">Confirm</button>
+                                <button id="cancel" class="button fill-parent">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="./scripts/payment.js"></script>
 </html>
