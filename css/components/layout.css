@@ -7,6 +7,10 @@
     align-items: center; /* Center the content horizontally */
 }
 
+.stick-on-top {
+    align-self: flex-start;
+}
+
 .center {
     justify-content: center; /* Center the content vertically */
     align-items: center; /* Center the content horizontally */
@@ -36,17 +40,6 @@
 /* CSS for the container row */
 .row-container {
     display: flex;
-}
-
-/* CSS for the individual columns inside rows */
-.row-container > .column-item {
-    flex: 1 0 0;
-    box-sizing: border-box;
-    margin-bottom: 1.25rem;
-}
-
-.row.column-item > * {
-    margin: 0 auto;
 }
 
 
