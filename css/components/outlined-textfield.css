@@ -1,0 +1,47 @@
+.outlined-textfield-container {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    width: var(--textfield-width);
+}
+
+.outlined-textfield-input {
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    padding: 0.625rem;
+    margin-top: 1rem;
+    outline: none;
+    border: 0.063rem solid var(--md-sys-color-primary);
+    background-color: rgb(var(--md-sys-color-surface) / 0.05);
+    color: var(--md-sys-color-on-surface);
+    transition: all 0.2s ease-out;
+}
+
+.outlined-textfield-container textarea {
+    resize: none; /* Make textarea non-resizable */
+    font-family: 'Roboto', sans-serif;
+}
+
+.outlined-textfield-input:focus {
+    border-color: var(--md-ref-palette-primary60);
+}
+
+.outlined-textfield-input:focus+.outlined-textfield-label,
+.outlined-textfield-input:not(:placeholder-shown)+.outlined-textfield-label {
+    transform: translate(0, -50%) scale(0.75);
+    color: var(--md-sys-color-on-primary);
+    background-color: var(--md-sys-color-surface);
+}
+
+.error-message {
+    position: absolute;
+    bottom: -1.125rem;
+    left: 0;
+    font-size: 0.75rem;
+    color: var(--md-sys-color-error);
+    visibility: hidden;
+}
+  
+.outlined-textfield-container.error-container .error-message {
+    visibility: visible;
+}
