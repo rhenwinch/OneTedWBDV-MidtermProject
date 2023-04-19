@@ -89,3 +89,16 @@
 .textfield-container.error-container .error-message {
     visibility: visible;
 }
+
+
+/* 
+
+Use it like this:
+<div class="textfield-container">
+    <input type="text" name="email" class="textfield-input" placeholder="john.doe@gmail.com" />
+    <label class="textfield-label">Email</label>
+    <div class="textfield-underline"></div>
+</div>
+
+
+*/
