@@ -25,6 +25,9 @@
 @import url('../components/calendar.css');
 @import url('../components/dialog.css');
 @import url('../components/select.css');
+@import url('../components/progress-bar.css');
+@import url('../components/navbar.css');
+@import url('../components/icons.css');
 
 body {
     background-color: var(--md-sys-color-surface);

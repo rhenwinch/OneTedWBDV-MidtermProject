@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/theme/theme.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Booking Form</title>
 
     <style>
@@ -16,6 +17,11 @@
             --textfield-width: 14rem;
             --card-width: 100%;
             --button-size: 0.65rem 0.65rem;
+            --elevation: 0.1rem;
+        }
+
+        body {
+            overflow-x: hidden;
         }
 
         .booking-form {
@@ -45,6 +51,14 @@
             width: 25%;
         }
 
+        .logo-margin {
+            margin-left: 1.5rem;
+        }
+
+        .profile-margin {
+            margin-right: 1rem;
+        }
+
         .special-request-margin {
             margin: 0rem 2rem 0 2rem;
         }
@@ -63,7 +77,65 @@
     </style>
 </head>
 <body>
-    <div class="row-container center">
+    <div class="column-container center">
+        <nav class="navbar">
+            <div class="navbar-start logo-margin">
+                <a href="#" class="navbar-logo">
+                    <img src="../../images/image-placeholder.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="navbar-center">
+                <div class="progress-bar">
+                    <div class="progress-item active">
+                        <div class="progress-circle">1</div>
+                        <div class="progress-text">Booking Information</div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-line"></div>
+                        <div class="progress-circle">2</div>
+                        <div class="progress-text">Payment Information</div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-line"></div>
+                        <div class="progress-circle">3</div>
+                        <div class="progress-text">Booking Confirmation</div>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-end profile-margin">
+                <button class="navbar-profile-btn">
+                    <img src="../../images/person.png" alt="Profile">
+                    <span class="md-24 material-icons-outlined">arrow_drop_down</span>
+                </button>
+                <div class="navbar-dropdown">
+                    <div class="column-container">
+                        <a href="#" class="navbar-dropdown-item">
+                            <div class="row-container center-horizontal">
+                                <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                                Profile
+                            </div>
+                        </a>
+                        <a href="#" class="navbar-dropdown-item">
+                            <div class="row-container center-horizontal">
+                                <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                                My Bookings
+                            </div>
+                        </a>
+                        <a href="#" class="navbar-dropdown-item">
+                            <div class="row-container center-horizontal">
+                                <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                                Voucher
+                            </div>
+                        </a>
+                        <a href="#" class="navbar-dropdown-item">
+                            <div class="card" style="--card-width: auto">
+                                <span class="text-center">Log Out</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
         <div class="wrap-content">
             <div class="column-container">
                 <h1 class="display-medium text-center">Booking Form</h1>
@@ -78,14 +150,14 @@
                 
                                 <div class="calendar-picker">
                                     <div class="calendar-header">
-                                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                                        <span class="material-icons-outlined prev-month">navigate_before</span>
                                         <div class="select-container">
-                                            <select class="select-month select"></select>
+                                            <select class="select-month select text-center"></select>
                                         </div>
                                         <div class="select-container">
-                                            <select class="select-year select"></select>
+                                            <select class="select-year select text-center"></select>
                                         </div>
-                                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                                        <span class="material-icons-outlined next-month">navigate_next</span>
                                     </div>
                                     <div class="calendar"></div>
                                 </div>  
@@ -99,14 +171,14 @@
                 
                                 <div class="calendar-picker">
                                     <div class="calendar-header">
-                                        <span class="material-symbols-outlined prev-month">navigate_before</span>
+                                        <span class="material-icons-outlined prev-month">navigate_before</span>
                                         <div class="select-container">
-                                            <select class="select-month select"></select>
+                                            <select class="select-month select text-center"></select>
                                         </div>
                                         <div class="select-container">
-                                            <select class="select-year select"></select>
+                                            <select class="select-year select text-center"></select>
                                         </div>
-                                        <span class="material-symbols-outlined next-month">navigate_next</span>
+                                        <span class="material-icons-outlined next-month">navigate_next</span>
                                     </div>
                                     <div class="calendar"></div>
                                 </div>  
