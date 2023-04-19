@@ -8,7 +8,7 @@
 .button {
     display: inline-block;
     background-color: var(--md-sys-color-primary);
-    color: #fff;
+    color: var(--md-sys-color-on-primary);
     padding: var(--button-size);
     font-size: var(--button-font-size);
     border-radius: var(--button-border-radius); /* Default border radius */
