@@ -1,0 +1,118 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--md-sys-color-surface);
+    filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.2));
+    color: var(--md-sys-color-on-surface);
+    height: 8vh;
+    width: 100vw;
+}
+
+.navbar-start {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-on-surface);
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-end {
+    position: relative;
+}
+
+.navbar-profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface);
+}
+
+.navbar-profile-btn img {
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-on-surface);
+    margin-right: 0.5rem;
+}
+
+.navbar-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 12vw;
+    background-color: var(--md-sys-color-surface);
+    border-radius: 0.25rem;
+    box-shadow: 0px 0.125rem 0.125rem rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.navbar-dropdown-item {
+    margin: 0;
+    padding: 0.8rem 1rem;
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.navbar-dropdown-item-icon {
+    margin-right: 0.65rem;
+}
+
+.navbar-dropdown-item:hover {
+    transform: scale(1.04);
+}
+
+.navbar-profile-btn:hover {
+    opacity: 0.8;
+}
+
+.navbar-profile-btn:focus+.navbar-dropdown,
+.navbar-dropdown:hover {
+    display: block;
+}
+
+
+/* 
+
+Usage guide:
+<nav class="navbar">
+    <div class="navbar-start logo-margin">
+        <a href="#" class="navbar-logo">
+            <img src="../../images/image-placeholder.svg" alt="Logo">
+        </a>
+    </div>
+    <div class="navbar-center">
+        <!-- Center items/elements -->
+    </div>
+    <div class="navbar-end profile-margin">
+        <button class="navbar-profile-btn">
+            <img src="../../images/person.png" alt="Profile">
+            <span class="material-symbols-outlined">arrow_drop_down</span>
+        </button>
+        <div class="navbar-dropdown">
+            <ul>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Log out</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+*/
