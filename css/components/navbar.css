@@ -2,16 +2,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    filter: drop-shadow(0 0 0.05rem rgba(0, 0, 0, 0.2));
     background-color: var(--md-sys-color-surface);
-    filter: drop-shadow(0 0 0.2rem rgba(0, 0, 0, 0.2));
     color: var(--md-sys-color-on-surface);
     height: 8vh;
     width: 100vw;
 }
 
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(var(--md-sys-color-surface-rgb) / 0.5);
+    width: 100%;
+}
+
 .navbar-start {
     display: flex;
     align-items: center;
+    margin-left: 1.5rem;
 }
 
 .navbar-logo img {
@@ -23,10 +32,13 @@
 .navbar-center {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 }
 
 .navbar-end {
     position: relative;
+    margin-right: 1rem;
 }
 
 .navbar-profile-btn {
@@ -90,8 +102,13 @@
 /* 
 
 Usage guide:
+<!-- Import these links on head level -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
 <nav class="navbar">
-    <div class="navbar-start logo-margin">
+    <div class="navbar-start">
         <a href="#" class="navbar-logo">
             <img src="../../images/image-placeholder.svg" alt="Logo">
         </a>
@@ -99,7 +116,7 @@ Usage guide:
     <div class="navbar-center">
         <!-- Center items/elements -->
     </div>
-    <div class="navbar-end profile-margin">
+    <div class="navbar-end">
         <button class="navbar-profile-btn">
             <img src="../../images/person.png" alt="Profile">
             <span class="material-symbols-outlined">arrow_drop_down</span>
