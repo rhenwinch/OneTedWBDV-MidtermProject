@@ -17,6 +17,11 @@
     font-size: 1rem;
     border-bottom: 0.063rem solid #ccc;
     cursor: pointer;
+    color: var(--md-sys-color-on-surface);
+}
+
+.select option {
+    color: black;
 }
 
 .select:focus {
