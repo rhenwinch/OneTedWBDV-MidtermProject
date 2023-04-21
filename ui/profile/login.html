@@ -63,15 +63,17 @@
                     <form action="../../data/login.php" method="post" id="login">
                         <div class="column-container">
                             <div class="textfield-container login-field">
-                                <input type="text" name="email" class="textfield-input" placeholder=" " />
+                                <input type="text" name="email" id="email" class="textfield-input" placeholder=" " />
                                 <label class="textfield-label">Email</label>
                                 <div class="textfield-underline"></div>
+                                <span class="error-message">Invalid Email</span>
                             </div>
-
+                            
                             <div class="textfield-container login-field">
-                                <input type="text" name="password" class="textfield-input" placeholder=" " />
+                                <input type="password" name="password" id="password" class="textfield-input" placeholder=" " />
                                 <label class="textfield-label">Password</label>
                                 <div class="textfield-underline"></div>
+                                <span class="error-message">Invalid Password</span>
                             </div>
 
                             <button type="submit" class="button login-button">Log in</button>
