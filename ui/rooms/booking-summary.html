@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/theme/theme.css">
     <title>Booking Summary</title>
 
@@ -52,6 +54,66 @@
 </head>
 <body>
     <div class="column-container">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-start">
+                    <a href="#" class="navbar-logo">
+                        <img src="../../images/image-placeholder.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="navbar-center">
+                    <div class="progress-bar">
+                        <div class="progress-item active">
+                            <div class="progress-circle">✔</div>
+                            <div class="progress-text">Booking Information</div>
+                        </div>
+                        <div class="progress-item active">
+                            <div class="progress-line"></div>
+                            <div class="progress-circle">2</div>
+                            <div class="progress-text">Payment Information</div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-line"></div>
+                            <div class="progress-circle">3</div>
+                            <div class="progress-text">Booking Confirmation</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <button class="navbar-profile-btn">
+                        <img src="../../images/person.png" alt="Profile">
+                        <span class="md-24 material-icons-outlined">arrow_drop_down</span>
+                    </button>
+                    <div class="navbar-dropdown">
+                        <div class="column-container">
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                                    Profile
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                                    My Bookings
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                                    Voucher
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="card" style="--card-width: auto">
+                                    <span class="text-center">Log Out</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
         <h1 class="display-medium text-center booking-summary-header">Booking Summary</h1>
         <div class="row-container center">
             <div class="wrap-content">
@@ -131,21 +193,24 @@
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="gcash-field">
-                                <input type="text" name="number" class="textfield-input" placeholder=" " />
+                                <input type="text" name="number" class="textfield-input ewallet-number" placeholder=" " />
                                 <label class="textfield-label">Account Number</label>
                                 <div class="textfield-underline"></div>
+                                <span class="error-message">Invalid Phone Number</span>
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="paymaya-field">
-                                <input type="text" name="number" class="textfield-input" placeholder=" " />
+                                <input type="text" name="number" class="textfield-input ewallet-number" placeholder=" " />
                                 <label class="textfield-label">Account Number</label>
                                 <div class="textfield-underline"></div>
+                                <span class="error-message">Invalid Phone Number</span>
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="paypal-field">
-                                <input type="email" name="number" class="textfield-input" placeholder=" " />
+                                <input type="email" name="number" id="paypal-email" class="textfield-input" placeholder=" " />
                                 <label class="textfield-label">PayPal Email</label>
                                 <div class="textfield-underline"></div>
+                                <span class="error-message">Invalid Email</span>
                             </div>
                         
                             <div id="card-field" class="column-container payment-field hidden">
@@ -173,6 +238,7 @@
                                     <input type="text" name="cvv" id="cvv" class="textfield-input" placeholder=" " />
                                     <label class="textfield-label">CVV</label>
                                     <div class="textfield-underline"></div>
+                                    <span class="error-message">Invalid CVV</span>
                                 </div>
                             </div>
                         

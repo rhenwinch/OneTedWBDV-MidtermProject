@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Get the month and year input elements
+    // Get elements of CC inputs
     const expMonthInput = document.getElementById('exp-month');
     const expYearInput = document.getElementById('exp-year');
     const ccInput = document.getElementById('cc');
     const cvvInput = document.getElementById('cvv');
+    
+    // Get elements of EWallet inputs
+    const ewalletNumbers = document.querySelectorAll('.ewallet-number');
+    
+    // Get elements of Paypal inputs
+    const paypalEmail = document.getElementById('paypal-email');
 
     // Attach input event listeners to the input elements
     expMonthInput.addEventListener('input', () => {
@@ -25,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             parentContainer.classList.add('error-container');
         }
-    })
+    });
 
     ccInput.addEventListener('input', (e) => {
         const parentContainer = e.target.parentElement;
@@ -38,7 +44,33 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             parentContainer.classList.add('error-container');
         }
-    })
+    });
+
+    paypalEmail.addEventListener('input', (e) => {
+        const parentContainer = e.target.parentElement;
+        const isValid = validateEmail(e.target.value) || isEmpty(e.target.value);
+        
+        if(isValid) {
+            parentContainer.classList.remove('error-container');
+        } else {
+            parentContainer.classList.add('error-container');
+        }
+    });
+
+    
+    ewalletNumbers.forEach(item => {
+        item.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validatePhilippinePhoneNumber(e.target.value)
+            || isEmpty(e.target.value);
+            
+            if(isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+    });
 
     const paymentOptions = document.getElementById('payment-method');
     paymentOptions.value = "";
@@ -156,6 +188,11 @@ function validateEmail(email) {
     // regular expression pattern for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+}
+
+function validatePhilippinePhoneNumber(phoneNumber) {
+    const regex = /^(09|639|\+639)\d{9}$/;
+    return regex.test(phoneNumber);
 }
 
 function isEmpty(str) {

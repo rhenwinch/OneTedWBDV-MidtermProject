@@ -161,6 +161,7 @@ selectMonth.forEach((item, i) => {
     item.addEventListener('change', () => {
         const year = parseInt(selectYear[i].value, 10);
         const month = parseInt(selectMonth[i].value, 10);
+        
         calendar[i].innerHTML = '';
         calendar[i].appendChild(generateCalendar(year, month, i));
     });
@@ -169,9 +170,10 @@ selectMonth.forEach((item, i) => {
 selectYear.forEach((item, i) => {
     item.addEventListener('change', () => {
         const year = parseInt(selectYear[i].value, 10);
+        populateMonth(year, i);
+        
         const month = parseInt(selectMonth[i].value, 10);
         
-        populateMonth(year, i);
         calendar[i].innerHTML = '';
         calendar[i].appendChild(generateCalendar(year, month, i));
     });
