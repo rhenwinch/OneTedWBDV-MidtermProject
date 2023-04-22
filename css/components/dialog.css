@@ -28,3 +28,19 @@
     margin-top: 1rem;
     text-align: end;
 }
+
+
+/* 
+
+Usage guide:
+<div id="dialog-container">
+  <div id="dialog">
+    <h2>Dialog Title</h2>
+    <p>Dialog content goes here.</p>
+    <button id="dismiss-dialog">Close</button>
+  </div>
+</div>
+
+
+
+*/

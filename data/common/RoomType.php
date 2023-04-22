@@ -4,7 +4,7 @@ require_once __DIR__ . '/../interfaces/Enum.php';
 /**
  * Enum class for room types.
  */
-class RoomType extends Enum {
+class RoomType implements Enum {
     const STANDARD = "Standard";
     const DELUXE = "Deluxe";
     const SUITE = "Suite";
@@ -37,6 +37,21 @@ class RoomType extends Enum {
         
         // Check if the sanitized room type exists in the room data array
         return isset(self::$roomData[$sanitizedRoomType]['roomPrice']) ? self::$roomData[$sanitizedRoomType]['roomPrice'] : 0.00;
+    }
+
+    public static function fromString(string $value): ?string {
+        $value = strtolower($value); // Convert input to lowercase for case-insensitive comparison
+        $reflection = new ReflectionClass(__CLASS__);
+        $constants = $reflection->getConstants();
+
+        // Loop through constants and find a match
+        foreach ($constants as $constantValue) {
+            if (strtolower($constantValue) === $value) {
+                return $constantValue;
+            }
+        }
+
+        return null;
     }
 }
 

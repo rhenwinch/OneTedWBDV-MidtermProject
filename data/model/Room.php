@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../interfaces/JsonSerializerInterface.php';
+require_once __DIR__ . '/../common/RoomType.php';
 
 /**
  * Class Room
@@ -89,7 +90,7 @@ class Room implements JsonSerializerInterface {
     public static function fromJson($json): ?self {
         if($json == null)
             return null;
-
+        
         // Create Room object
         $room = new Room();
         $room->setRoomName($json->roomName);

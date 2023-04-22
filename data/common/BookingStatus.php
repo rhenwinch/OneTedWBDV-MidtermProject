@@ -4,7 +4,7 @@ require_once __DIR__ . '/../interfaces/Enum.php';
 /**
  * Enum class for booking status.
  */
-class BookingStatus extends Enum {
+class BookingStatus implements Enum {
     const BOOKED = 'Booked';
     const CANCELLED = 'Cancelled';
     const CONFIRMED = 'Confirmed';

@@ -62,6 +62,15 @@ class User implements JsonSerializerInterface {
     }
 
     /**
+     * Set the user's ID.
+     * 
+     * @param string $userId The user's id
+     */
+    public function setUserId($userId) {
+        $this->userId = $userId;
+    }
+
+    /**
      * Get the user's email address.
      *
      * @return string The user's email address
@@ -232,7 +241,8 @@ class User implements JsonSerializerInterface {
         }, $json->bookingHistory);
 
         // Create Room object
-        $user = new User($json->userId);
+        $user = new User();
+        $user->setUserId($json->userId);
         $user->setEmail($json->email);
         $user->setPassword($json->password);
         $user->setBookingHistory($bookingHistory);

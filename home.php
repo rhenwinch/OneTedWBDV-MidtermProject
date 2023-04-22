@@ -1,6 +1,7 @@
 <?php
 session_start();
 
-echo $_SESSION["loggedIn"];
+echo $_SESSION["loggedIn"]."<br>";
+echo $_SESSION["user"];
 
 ?>

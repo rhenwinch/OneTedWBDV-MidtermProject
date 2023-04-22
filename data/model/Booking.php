@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../common/BookingStatus.php';
 require_once __DIR__ . '/../common/Sanitizer.php';
 require_once __DIR__ . '/../interfaces/JsonSerializerInterface.php';
 require_once 'Room.php';
