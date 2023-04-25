@@ -2,7 +2,7 @@
 session_start(); // Start the session
 
 require_once '../../data/common/Response.php';
-require_once '../../data/common/Sanitizer.php';
+require_once '../../data/service/Sanitizer.php';
 require_once '../../data/model/User.php';
 require_once '../../data/repository/UserRepository.php';
 
@@ -22,8 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Retrieve the submitted form data
     $email = Sanitizer::sanitizeEmail($_POST['email']) ?? '';
     $password = Sanitizer::sanitizeString($_POST['password']) ?? '';
-    
-    if(empty($email) || empty($password)) {
+
+    if (empty($email) || empty($password)) {
         // Throw an error if inputs were empty
         $errorMessage = 'Cannot login with an empty field!';
         header("Location: $_SERVER[PHP_SELF]?error=$errorMessage");
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../../home.php");
         exit;
     }
-    
+
     // User is invalid, throw an error
     $errorMessage = 'Invalid account credentials!';
     header("Location: $_SERVER[PHP_SELF]?error=$errorMessage");
@@ -107,10 +107,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="dialog-container">
         <div id="dialog">
             <h2 class="title-large roboto-bold">Error</h2>
-            <p id="dialog-message"><?php 
-                echo $_GET['error'];
-                unset($_GET['error']);
-            ?></p>
+            <p id="dialog-message"><?php
+                                    echo $_GET['error'];
+                                    unset($_GET['error']);
+                                    ?></p>
             <button class="button" id="dismiss-dialog">OK</button>
         </div>
     </div>
@@ -132,7 +132,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="textfield-underline"></div>
                                 <span class="error-message">Invalid Email</span>
                             </div>
-                            
+
                             <div class="textfield-container login-field">
                                 <input type="password" name="password" id="password" class="textfield-input" placeholder=" " />
                                 <label class="textfield-label">Password</label>
@@ -142,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <button type="submit" class="button login-button">Log in</button>
                             <p class="login-footer">Don't have an account?
-                                <a href="sign_up.html">Sign up here</a>
+                                <a href="sign_up.php">Sign up here</a>
                             </p>
                         </div>
                     </form>
@@ -155,45 +155,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-<script src="./scripts/account-validator.js"></script>
+<script src="../../scripts/dialog.js"></script>
+<script src="../../scripts/validators.js"></script>
 <script>
-    // Setup dialog event listeners
-    const dialogContainer = document.getElementById('dialog-container');
-    const dismissDialogBtn = document.getElementById('dismiss-dialog');
-    const dialogMessage = document.getElementById('dialog-message');
-    
-    // Close dialog on dismiss button click
-    dismissDialogBtn.addEventListener('click', () => {
-        dialogContainer.style.visibility = 'hidden';
-        dialogContainer.style.opacity = 0;
-        dialogMessage.innerHTML = "";
-        
-        // Remove the 'error' parameter from the URL
-        history.pushState({}, document.title, window.location.pathname);
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
 
-    // Close dialog on outside box click
-    dialogContainer.addEventListener('click', (event) => {
-        if (event.target === dialogContainer) {
-            dialogContainer.style.visibility = 'hidden';
-            dialogContainer.style.opacity = 0;
-            dialogMessage.innerHTML = "";
-            
-            // Remove the 'error' parameter from the URL
-            history.pushState({}, document.title, window.location.pathname);
-        }
-    });
+        emailInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validateEmail(e.target.value) || isEmpty(e.target.value);
 
-    // Wait for the page to finish loading before checking for error query parameter
-    window.addEventListener('load', () => {
-        // Get the value of the 'error' query parameter from the URL
-        const error = new URLSearchParams(window.location.search).get('error');
-        
-        // If the 'error' parameter exists, show the dialog
-        if (error) {
-            dialogContainer.style.visibility = 'visible';
-            dialogContainer.style.opacity = 1;
-        }
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+
+        passwordInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validatePassword(e.target.value) || isEmpty(e.target.value);
+
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
     });
 </script>
+
 </html>

@@ -2,7 +2,7 @@
 session_start(); // Start the session
 
 require_once '../../data/common/Response.php';
-require_once '../../data/common/Sanitizer.php';
+require_once '../../data/service/Sanitizer.php';
 require_once '../../data/model/User.php';
 require_once '../../data/repository/UserRepository.php';
 
@@ -159,45 +159,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 </body>
-<script src="./scripts/account-validator.js"></script>
+<script src="../../scripts/dialog.js"></script>
+<script src="../../scripts/validators.js"></script>
 <script>
-    // Setup dialog event listeners
-    const dialogContainer = document.getElementById('dialog-container');
-    const dismissDialogBtn = document.getElementById('dismiss-dialog');
-    const dialogMessage = document.getElementById('dialog-message');
-    
-    // Close dialog on dismiss button click
-    dismissDialogBtn.addEventListener('click', () => {
-        dialogContainer.style.visibility = 'hidden';
-        dialogContainer.style.opacity = 0;
-        dialogMessage.innerHTML = "";
-        
-        // Remove the 'error' parameter from the URL
-        history.pushState({}, document.title, window.location.pathname);
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
 
-    // Close dialog on outside box click
-    dialogContainer.addEventListener('click', (event) => {
-        if (event.target === dialogContainer) {
-            dialogContainer.style.visibility = 'hidden';
-            dialogContainer.style.opacity = 0;
-            dialogMessage.innerHTML = "";
-            
-            // Remove the 'error' parameter from the URL
-            history.pushState({}, document.title, window.location.pathname);
-        }
-    });
+        emailInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validateEmail(e.target.value) || isEmpty(e.target.value);
 
-    // Wait for the page to finish loading before checking for error query parameter
-    window.addEventListener('load', () => {
-        // Get the value of the 'error' query parameter from the URL
-        const error = new URLSearchParams(window.location.search).get('error');
-        
-        // If the 'error' parameter exists, show the dialog
-        if (error) {
-            dialogContainer.style.visibility = 'visible';
-            dialogContainer.style.opacity = 1;
-        }
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+
+        passwordInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validatePassword(e.target.value) || isEmpty(e.target.value);
+
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
     });
 </script>
 </html>

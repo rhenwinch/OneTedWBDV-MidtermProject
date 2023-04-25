@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,6 +51,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="column-container">
         <nav class="navbar">
@@ -104,7 +106,11 @@
                             </a>
                             <a href="#" class="navbar-dropdown-item">
                                 <div class="card" style="--card-width: auto">
-                                    <span class="text-center">Log Out</span>
+                                    <div class="card-content">
+                                        <div class="column-container center">
+                                            <span class="text-center">Log Out</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -122,10 +128,10 @@
                             <span id="duration" class="roboto-medium">15 Days</span>
                         </div>
                     </div>
-                    
+
                     <!-- Divider/Line -->
                     <div class="horizontal-divider "></div>
-    
+
                     <div class="row-container">
                         <div class="body-large label-margin">
                             <span>Guest Number:</span>
@@ -134,36 +140,38 @@
                     </div>
                     <!-- Divider/Line -->
                     <div class="horizontal-divider "></div>
-    
+
                     <div class="row-container">
                         <div class="body-large label-margin">
                             <span>Room Type:</span>
-                            <span id="duration"  class="roboto-medium">DELUXE</span>
+                            <span id="duration" class="roboto-medium">DELUXE</span>
                         </div>
                     </div>
                     <!-- Divider/Line -->
                     <div class="horizontal-divider"></div>
-    
+
                     <div class="row-container   label-margin">
                         <div class="row-container fill-parent">
                             <div class="body-large">
                                 <span>Contact #:</span>
-                                <span id="duration"  class="roboto-medium">09091355111</span>
+                                <span id="duration" class="roboto-medium">09091355111</span>
                             </div>
                         </div>
                         <div class="row-container fill-parent">
                             <div class="body-large">
-                                <span >Email:</span>
-                                <span id="email"  class="roboto-medium">john.doe@gmail.com</span>
+                                <span>Email:</span>
+                                <span id="email" class="roboto-medium">john.doe@gmail.com</span>
                             </div>
                         </div>
                     </div>
                     <!-- Divider/Line -->
                     <div class="horizontal-divider "></div>
-    
+
                     <span class="label-margin">Special Request:</span>
                     <div class="outlined-textfield-container fill-parent" style="--textfield-width: 100%">
-                        <textarea class="outlined-textfield-input" name="special-request" placeholder="Note your special requests" rows="5" readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum, asperiores deleniti</textarea>
+                        <textarea class="outlined-textfield-input" name="special-request"
+                            placeholder="Note your special requests" rows="5"
+                            readonly>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla cum, asperiores deleniti</textarea>
                     </div>
                     <div class="row-container">
                         <div class="display-small label-margin">
@@ -174,11 +182,11 @@
                 </div>
             </div>
             <div class="column-container stick-on-top">
-                <h3 class="title-large text-center">Payment Method</h3>
+                <h3 class="title-large roboto-bold text-center">Payment Method</h3>
                 <div class="card">
                     <div class="card-content">
                         <form>
-                            <label>Payment method:</label>
+                            <label class="roboto-medium">Payment method:</label>
                             <div class="select-container">
                                 <select id="payment-method" name="payment-method" class="select">
                                     <option value="">Select a payment method</option>
@@ -191,26 +199,29 @@
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="gcash-field">
-                                <input type="text" name="number" class="textfield-input ewallet-number" placeholder=" " />
+                                <input type="text" name="number" class="textfield-input ewallet-number"
+                                    placeholder=" " />
                                 <label class="textfield-label">Account Number</label>
                                 <div class="textfield-underline"></div>
                                 <span class="error-message">Invalid Phone Number</span>
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="paymaya-field">
-                                <input type="text" name="number" class="textfield-input ewallet-number" placeholder=" " />
+                                <input type="text" name="number" class="textfield-input ewallet-number"
+                                    placeholder=" " />
                                 <label class="textfield-label">Account Number</label>
                                 <div class="textfield-underline"></div>
                                 <span class="error-message">Invalid Phone Number</span>
                             </div>
 
                             <div class="textfield-container payment-field hidden" id="paypal-field">
-                                <input type="email" name="number" id="paypal-email" class="textfield-input" placeholder=" " />
+                                <input type="email" name="number" id="paypal-email" class="textfield-input"
+                                    placeholder=" " />
                                 <label class="textfield-label">PayPal Email</label>
                                 <div class="textfield-underline"></div>
                                 <span class="error-message">Invalid Email</span>
                             </div>
-                        
+
                             <div id="card-field" class="column-container payment-field hidden">
                                 <div class="textfield-container field-margin">
                                     <input type="text" id="cc" name="number" class="textfield-input" placeholder=" " />
@@ -219,14 +230,17 @@
                                     <span class="error-message">Invalid CC Number</span>
                                 </div>
                                 <div class="row-container field-margin">
-                                    <div class="textfield-container fill-parent field-margin-1" style="--textfield-width: 80%;">
-                                        <input type="text" id="exp-month" name="month" class="textfield-input" placeholder=" " />
+                                    <div class="textfield-container fill-parent field-margin-1"
+                                        style="--textfield-width: 80%;">
+                                        <input type="text" id="exp-month" name="month" class="textfield-input"
+                                            placeholder=" " />
                                         <label class="textfield-label">Month</label>
                                         <div class="textfield-underline"></div>
                                         <span class="error-message">Invalid month</span>
                                     </div>
                                     <div class="textfield-container fill-parent" style="--textfield-width: 80%">
-                                        <input type="text" id="exp-year" name="year" class="textfield-input" placeholder=" " />
+                                        <input type="text" id="exp-year" name="year" class="textfield-input"
+                                            placeholder=" " />
                                         <label class="textfield-label">Year</label>
                                         <div class="textfield-underline"></div>
                                         <span class="error-message">Invalid year</span>
@@ -239,7 +253,7 @@
                                     <span class="error-message">Invalid CVV</span>
                                 </div>
                             </div>
-                        
+
                             <div id="wire-field" class="column-container payment-field hidden">
                                 <div class="textfield-container field-margin">
                                     <input type="text" name="bank_name" class="textfield-input" placeholder=" " />
@@ -257,10 +271,13 @@
                                     <div class="textfield-underline"></div>
                                 </div>
                             </div>
-                        
-                            <div id="submit-container" class="row-container button-container payment-field hidden">
-                                <button type="submit" id="confirm" class="button fill-parent">Confirm</button>
-                                <button id="cancel" class="button fill-parent">Cancel</button>
+
+                            <div id="submit-container"
+                                class="row-container button-container center payment-field hidden">
+                                <button type="submit" id="confirm" class="button field-margin-1"
+                                    style="--button-size: 0.65rem 1rem">Confirm</button>
+                                <button id="cancel" class="button field-margin-1"
+                                    style="--button-size: 0.65rem 1rem">Cancel</button>
                             </div>
                         </form>
                     </div>
@@ -269,5 +286,123 @@
         </div>
     </div>
 </body>
-<script src="./scripts/payment.js"></script>
+<script src="../../scripts/validators.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get elements of CC inputs
+        const expMonthInput = document.getElementById('exp-month');
+        const expYearInput = document.getElementById('exp-year');
+        const ccInput = document.getElementById('cc');
+        const cvvInput = document.getElementById('cvv');
+
+        // Get elements of EWallet inputs
+        const ewalletNumbers = document.querySelectorAll('.ewallet-number');
+
+        // Get elements of Paypal inputs
+        const paypalEmail = document.getElementById('paypal-email');
+
+        // Attach input event listeners to the input elements
+        expMonthInput.addEventListener('input', () => {
+            validateExpDate(expMonthInput, expYearInput);
+        });
+
+        expYearInput.addEventListener('input', () => {
+            validateExpDate(expMonthInput, expYearInput);
+        });
+
+        cvvInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid =
+                validateCVV(e.target.value)
+                || isEmpty(e.target.value);
+
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+
+        ccInput.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid =
+                validateCCNumber(e.target.value)
+                || isEmpty(e.target.value);
+
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+
+        paypalEmail.addEventListener('input', (e) => {
+            const parentContainer = e.target.parentElement;
+            const isValid = validateEmail(e.target.value) || isEmpty(e.target.value);
+
+            if (isValid) {
+                parentContainer.classList.remove('error-container');
+            } else {
+                parentContainer.classList.add('error-container');
+            }
+        });
+
+
+        ewalletNumbers.forEach(item => {
+            item.addEventListener('input', (e) => {
+                const parentContainer = e.target.parentElement;
+                const isValid = validatePhilippinePhoneNumber(e.target.value)
+                    || isEmpty(e.target.value);
+
+                if (isValid) {
+                    parentContainer.classList.remove('error-container');
+                } else {
+                    parentContainer.classList.add('error-container');
+                }
+            });
+        });
+
+        const paymentOptions = document.getElementById('payment-method');
+        paymentOptions.value = "";
+
+        paymentOptions.addEventListener('change', (e) => {
+            handlePaymentMethod(e.target.value);
+        })
+    })
+
+    function handlePaymentMethod(paymentMethod) {
+        const paymentFields = document.getElementsByClassName("payment-field");
+        const submitContainer = document.getElementById("submit-container");
+
+        submitContainer.classList.add('hidden');
+        for (let i = 0; i < paymentFields.length; i++) {
+            paymentFields[i].classList.add("hidden");
+        }
+
+        switch (paymentMethod) {
+            case 'gcash':
+                document.getElementById('gcash-field').classList.remove('hidden');
+                submitContainer.classList.remove('hidden');
+                break;
+            case 'paymaya':
+                document.getElementById('paymaya-field').classList.remove('hidden');
+                submitContainer.classList.remove('hidden');
+                break;
+            case 'paypal':
+                document.getElementById('paypal-field').classList.remove('hidden');
+                submitContainer.classList.remove('hidden');
+                break;
+            case 'card':
+                document.getElementById('card-field').classList.remove('hidden');
+                submitContainer.classList.remove('hidden');
+                break;
+            case 'wire':
+                document.getElementById('wire-field').classList.remove('hidden');
+                submitContainer.classList.remove('hidden');
+                break;
+        }
+
+    }
+</script>
+
 </html>
