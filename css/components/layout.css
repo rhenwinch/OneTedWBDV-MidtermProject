@@ -20,6 +20,10 @@
     text-align: center;
 }
 
+.text-left {
+    text-align: left;
+}
+
 
 /* CSS for the circular container */
 .circle {
