@@ -27,7 +27,7 @@
     pointer-events: none;
     transition: all 0.3s ease-in-out;
     transform-origin: 0 0;
-    color: var(--md-sys-color-on-surface);
+    color: rgb(var(--md-sys-color-on-surface-rgb) / 0.5);
 }
 
 /* Textfield label when value is entered */
