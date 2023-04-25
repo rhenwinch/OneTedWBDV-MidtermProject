@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../common/Sanitizer.php';
+require_once __DIR__ . '/../service/Sanitizer.php';
 require_once 'Booking.php';
 require_once __DIR__ . '/../interfaces/JsonSerializerInterface.php';
 
@@ -35,6 +35,11 @@ class User implements JsonSerializerInterface {
     private $name;
 
     /**
+     * @var string The user's profile picture link
+     */
+    private $profilePicture;
+
+    /**
      * @var string The user's phone number
      */
     private $phoneNumber;
@@ -49,6 +54,7 @@ class User implements JsonSerializerInterface {
      * 
      */
     public function __construct() {
+        $this->profilePicture = "../../images/person.png";
         $this->bookingHistory = array();
     }
 
@@ -172,6 +178,24 @@ class User implements JsonSerializerInterface {
     }
 
     /**
+     * Get the user's profile picture link.
+     *
+     * @return string The user's name
+     */
+    public function getProfilePicture() {
+        return $this->profilePicture;
+    }
+
+    /**
+     * Set the user's profile picture link.
+     *
+     * @param string $pictureLink The user's profile picture link
+     */
+    public function setProfilePicture($pictureLink) {
+        $this->profilePicture = $pictureLink;
+    }
+
+    /**
      * Get the user's phone number.
      *
      * @return string The user's phone number
@@ -221,6 +245,7 @@ class User implements JsonSerializerInterface {
                 return $booking->toArray();
             }, $this->bookingHistory),
             'name' => $this->name,
+            'profilePicture' => $this->profilePicture,
             'phoneNumber' => $this->phoneNumber,
             'isMember' => $this->isMember
         ];
@@ -247,6 +272,7 @@ class User implements JsonSerializerInterface {
         $user->setPassword($json->password);
         $user->setBookingHistory($bookingHistory);
         $user->setName($json->name);
+        $user->setProfilePicture($json->profilePicture);
         $user->setPhoneNumber($json->phoneNumber);
         $user->setMembership($json->isMember);
         return $user;
