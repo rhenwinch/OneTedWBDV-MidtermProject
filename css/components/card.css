@@ -1,25 +1,27 @@
 /* Customizable CSS Variables */
 :root {
     --elevation: 0.063rem; /* Card elevation */
-    --card-border-radius: 0px; /* Card border radius */
+    --card-border-radius: 0.5rem; /* Card border radius */
     --card-width: 19rem; /* Card width */
     --card-height: 13rem; /* Card height */
-    --card-surface: rgb(var(--md-sys-color-primary-rgb) / 0.05);
+    --card-color: var(--md-sys-color-surface);
 }
 
 /* Card Container */
 .card {
-    box-shadow: 0 0 0 var(--elevation, 0.063rem) rgba(0, 0, 0, 0.14),
-                0 0 var(--elevation, 0.188rem) rgba(0, 0, 0, 0.12),
-                0 var(--elevation, 0.188rem) 0 rgba(0, 0, 0, 0.2);
-    border-radius: var(--card-border-radius, 0.25rem);
+    filter: drop-shadow(0 0 var(--elevation) rgba(0, 0, 0, 0.2));
+    border-radius: var(--card-border-radius);
     width: var(--card-width);
     height: var(--card-height);
-    background-color: var(--card-surface);
-    padding: 1rem;
+    background-color: var(--card-color);
     display: flex; /* Use flexbox to create a column layout */
     flex-direction: column; /* Set flex direction to column */
     height: 100%;
+}
+
+.card-content {
+    background-color: rgb(var(--md-sys-color-on-surface-rgb) / 0.015);
+    padding: 1rem;
 }
 
 .card.emphasis {
