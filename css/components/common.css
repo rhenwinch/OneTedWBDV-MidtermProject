@@ -2,4 +2,14 @@
     --logo-width: 6.25rem;
     --logo-height: 6.25rem;
 }
-  
+
+.large-logo {
+    height: 8.5rem;
+    border-radius: 50%;
+}
+
+.bordered-large-logo {
+    height: 8.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-on-surface);
+}
