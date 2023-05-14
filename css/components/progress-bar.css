@@ -1,0 +1,86 @@
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    width: 55vw;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    flex: 1 1 0%;
+}
+
+.progress-line {
+    position: absolute;
+    top: 20%;
+    transform: translateY(-50%);
+    height: 0.20rem;
+    background-color: var(--md-sys-color-secondary-container);
+    z-index: 0;
+}
+
+.progress-circle {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--md-sys-color-secondary-container);
+    color:var(--md-sys-color-secondary-container);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.625rem;
+    font-size: 0.75rem;
+    z-index: 1;
+}
+
+.progress-text {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--md-sys-color-secondary-container);
+    text-align: center;
+}
+
+.progress-item:not(:first-child) .progress-line {
+    left: calc(-55% + 0.688rem);
+    right: calc(45% + 0.688rem);
+}
+
+.progress-item.active .progress-line,
+.progress-item.active .progress-circle {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.progress-item.active .progress-text {
+    color: var(--md-sys-color-primary);
+    font-weight: bold;
+}
+
+
+/* 
+
+Usage guide:
+<div class="progress-bar">
+  <div class="progress-item active">
+    <div class="progress-line"></div>
+    <div class="progress-circle">1</div>
+    <div class="progress-text">Booking Information</div>
+  </div>
+  <div class="progress-item">
+    <div class="progress-line"></div>
+    <div class="progress-circle">2</div>
+    <div class="progress-text">Payment Information</div>
+  </div>
+  <div class="progress-item">
+    <div class="progress-circle">3</div>
+    <div class="progress-text">Booking Confirmation</div>
+  </div>
+</div>
+
+
+*/

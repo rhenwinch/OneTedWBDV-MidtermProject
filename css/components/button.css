@@ -1,0 +1,47 @@
+:root {
+    --button-border-radius: 0.10rem;
+    --button-font-size: 1rem;
+    --button-size: 0.625rem 1.25rem;
+}
+
+/* Button Container */
+.button {
+    display: inline-block;
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    padding: var(--button-size);
+    font-size: var(--button-font-size);
+    border-radius: var(--button-border-radius); /* Default border radius */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border-color: var(--md-sys-color-primary);
+}
+
+.button:focus {
+    outline: none;
+    border-color: var(--md-sys-color-primary);
+}
+
+/* Ripple Effect Overlay */
+.button:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    background-color: rgb(var(--md-sys-color-surface-rgb) / 0.2);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Ripple Effect Animation */
+.button:hover:after {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out;
+}

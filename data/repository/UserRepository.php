@@ -30,11 +30,12 @@ class UserRepository {
      */
     public function createUser(User $user) {
         // Check if user already exists
-        if ($this->getUserById($user->getUserId()) !== null) {
+        if ($this->getUserByEmail($user->getEmail()) !== null) {
             return false; // User already exists, return false
         }
 
         // Add user to the users array
+        $user->setUserId(count($this->users) + 1);
         $this->users[] = $user;
 
         // Save users to JSON file
@@ -113,11 +114,11 @@ class UserRepository {
     public function userExists(User $user) {
         // Check if a given user exists in the repository
         $email = $user->getEmail();
-        $user = $this->getUserByEmail($email);
+        $user_ = $this->getUserByEmail($email);
         if($user === null)
             return false;
-
-        $index = $this->getUserIndexById($user->getUserId());
+        
+        $index = $this->getUserIndexById($user_->getUserId());
         return isset($this->users[$index]) && $this->users[$index]->getPassword() === $user->getPassword();
     }
 

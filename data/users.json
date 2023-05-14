@@ -1,13 +1,13 @@
 [
     {
-        "userId": 15566,
-        "email": "john.doe@example.com",
-        "password": "156156165156",
+        "userId": 1,
+        "email": "admin",
+        "password": "1234",
         "bookingHistory": [
             {
                 "roomDetails": {
                     "roomName": "Amanda",
-                    "roomType": "Suite",
+                    "roomType": "Standard",
                     "roomAddress": "5th Flr, SUITE Bldg."
                 },
                 "bookingDate": "Apr 07, 2023 Fri",
@@ -21,5 +21,14 @@
         "name": "John Doe",
         "phoneNumber": "",
         "isMember": false
+    },
+    {
+        "userId": 2,
+        "email": "wenepoc942@vootin.com",
+        "password": "AqkA4A5SDDBmT5U",
+        "bookingHistory": [],
+        "name": "adminamsdsa",
+        "phoneNumber": null,
+        "isMember": null
     }
 ]

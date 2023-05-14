@@ -1,0 +1,43 @@
+/* Customizable CSS Variables */
+:root {
+    --elevation: 0.063rem; /* Card elevation */
+    --card-border-radius: 0.5rem; /* Card border radius */
+    --card-width: 19rem; /* Card width */
+    --card-height: 13rem; /* Card height */
+    --card-color: var(--md-sys-color-surface);
+}
+
+/* Card Container */
+.card {
+    filter: drop-shadow(0 0 var(--elevation) rgba(0, 0, 0, 0.2));
+    border-radius: var(--card-border-radius);
+    width: var(--card-width);
+    height: var(--card-height);
+    background-color: var(--card-color);
+    display: flex; /* Use flexbox to create a column layout */
+    flex-direction: column; /* Set flex direction to column */
+    height: 100%;
+}
+
+.card-content {
+    background-color: rgb(var(--md-sys-color-on-surface-rgb) / 0.015);
+    padding: 1rem;
+}
+
+.card.emphasis {
+    background-color: var(--md-sys-color-tertiary-container);
+}
+
+
+/* 
+
+To use the card, copy this code snippet:
+
+<div class="card">
+    <div class="card-content">
+        <h2 class="card-title">Title</h2>
+        <p class="card-description">Description</p>
+    </div>
+</div>
+
+*/

@@ -1,0 +1,237 @@
+:root {
+    --navbar-logo-size: 3rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    filter: drop-shadow(0 0 0.05rem rgba(0, 0, 0, 0.2));
+    background-color: var(--md-sys-color-surface);
+    color: var(--md-sys-color-on-surface);
+    height: 8vh;
+    width: 100vw;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(var(--md-sys-color-on-surface-rgb) / 0.02);
+    width: 100%;
+    height: 100%;
+}
+
+.navbar-start {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.navbar-logo img {
+    height: var(--navbar-logo-size);
+    width: var(--navbar-logo-size);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-on-surface);
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.navbar-end {
+    position: relative;
+    margin-right: 1rem;
+}
+
+.navbar-profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface);
+}
+
+.navbar-profile-btn img {
+    height: 3rem;
+    width: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--md-sys-color-on-surface);
+    margin-right: 0.5rem;
+}
+
+.navbar-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 12vw;
+    background-color: var(--md-sys-color-surface);
+    border-radius: 0.25rem;
+    box-shadow: 0px 0.125rem 0.125rem rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.navbar-dropdown-item {
+    margin: 0;
+    padding: 0.8rem 1rem;
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.navbar-dropdown-item-icon {
+    margin-right: 0.65rem;
+}
+
+.navbar-dropdown-item:hover {
+    transform: scale(1.04);
+}
+
+.navbar-profile-btn:hover {
+    opacity: 0.8;
+}
+
+.navbar-profile-btn:focus+.navbar-dropdown,
+.navbar-dropdown:hover {
+    display: block;
+}
+
+#menu-button {
+    cursor: pointer;
+}
+
+#menu-button:hover {
+    transform: scale(1.1);
+}
+
+.drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    height: 100%;
+    background-color: var(--md-sys-color-surface);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    z-index: 2;
+}
+
+/* Media query for phone/tablet sizes */
+@media (max-width: 768px) {
+    /* Styles for navigation drawer when screen size is within phone/tablet range */
+    .drawer {
+        width: 70%;
+    }
+}
+
+.drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-nav {
+    margin-top: 64px;
+    padding: 16px;
+}
+
+.drawer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.drawer-nav li {
+    margin-bottom: 16px;
+}
+
+.drawer-nav a {
+    color: var(--md-sys-color-on-surface);
+    text-decoration: none;
+}
+
+.drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0s linear 0.3s;
+    z-index: 1;
+}
+
+.drawer-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-out, visibility 0s linear 0s;
+}
+
+
+/* 
+
+Usage guide:
+<nav class="navbar">
+    <div class="navbar-content">
+        <div class="navbar-start">
+            <a href="#" class="navbar-logo">
+                <img src="../../images/image-placeholder.svg" alt="Logo">
+            </a>
+        </div>
+        <div class="navbar-center">
+            <!-- Center Items Here -->
+        </div>
+        <div class="navbar-end">
+            <button class="navbar-profile-btn">
+                <img src="../../images/person.png" alt="Profile">
+                <span class="md-24 material-icons-outlined">arrow_drop_down</span>
+            </button>
+            <div class="navbar-dropdown">
+                <div class="column-container">
+                    <a href="#" class="navbar-dropdown-item">
+                        <div class="row-container center-horizontal">
+                            <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                            Profile
+                        </div>
+                    </a>
+                    <a href="#" class="navbar-dropdown-item">
+                        <div class="row-container center-horizontal">
+                            <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                            My Bookings
+                        </div>
+                    </a>
+                    <a href="#" class="navbar-dropdown-item">
+                        <div class="row-container center-horizontal">
+                            <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                            Voucher
+                        </div>
+                    </a>
+                    <a href="#" class="navbar-dropdown-item">
+                        <div class="card" style="--card-width: auto">
+                            <div class="card-content">
+                                <div class="column-container center">
+                                    <span class="text-center">Log Out</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+*/

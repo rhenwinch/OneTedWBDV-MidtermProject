@@ -1,0 +1,73 @@
+.calendar-picker {
+    position: relative;
+    display: inline-block;
+}
+
+.calendar {
+    background-color: #fff;
+    display: block;
+    filter: drop-shadow(0 0 var(--elevation) rgba(0, 0, 0, 0.2));
+    background-color: var(--card-color);
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 1rem 0;
+}
+
+.calendar-header>span {
+    flex-grow: 1;
+    cursor: pointer;
+    text-align: center;
+}
+
+.calendar th,
+.calendar td {
+    padding: 0.625rem;
+    text-align: center;
+}
+
+.calendar th {
+    font-weight: bold;
+}
+
+.calendar td.disabled {
+    color: var(--md-sys-color-inverse-on-surface);
+    cursor: default;
+}
+
+.calendar td.selected {
+    background-color: var(--md-sys-color-tertiary);
+    color: var(--md-sys-color-on-tertiary);
+    cursor: default;
+}
+
+
+.calendar td:not(.disabled):not(.selected):hover {
+    background-color: rgb(var(--md-sys-color-on-surface-rgb) / 0.2);
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+/* 
+
+Use it like this:
+<div class="calendar-picker">
+    <div class="calendar-header">
+        <span class="material-symbols-outlined prev-month">navigate_before</span>
+        <select class="select-month"></select>
+        <select class="select-year"></select>
+        <span class="material-symbols-outlined next-month">navigate_next</span>
+    </div>
+    <div class="calendar"></div>
+</div>                      
+
+*/

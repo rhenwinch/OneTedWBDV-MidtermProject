@@ -1,0 +1,68 @@
+/* CSS for centering elements */
+.center-vertical {
+    justify-content: center; /* Center the content vertically */
+}
+
+.center-horizontal {
+    align-items: center; /* Center the content horizontally */
+}
+
+.stick-on-top {
+    align-self: flex-start;
+}
+
+.center {
+    justify-content: center; /* Center the content vertically */
+    align-items: center; /* Center the content horizontally */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+
+/* CSS for the circular container */
+.circle {
+    width: var(--logo-width); /* Set the width of the circular container */
+    height: var(--logo-width); /* Set the height of the circular container */
+    border-radius: 50%; /* Set the border radius to 50% to create a circular shape */
+    overflow: hidden; /* Clip the content that exceeds the circular container */
+}
+
+/* CSS for the circular image */
+.circle img {
+    width: 100%; /* Make the image width 100% to fill the circular container */
+    height: 100%; /* Make the image height 100% to fill the circular container */
+    object-fit: cover; /* Maintain the aspect ratio and cover the entire container */
+}
+
+
+/* CSS for the container row */
+.row-container {
+    display: flex;
+}
+
+
+/* CSS for the container column */
+.column-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* .column-container > * {
+    margin: 0 auto;
+} */
+
+
+/* CSS for a row's fill-parent width attribute */
+.fill-parent {
+    flex-grow: 1;
+}
+
+.wrap-content {
+    display: inline-block;
+}
