@@ -28,15 +28,18 @@ class UserRepository {
      *
      * @return bool True if the user was added successfully, false if a user with the same userId already exists.
      */
-    public function createUser(User $user) {
+    public function createUser(User $user): bool {
         // Check if user already exists
         if ($this->getUserByEmail($user->getEmail()) !== null) {
             return false; // User already exists, return false
         }
 
         // Add user to the users array
-        $user->setUserId(count($this->users) + 1);
-        $this->users[] = $user;
+        $this->users[] = new User(
+            $user->getEmail(),
+            $user->getPassword(),
+            count($this->users) + 1
+        );
 
         // Save users to JSON file
         $this->saveChanges();
@@ -79,7 +82,7 @@ class UserRepository {
      * @param int $userId The user ID to search for.
      * @return User|null The User object if found, or null if not found.
      */
-    public function getUserById($userId) {
+    public function getUserById($userId): ?User {
         foreach ($this->users as $user) {
             if ($user->getUserId() === $userId) {
                 return $user;
@@ -94,7 +97,7 @@ class UserRepository {
      * @param string $email The email to search for.
      * @return User|null The User object if found, or null if not found.
      */
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email): ?User {
         foreach ($this->users as $user) {
             if ($user->getEmail() === $email) {
                 return $user;
@@ -111,7 +114,7 @@ class UserRepository {
      *
      * @return bool True if the user exists, false otherwise.
      */
-    public function userExists(User $user) {
+    public function userExists(User $user): bool {
         // Check if a given user exists in the repository
         $email = $user->getEmail();
         $user_ = $this->getUserByEmail($email);
@@ -128,7 +131,7 @@ class UserRepository {
      * @param int $userId The user ID to search for.
      * @return int The index of the user in the users array, or -1 if not found.
      */
-    private function getUserIndexById($userId) {
+    private function getUserIndexById($userId): int {
         for ($i = 0; $i < count($this->users); $i++) {
             if ($this->users[$i]->getUserId() === $userId) {
                 return $i;

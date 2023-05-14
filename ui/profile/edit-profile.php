@@ -1,30 +1,31 @@
 <?php
 require_once __DIR__ . "/../../data/model/User.php";
+require_once __DIR__ . '/../../data/service/UserService.php';
 require_once '../../data/service/Sanitizer.php';
-require_once __DIR__ . '/../../data/repository/UserRepository.php';
 
 session_start(); // Start the session
 
-$jsonFilePath = __DIR__ . '/../../data/users.json'; // path to the JSON file containing user data
-$userRepository = new UserRepository($jsonFilePath);
+if(!isset($_SESSION['loggedIn'])) {
+    $_SESSION['loggedIn'] = false;
+}
 
 // Check if user is not logged in
-if (!isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === false) {
+if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false) {
     // Redirect to home page or any other authorized page
     header('Location: login.php');
     exit;
 }
 
+$userService = new UserService();
 $currentLoggedInUser = unserialize($_SESSION['user']);
 
 // Check if site has been hard refreshed
 $isSiteHardRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache');
 if ($isSiteHardRefreshed) {
-    // Create a new user repository with the JSON data provider
-    $jsonFilePath = __DIR__ . '/../../data/users.json'; // path to the JSON file containing user data
-    $userRepository = new UserRepository($jsonFilePath);
-    $_SESSION['user'] = serialize($userRepository->getUserById($currentLoggedInUser->getUserId()));
-    $currentLoggedInUser = $userRepository->getUserById($currentLoggedInUser->getUserId());
+    $updatedUser = $userService->getUpdatedUser($currentLoggedInUser->getUserId());
+    $_SESSION['user'] = serialize($updatedUser);
+    
+    $currentLoggedInUser = $updatedUser;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = Sanitizer::sanitizeEmail($_POST['email']);
     $password = Sanitizer::sanitizeString($_POST['password']);
     $contactNumber = Sanitizer::sanitizeString($_POST['contact_number']);
+    $profilePicturePath = null;
 
     if (empty($email) || empty($password) || empty($name)) {
         // Throw an error if inputs were empty
@@ -44,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the form was submitted and a file was uploaded successfully
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
         // Define the directory to save the uploaded file
-        $uploadDirectory = "../../images/users/" . $currentLoggedInUser->getUserId() . "/";
+        $uploadDirectory = "../../res/images/users/" . $currentLoggedInUser->getUserId() . "/";
 
         // Create the directory if it doesnt exist
         if (!file_exists($uploadDirectory)) {
@@ -55,21 +57,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = basename($_FILES['profile_picture']['name']);
 
         // Define the path to save the uploaded file
-        $uploadPath = $uploadDirectory . $fileName;
+        $profilePicturePath = $uploadDirectory . $fileName;
 
-        move_uploaded_file($_FILES['profile_picture']['tmp_name'], $uploadPath);
-        $currentLoggedInUser->setProfilePicture($uploadPath);
+        move_uploaded_file($_FILES['profile_picture']['tmp_name'], $profilePicturePath);
     }
 
     // Create a new User object
-    $currentLoggedInUser->setEmail($email);
-    $currentLoggedInUser->setPassword($password);
-    $currentLoggedInUser->setName($name);
-    $currentLoggedInUser->setPhoneNumber($contactNumber);
+    $currentLoggedInUser = $userUpdater->updateUser(
+        $currentLoggedInUser,
+        $email,
+        $password,
+        $name,
+        $contactNumber,
+        $profilePicturePath
+    );
 
-    $userRepository->updateUser($currentLoggedInUser);
     $_SESSION['user'] = serialize($currentLoggedInUser);
-
     header("Location: index.php");
     exit;
 }
@@ -180,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Dialog error -->
     <div id="dialog-container">
         <div id="dialog">
-            <h2 class="title-large roboto-bold">Error</h2>
+            <h2 class="title-large font-bold">Error</h2>
             <p id="dialog-message"><?php
                                     echo $_GET['error'];
                                     unset($_GET['error']);
@@ -205,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" alt="Profile" style="margin-right: 1rem">
                             <div class="column-container title-small text-left">
                                 <span>Hi, <?php echo $currentLoggedInUser->getName(); ?>!</span>
-                                <span class="roboto-bold">Membership: None</span>
+                                <span class="font-bold">Membership: None</span>
                             </div>
                         </button>
                     </div>
@@ -218,7 +221,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <li>
                         <div class="row-container center">
                             <a href="#" class="navbar-logo navbar-dropdown-item">
-                                <img src="../../images/image-placeholder.svg" alt="Logo" class="large-logo">
+                                <img src="../../res/images/image-placeholder.svg" alt="Logo" class="large-logo">
                             </a>
                         </div>
                     </li>
@@ -242,7 +245,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div id="drawer-backdrop" class="drawer-backdrop"></div>
         <div class="wrap-content">
             <div class="column-container center">
-                <h6 class="title-large roboto-medium">Edit Profile</h6>
+                <h6 class="title-large font-medium">Edit Profile</h6>
                 <div class="card">
                     <div class="card-content card-padding">
                         <form method="post" enctype="multipart/form-data">

@@ -6,7 +6,7 @@ require_once 'Room.php';
 
 class Booking implements JsonSerializerInterface {
     /** @var Room The name of the room */
-    private  $roomDetails;
+    private $roomDetails;
 
     /** @var DateTime The date of arrival */
     private $arrivalDate;
@@ -26,18 +26,31 @@ class Booking implements JsonSerializerInterface {
     /** @var float The total price to pay */
     private $bookingPrice;
 
-
     /**
      * Booking constructor.
      *
-     * @param Room $room
+     * @param Room $roomDetails
+     * @param DateTime $bookingDate
+     * @param DateTime $arrivalDate
+     * @param DateTime $departureDate
+     * @param string $bookingId
+     * @param BookingStatus $bookingStatus
+     * @param float $bookingPrice
      */
-    public function __construct(Room $room) {
-        $this->roomDetails = $room;
-        $this->bookingDate = new DateTime();
-        $this->arrivalDate = new DateTime();
-        $this->departureDate = new DateTime();
-        $this->bookingPrice = $this->calculateBookingPrice();
+    public function __construct(Room $roomDetails, DateTime $bookingDate, DateTime $arrivalDate, DateTime $departureDate, string $bookingId, ?string $bookingStatus, float $bookingPrice) {
+        $this->roomDetails = $roomDetails;
+        $this->bookingDate = $bookingDate;
+        $this->arrivalDate = $arrivalDate;
+        $this->departureDate = $departureDate;
+        $this->bookingId = $bookingId;
+        $this->bookingStatus = $bookingStatus;
+        $this->bookingPrice = $bookingPrice;
+
+        if ($bookingPrice <= 0) {
+            $this->bookingPrice = $this->calculateBookingPrice();
+        } else {
+            $this->bookingPrice = $bookingPrice;
+        }
     }
     
 
@@ -46,53 +59,26 @@ class Booking implements JsonSerializerInterface {
      *
      * @return Room The room name.
      */
-    public function getRoomName(): Room {
+    public function getRoom(): Room {
         return $this->roomDetails;
-    }
-
-    /**
-     * Set the room name.
-     *
-     * @param Room $roomName The room name.
-     */
-    public function setRoom(Room $room): void {
-        $this->roomDetails = $room;
     }
 
     /**
      * Get the arrival date.
      *
-     * @return DateTime The arrival date.
+     * @return string The arrival date on string.
      */
-    public function getArrivalDate(): DateTime {
-        return $this->arrivalDate;
-    }
-
-    /**
-     * Set the arrival date.
-     *
-     * @param DateTime $arrivalDate The arrival date.
-     */
-    public function setArrivalDate(DateTime $arrivalDate): void {
-        $this->arrivalDate = $arrivalDate;
+    public function getArrivalDate(): string {
+        return $this->arrivalDate->format('F j, Y');
     }
 
     /**
      * Get the departure date.
      *
-     * @return DateTime The departure date.
+     * @return string The departure date on string.
      */
-    public function getDepartureDate(): DateTime {
-        return $this->departureDate;
-    }
-
-    /**
-     * Set the departure date.
-     *
-     * @param DateTime $departureDate The departure date.
-     */
-    public function setDepartureDate(DateTime $departureDate): void {
-        $this->departureDate = $departureDate;
+    public function getDepartureDate(): string {
+        return $this->departureDate->format('F j, Y');
     }
 
     /**
@@ -105,15 +91,6 @@ class Booking implements JsonSerializerInterface {
     }
 
     /**
-     * Set the booking date.
-     *
-     * @param DateTime $bookingDate The booking date.
-     */
-    public function setBookingDate(DateTime $bookingDate): void {
-        $this->bookingDate = $bookingDate;
-    }
-
-    /**
      * Get the receipt ID.
      *
      * @return string The receipt ID.
@@ -123,30 +100,12 @@ class Booking implements JsonSerializerInterface {
     }
 
     /**
-     * Set the receipt ID.
-     *
-     * @param string $bookingId The receipt ID.
-     */
-    public function setBookingId(string $bookingId): void {
-        $this->bookingId = Sanitizer::sanitizeString($bookingId);
-    }
-
-    /**
      * Get the booking status.
      *
      * @return string The booking status.
      */
-    public function getBookingStatus(): BookingStatus {
-        return $this->bookingStatus;
-    }
-
-    /**
-     * Set the booking status.
-     *
-     * @param BookingStatus $bookingStatus The booking status.
-     */
-    public function setBookingStatus($bookingStatus): void {
-        $this->bookingStatus = $bookingStatus;
+    public function getBookingStatus(): string {
+        return (string) $this->bookingStatus;
     }
 
     /**
@@ -156,15 +115,6 @@ class Booking implements JsonSerializerInterface {
      */
     public function getBookingPrice(): float {
         return $this->bookingPrice;
-    }
-
-    /**
-     * Set the total price.
-     *
-     * @param float $bookingPrice The total price.
-     */
-    public function setBookingPrice(float $bookingPrice): void {
-        $this->bookingPrice = $bookingPrice;
     }
 
     /**
@@ -182,7 +132,7 @@ class Booking implements JsonSerializerInterface {
      *
      * @return float The total price of the booking.
      */
-    private function calculateBookingPrice(): float {
+    public function calculateBookingPrice(): float {
         $duration = $this->calculateDuration();
         $roomPrice = RoomType::getRoomPrice($this->roomDetails->getRoomType());
         return $duration * $roomPrice;
@@ -227,14 +177,15 @@ class Booking implements JsonSerializerInterface {
             return null;
 
         // Create Booking object
-        $booking = new Booking(Room::fromJson($json->roomDetails));
-        $booking->setArrivalDate(new DateTime($json->arrivalDate));
-        $booking->setDepartureDate(new DateTime($json->departureDate));
-        $booking->setBookingDate(new DateTime($json->bookingDate));
-        $booking->setBookingId($json->bookingId);
-        $booking->setBookingStatus(BookingStatus::fromString($json->bookingStatus));
-        $booking->setBookingPrice($json->bookingPrice);
-        return $booking;
+        return new Booking(
+            Room::fromJson($json->roomDetails),
+            new DateTime($json->arrivalDate),
+            new DateTime($json->departureDate),
+            new DateTime($json->bookingDate),
+            $json->bookingId,
+            BookingStatus::fromString($json->bookingStatus),
+            $json->bookingPrice
+        );
     }
 }
 

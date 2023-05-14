@@ -1,0 +1,34 @@
+.main-footer {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+}
+
+.footer-content {
+    justify-content: space-between;
+    padding: 5rem 6rem;
+}
+
+.company-info {
+    width: 20%;
+}
+
+.company-info > p {
+    margin: 0.4rem 0;
+}
+
+.other-info > p {
+    margin: 0.4rem 0;
+}
+
+.footer-logo {
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    background-image: url("../../res/images/image-placeholder.svg");
+    background-size: cover;
+    background-position: center;
+}
+
+.copyright-text {
+    padding-bottom: 1rem;
+}

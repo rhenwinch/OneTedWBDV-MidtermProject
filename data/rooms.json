@@ -1,0 +1,56 @@
+{
+    "suite": [
+        {
+            "id": 1,
+            "name": "Suite Room",
+            "description": "A comfortable bedroom with a view.",
+            "type": "Suite",
+            "address": "Don Jose Bldg., Marikina",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "gallery": [
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg"
+            ],
+            "price": 10000,
+            "availability": 5
+        }
+    ],
+    "standard": [
+        {
+            "id": 2,
+            "name": "Standard Room",
+            "description": "A cozy standard room with all the essentials.",
+            "type": "Standard",
+            "address": "Main Street, Cityville",
+            "maxHeads": 6,
+            "maxBeds": 3,
+            "gallery": [
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg"
+            ],
+            "price": 5000,
+            "availability": 10
+        }
+    ],
+    "deluxe": [
+        {
+            "id": 3,
+            "name": "Deluxe Room",
+            "description": "A luxurious suite with premium amenities.",
+            "type": "Deluxe",
+            "address": "Luxury Avenue, Countryland",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "gallery": [
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg"
+            ],
+            "price": 15000,
+            "availability": 3
+        }
+    ]
+}

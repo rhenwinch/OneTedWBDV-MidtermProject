@@ -31,9 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Create a new User object
-    $user = new User();
-    $user->setEmail($email);
-    $user->setPassword($password);
+    $user = new User($email, $password);
 
     // Check if the user exists in the repository
     if ($userRepository->userExists($user)) {
@@ -106,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <!-- Dialog error -->
     <div id="dialog-container">
         <div id="dialog">
-            <h2 class="title-large roboto-bold">Error</h2>
+            <h2 class="title-large font-bold">Error</h2>
             <p id="dialog-message"><?php
                                     echo $_GET['error'];
                                     unset($_GET['error']);
@@ -121,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h1 class="display-medium text-center login-header">Log in</h1>
                 <div class="card center ">
                     <div class="circle">
-                        <img src="../../images/person.png" alt="Person">
+                        <img src="../../res/images/person.png" alt="Person">
                     </div>
 
                     <form action="" method="post" id="login">
@@ -151,9 +149,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="vertical-divider login-form-divider"></div>
         </div>
         <div class="gradient-image-container login-headliner-image">
-            <img src="../../images/image-placeholder.svg" alt="Login Landscape">
+            <img src="../../res/images/image-placeholder.svg" alt="Login Landscape">
         </div>
     </div>
+    
+    <footer class="main-footer">
+        <div class="row-container footer-content">
+            <div class="column-container company-info">
+                <p>Hotel Name: ABC Hotel</p>
+                <p>Address: 123 Main Street, Anytown USA</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@abchotel.com</p>
+                <p>Website: www.abchotel.com</p>
+                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+            </div>
+            <div class="column-container other-info">
+                <p>About Us</p>
+                <p>FAQs</p>
+            </div>
+            <a href="../">
+                <div class="column-container center">
+                    <div class="elevation-2 footer-logo"></div>
+                    <h2 class="surface-text">Grand Eden Oasis</h2>
+                </div>
+            </a>
+        </div>
+        <div class="column-container center copyright-text">
+            <p>&copy; Grand Eden Oasis. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 <script src="../../scripts/dialog.js"></script>
 <script src="../../scripts/validators.js"></script>

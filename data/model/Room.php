@@ -14,6 +14,12 @@ class Room implements JsonSerializerInterface {
     /** @var string The address of the room. */
     private $roomAddress;
 
+    public function __construct(string $roomName, ?string $roomType, string $roomAddress) {
+        $this->roomName = $roomName;
+        $this->roomType = $roomType;
+        $this->roomAddress = $roomAddress;
+    }
+
     /**
      * Get the name of the room.
      *
@@ -21,15 +27,6 @@ class Room implements JsonSerializerInterface {
      */
     public function getRoomName() {
         return $this->roomName;
-    }
-
-    /**
-     * Set the name of the room.
-     *
-     * @param string $roomName The name of the room.
-     */
-    public function setRoomName($roomName) {
-        $this->roomName = $roomName;
     }
 
     /**
@@ -42,30 +39,12 @@ class Room implements JsonSerializerInterface {
     }
 
     /**
-     * Set the type of the room.
-     *
-     * @param RoomType $roomType The type of the room.
-     */
-    public function setRoomType($roomType) {
-        $this->roomType = $roomType;
-    }
-
-    /**
      * Get the address of the room.
      *
      * @return string The address of the room.
      */
     public function getRoomAddress() {
         return $this->roomAddress;
-    }
-
-    /**
-     * Set the address of the room.
-     *
-     * @param string $roomAddress The address of the room.
-     */
-    public function setRoomAddress($roomAddress) {
-        $this->roomAddress = $roomAddress;
     }
 
 
@@ -92,10 +71,12 @@ class Room implements JsonSerializerInterface {
             return null;
         
         // Create Room object
-        $room = new Room();
-        $room->setRoomName($json->roomName);
-        $room->setRoomType(RoomType::fromString($json->roomType));
-        $room->setRoomAddress($json->roomAddress);
+        $room = new Room(
+            $json->roomName,
+            RoomType::fromString($json->roomType),
+            $json->roomAddress
+        );
+
         return $room;
     }
 }

@@ -51,11 +51,34 @@ class User implements JsonSerializerInterface {
 
     /**
      * User constructor.
-     * 
+     *
+     * @param string $email The user's email address
+     * @param string $password The user's password
+     * @param int|null $userId The unique user ID (optional)
+     * @param string|null $name The user's name (optional)
+     * @param string|null $profilePicture The user's profile picture link (optional)
+     * @param string|null $phoneNumber The user's phone number (optional)
+     * @param bool|null $isMember Whether the user is a member or not (optional)
+     * @param Booking[]|null $bookingHistory The user's booking history (optional)
      */
-    public function __construct() {
-        $this->profilePicture = "../../images/person.png";
-        $this->bookingHistory = array();
+    public function __construct(
+        string $email,
+        string $password,
+        ?int $userId = null,
+        string $name = "",
+        string $profilePicture = "../../res/images/person.png",
+        string $phoneNumber = "",
+        bool $isMember = false,
+        array $bookingHistory = array()
+    ) {
+        $this->email = $email;
+        $this->password = $password;
+        $this->userId = $userId;
+        $this->name = $name;
+        $this->profilePicture = $profilePicture;
+        $this->phoneNumber = $phoneNumber;
+        $this->isMember = $isMember;
+        $this->bookingHistory = $bookingHistory;
     }
 
     /**
@@ -68,30 +91,12 @@ class User implements JsonSerializerInterface {
     }
 
     /**
-     * Set the user's ID.
-     * 
-     * @param string $userId The user's id
-     */
-    public function setUserId($userId) {
-        $this->userId = $userId;
-    }
-
-    /**
      * Get the user's email address.
      *
      * @return string The user's email address
      */
     public function getEmail() {
         return $this->email;
-    }
-
-    /**
-     * Set the user's email address.
-     *
-     * @param string $email The user's email address
-     */
-    public function setEmail($email) {
-        $this->email = Sanitizer::sanitizeEmail($email);
     }
 
     /**
@@ -104,59 +109,12 @@ class User implements JsonSerializerInterface {
     }
 
     /**
-     * Set the user's password.
-     *
-     * @param string $password The user's password
-     */
-    public function setPassword($password) {
-        $this->password = Sanitizer::sanitizeString($password);
-    }
-
-    /**
      * Get the user's booking history.
      *
      * @return Booking[] The user's booking history
      */
     public function getBookingHistory() {
         return $this->bookingHistory;
-    }
-
-    /**
-     * Set the user's booking history.
-     *
-     * @param array The user's booking history
-     */
-    public function setBookingHistory($bookingHistory) {
-        $this->bookingHistory = $bookingHistory;
-    }
-
-    /**
-     * Add a booking to the user's booking history.
-     * @param Booking $booking The booking to be added.
-     */
-    public function addBooking(Booking $booking) {
-        $this->bookingHistory[] = $booking;
-    }
-
-    /**
-     * Remove a booking from the user's booking history.
-     * 
-     * @param string $bookingId The booking id of the booking to be removed.
-     * @return bool True if the booking was removed successfully, false otherwise.
-     */
-    public function removeBooking(string $bookingId): bool {
-        foreach ($this->bookingHistory as $key => $booking) {
-            if ($booking->getBookingId() === $bookingId) {
-                // Remove the booking from the array
-                unset($this->bookingHistory[$key]);
-
-                // Reindex the array
-                $this->bookingHistory = array_values($this->bookingHistory);
-                return true;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -169,30 +127,12 @@ class User implements JsonSerializerInterface {
     }
 
     /**
-     * Set the user's name.
-     *
-     * @param string $name The user's name
-     */
-    public function setName($name) {
-        $this->name = Sanitizer::sanitizeString($name);
-    }
-
-    /**
      * Get the user's profile picture link.
      *
      * @return string The user's name
      */
     public function getProfilePicture() {
         return $this->profilePicture;
-    }
-
-    /**
-     * Set the user's profile picture link.
-     *
-     * @param string $pictureLink The user's profile picture link
-     */
-    public function setProfilePicture($pictureLink) {
-        $this->profilePicture = $pictureLink;
     }
 
     /**
@@ -205,15 +145,6 @@ class User implements JsonSerializerInterface {
     }
 
     /**
-     * Set the user's phone number.
-     *
-     * @param string $phoneNumber The user's phone number
-     */
-    public function setPhoneNumber($phoneNumber) {
-        $this->phoneNumber = Sanitizer::sanitizeString($phoneNumber);
-    }
-
-    /**
      * Check if the user is a member.
      *
      * @return bool Whether the user is a member or not
@@ -221,16 +152,6 @@ class User implements JsonSerializerInterface {
     public function isMember() {
         return $this->isMember;
     }
-
-    /**
-     * Set whether the user is a member or not.
-     *
-     * @param bool $isMember Whether the user is a member or not
-     */
-    public function setMembership($isMember) {
-        $this->isMember = Sanitizer::sanitizeBool($isMember);
-    }
-
 
     /**
      * Convert User object to an associative/json array
@@ -266,16 +187,16 @@ class User implements JsonSerializerInterface {
         }, $json->bookingHistory);
 
         // Create Room object
-        $user = new User();
-        $user->setUserId($json->userId);
-        $user->setEmail($json->email);
-        $user->setPassword($json->password);
-        $user->setBookingHistory($bookingHistory);
-        $user->setName($json->name);
-        $user->setProfilePicture($json->profilePicture);
-        $user->setPhoneNumber($json->phoneNumber);
-        $user->setMembership($json->isMember);
-        return $user;
+        return new User(
+            $json->email,
+            $json->password,
+            $json->userId,
+            $json->name,
+            $json->profilePicture,
+            $json->phoneNumber,
+            $json->isMember,
+            $bookingHistory
+        );
     }
 }
     

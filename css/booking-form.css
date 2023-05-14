@@ -1,0 +1,55 @@
+/* Override global variables */
+:root {
+    --divider-width: 100%;
+    --textfield-width: 14rem;
+    --card-width: 100%;
+    --button-size: 0.65rem 0.65rem;
+    --elevation: 0.1rem;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.booking-form {
+    margin-top: 2.5rem;
+}
+
+.booking-form-element {
+    margin-right: 2rem;
+    margin-left: 2rem;
+}
+
+.booking-calendar>input {
+    width: 30vw;
+    height: 10vh;
+    text-align: start;
+}
+
+.calendar-header>* {
+    margin: 1rem 0.85rem 1rem 0.85rem;
+}
+
+#guest-number {
+    text-align: center;
+}
+
+.guest-number-label {
+    width: 25%;
+}
+
+.special-request-margin {
+    margin: 0rem 2rem 0 2rem;
+}
+
+.label-margin-1 {
+    margin-right: 5rem;
+}
+
+.label-margin-2 {
+    margin-right: 2rem;
+}
+
+.label-margin-3 {
+    margin-bottom: 1rem;
+}

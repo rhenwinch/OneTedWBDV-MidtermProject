@@ -13,13 +13,26 @@ const selectYear = document.querySelectorAll('.select-year');
 const currentYear = new Date().getFullYear();
 const currentMonth = new Date().getMonth();
 
+
+let selectedDate = calendar[0].getAttribute('data-selected');
+if(selectedDate !== "" && typeof selectedDate !== 'undefined' && selectedDate !== null) {
+    selectedDate = new Date(selectedDate);
+}
+
 // Initialize calendar
 calendar.forEach((item, i) => {
     item.innerHTML = '';
-    item.appendChild(generateCalendar(currentYear, currentMonth, i));
 
     // Populate the select options for months and years
-    populateMonth(currentYear, i);
+    if(selectedDate !== null && i === 0) {
+        item.appendChild(generateCalendar(selectedDate.getFullYear(), selectedDate.getMonth(), i));
+        populateMonth(selectedDate.getFullYear(), i);
+    }
+    else {
+        item.appendChild(generateCalendar(currentYear, currentMonth, i));
+        populateMonth(currentYear, i);
+    }
+
     populateYear(i);
 })
 
@@ -80,14 +93,22 @@ function generateCalendar(year, month, index) {
                 td.classList.add('disabled');
             } else {
                 td.textContent = day;
-                td.addEventListener('click', () => {
-                    if(selectedDay[index] !== null)
-                        selectedDay[index].classList.remove('selected');
-
-                    calendarInput[index].value = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`;
-                    console.log(calendarInput[index].value);
+                if(selectedDate !== null && year === selectedDate.getFullYear() && month === selectedDate.getMonth() && day === selectedDate.getDate() && index === 0) {
                     td.classList.add('selected');
-                    selectedDay[index] = td;
+                    selectedDay[0] = td;
+                    calendarInput[0].value = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`
+                }
+                td.addEventListener('click', () => {
+                    try {
+                        calendarInput[index].value; // Test case if it will throw an error
+
+                        if(selectedDay[index] !== null)
+                            selectedDay[index].classList.remove('selected');
+
+                        calendarInput[index].value = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`;
+                        td.classList.add('selected');
+                        selectedDay[index] = td;
+                    } catch (e) {}
                 });
             }
             tr.appendChild(td);
@@ -194,7 +215,7 @@ function populateMonth(year, index) {
         const option = document.createElement('option');
         option.value = i.toString().padStart(2, '0');
         option.textContent = months[i];
-        if (i === currentMonth) {
+        if (i === currentMonth || selectedDate !== null && i === selectedDate.getMonth() && index === 0) {
             option.selected = true;
         }
         selectMonth[index].appendChild(option);
@@ -206,7 +227,7 @@ function populateYear(index) {
         const option = document.createElement('option');
         option.value = i.toString();
         option.textContent = i.toString();
-        if (i === currentYear) {
+        if (i === currentYear || selectedDate !== null && i === selectedDate.getFullYear() && index === 0) {
             option.selected = true;
         }
         selectYear[index].appendChild(option);

@@ -24,19 +24,23 @@
 @import url('../components/custom-img.css');
 @import url('../components/calendar.css');
 @import url('../components/dialog.css');
+@import url('../components/snackbar.css');
 @import url('../components/select.css');
 @import url('../components/progress-bar.css');
 @import url('../components/navbar.css');
 @import url('../components/icons.css');
+@import url('../components/list.css');
+@import url('../components/footer.css');
 
 body {
     background-color: var(--md-sys-color-surface);
     color: var(--md-sys-color-on-surface);
-    font-family: Roboto;
+    font-family: 'Josefin Sans';
     margin: 0;
     padding: 0;
 }
 
 a {
     color: var(--md-sys-color-on-surface);
+    text-decoration: none;
 }

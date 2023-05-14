@@ -1,15 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../css/theme/theme.css">
-    <link rel="stylesheet" href="../css/component.css">
-    <title>Index</title>
+
+    <link rel="stylesheet" href="../../css/theme/theme.css">
+    <title>Grand Eden Oasis</title>
+    <style>
+        :root {
+            --textfield-width: 50%;
+        }
+
+        .sticky-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            transition: top 0.3s ease-out;
+            z-index: 99;
+        }
+
+        .body-content {
+            margin: 4rem 0;
+        }
+
+        .room-container {
+            background-color: var(--md-sys-color-primary);
+            padding: 8rem 0;
+            width: 100%;
+        }
+
+        .left-arrow {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .right-arrow {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .room-item {
+            overflow: hidden;
+            margin: 0 4rem;
+            width: 55%;
+        }
+
+        .room-item-content {
+            margin: 0 1.25rem;
+        }
+
+        .book-button {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+
+        .room-item-image {
+            border-radius: 2%;
+            height: 22.5rem;
+            width: 31.5rem;
+            background-image: url('../../res/images/image-placeholder.svg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-category-filter {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            background-color: transparent;
+            color: var(--md-sys-color-on-surface);
+        }
+
+        .room-category-filter.active {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            pointer-events: none;
+        }
+
+        .check-availability-button {
+            margin-top: 5rem;
+        }
+
+        .room-info-container {
+            width: 100%;
+            margin: 4.5rem 0;
+        }
+
+        .room-info-container>* {
+            margin: 2.5rem 0;
+        }
+
+        .room-info-image {
+            border-radius: 2%;
+            height: 23rem;
+            width: 28rem;
+            background-image: url('../../res/images/image-placeholder.svg');
+            background-size: cover;
+            background-position: center;
+            margin: 0 3rem;
+        }
+
+        .room-main-info {
+            width: 40%;
+            margin-bottom: 5rem;
+        }
+
+        .gallery-container {
+            margin-bottom: 6rem;
+        }
+
+        .gallery-item {
+            border-radius: 2%;
+            height: 15.3rem;
+            width: 21.5rem;
+            background-image: url('../../res/images/image-placeholder.svg');
+            background-size: cover;
+            background-position: center;
+            margin: 0 3rem;
+        }
+
+        .reviews-item {
+            margin: 0 3rem;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="column-container">
+        <nav class="navbar sticky-navbar" id="navbar">
+            <div class="navbar-content">
+                <div class="navbar-start">
+                    <a href="../index.html" class="navbar-logo">
+                        <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="navbar-center"></div>
+                <div class="navbar-end">
+                    <button class="navbar-profile-btn">
+                        <img src="../../res/images/person.png" alt="Profile" style="margin-right: 1rem">
+                        <div class="column-container title-small text-left">
+                            <span>Hi,
+                                User!
+                            </span>
+                            <span class="font-bold">Membership: None</span>
+                        </div>
+                        <span class="md-24 material-icons-outlined">arrow_drop_down</span>
+                    </button>
+                    <div class="navbar-dropdown">
+                        <div class="column-container">
+                            <a href="" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                                    Profile
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                                    My Bookings
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                                    Voucher
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="card" style="--card-width: auto">
+                                    <div class="card-content">
+                                        <div class="column-container center">
+                                            <span class="text-center">Log Out</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="column-container body-content center">
+            <h2 class="display-large font-black primary-text">Rooms</h2>
+
+            <!-- Room Items -->
+            <div class="row-container room-container center-spaced">
+                <div class="left-arrow fill-parent">
+                    <img src="../../res/images/Left_arrow.svg">
+                </div>
+                <div class="row-container room-item center-spaced">
+                    <div class="card center elevation-3" style="--card-height: 22.3rem">
+                        <div class="card-content body-medium h100">
+                            <div class="column-container center h100 room-item-content">
+                                <h1 class="text-center">Room Title</h1>
+                                <p class="text-justify">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                    vulputate lorem mauris, et rutrum augue placerat vel. Morbi
+                                    tincidunt id
+                                    libero sit amet viverra. Duis
+                                </p>
+                                <div class="book-button fill-parent">
+                                    <button class="button">Book</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="room-item-image"></div>
+                </div>
+                <div class="right-arrow fill-parent">
+                    <img src="../../res/images/Right_arrow.svg">
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="row-container">
+                <button class="button room-category-filter font-medium active" id="standard">Standard</button>
+                <button class="button room-category-filter font-medium" id="suite">Suite</button>
+                <button class="button room-category-filter font-medium" id="executive">Executive</button>
+                <button class="button room-category-filter font-medium" id="deluxe">Deluxe</button>
+                <button class="button room-category-filter font-medium" id="connecting">Connecting</button>
+                <button class="button room-category-filter font-medium" id="accessible">Accessible</button>
+            </div>
+
+
+            <!-- Room Information -->
+            <div class="column-container center room-info-container">
+                <!-- Top Information -->
+                <div class="row-container room-main-info center-spaced">
+                    <div class="room-info-image"></div>
+                    <div class="column-container center-start font-medium">
+                        <p>Size: 15 sqm</p>
+                        <p>Rooms: 2</p>
+                        <p>Guest: 3 to 4</p>
+                        <p>Beds: 4</p>
+                    </div>
+                </div>
+
+                <!-- Gallery -->
+                <h1 class="display-small font-medium">Gallery</h1>
+                <div class="row-container center-spaced gallery-container">
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                    <div class="gallery-item"></div>
+                </div>
+
+
+                <!-- Room Reviews -->
+                <h1 class="display-small font-medium">Room Reviews</h1>
+                <div class="row-container">
+                    <div class="card center elevation-1 reviews-item">
+                        <div class="card-content body-medium">
+                            <p>
+                                <em>
+                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Aliquam
+                                    vulputate lorem mauris, et rutrum augue placerat vel. Morbi
+                                    tincidunt id
+                                    libero sit amet viverra. Duis"
+                                </em>
+                            </p>
+                            <p><b>— Mr. Ipsum</b></p>
+                        </div>
+                    </div>
+                    <div class="card center elevation-1 reviews-item">
+                        <div class="card-content body-medium">
+                            <p>
+                                <em>
+                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Aliquam
+                                    vulputate lorem mauris, et rutrum augue placerat vel. Morbi
+                                    tincidunt id
+                                    libero sit amet viverra. Duis"
+                                </em>
+                            </p>
+                            <p><b>— Mr. Ipsum</b></p>
+                        </div>
+                    </div>
+                    <div class="card center elevation-1 reviews-item">
+                        <div class="card-content body-medium">
+                            <p>
+                                <em>
+                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Aliquam
+                                    vulputate lorem mauris, et rutrum augue placerat vel. Morbi
+                                    tincidunt id
+                                    libero sit amet viverra. Duis"
+                                </em>
+                            </p>
+                            <p><b>— Mr. Ipsum</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <div class="row-container footer-content">
+            <div class="column-container company-info">
+                <p>Hotel Name: ABC Hotel</p>
+                <p>Address: 123 Main Street, Anytown USA</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@abchotel.com</p>
+                <p>Website: www.abchotel.com</p>
+                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+            </div>
+            <div class="column-container other-info">
+                <p>About Us</p>
+                <p>FAQs</p>
+            </div>
+            <a href="../index.html">
+                <div class="column-container center">
+                    <div class="elevation-2 footer-logo"></div>
+                    <h2 class="surface-text">Grand Eden Oasis</h2>
+                </div>
+            </a>
+        </div>
+        <div class="column-container center copyright-text">
+            <p>&copy; Grand Eden Oasis. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
+<script>
+    const downButton = document.getElementById('down-arrow');
+    const navbar = document.getElementById('navbar');
+
+    downButton.addEventListener('click', () => {
+
+        // Smooth scroll to the target section/div
+        document.getElementById('body-content').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', () => {
+        // Check if the user has scrolled out of the first section/div
+        const firstSection = document.getElementById('resting-navbar');
+        const scrollPosition = window.scrollY || window.pageYOffset;
+        const firstSectionBottom = firstSection.offsetTop + firstSection.offsetHeight;
+
+        if (scrollPosition >= firstSectionBottom) {
+            // Add the 'show-navbar' class to make the navbar visible
+            navbar.classList.add('show-navbar');
+        } else {
+            // Remove the 'show-navbar' class to hide the navbar
+            navbar.classList.remove('show-navbar');
+        }
+    });
+
+
+</script>
+<script>
+    function scrollWithMouse(e, listContainer) {
+        e.preventDefault();
+        listContainer.scrollLeft -= e.deltaY;
+    }
+
+    // Script for the list scrolling
+    const leftArrows = document.querySelectorAll('.left-arrow');
+    const rightArrows = document.querySelectorAll('.right-arrow');
+    const listContainers = document.querySelectorAll('.list-container');
+
+    listContainers.forEach((listContainer, i) => {
+        let startX = 0;
+        let scrollLeft = 0;
+        let isDragging = false;
+
+        listContainer.addEventListener('mouseenter', () => {
+            listContainer.addEventListener('wheel', (e) => {
+                scrollWithMouse(e, listContainer)
+            });
+        });
+
+        listContainer.addEventListener('mouseleave', () => {
+            listContainer.removeEventListener('wheel', (e) => {
+                scrollWithMouse(e, listContainer)
+            });
+        });
+
+        listContainer.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - listContainer.offsetLeft;
+            scrollLeft = listContainer.scrollLeft;
+        });
+
+        listContainer.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        listContainer.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - listContainer.offsetLeft;
+            const walk = x - startX;
+            listContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        listContainer.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            startX = e.touches[0].pageX - listContainer.offsetLeft;
+            scrollLeft = listContainer.scrollLeft;
+        });
+
+        listContainer.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        listContainer.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.touches[0].pageX - listContainer.offsetLeft;
+            const walk = x - startX;
+            listContainer.scrollLeft = scrollLeft - walk;
+        });
+
+        leftArrows[i].addEventListener('click', () => {
+            listContainer.scrollBy({
+                left: -listContainer.offsetWidth,
+                behavior: 'smooth'
+            });
+        });
+
+        rightArrows[i].addEventListener('click', () => {
+            listContainer.scrollBy({
+                left: listContainer.offsetWidth,
+                behavior: 'smooth'
+            });
+        });
+
+
+    })
+
+</script>
+<script>
+    // Get all the buttons within the row container
+    const buttons = document.querySelectorAll('.row-container .room-category-filter');
+
+    // Attach click event listener to each button
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove the "active" class from the current active button
+            const currentActiveButton = document.querySelector('.row-container .button.active');
+            currentActiveButton.classList.remove('active');
+
+            // Add the "active" class to the clicked button
+            button.classList.add('active');
+        });
+    });
+
+</script>
+
 </html>

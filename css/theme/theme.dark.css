@@ -33,4 +33,5 @@
  --md-sys-color-inverse-primary: var(--md-sys-color-inverse-primary-dark);
  --md-sys-color-surface-tint: var(--md-sys-color-surface-tint-dark);
  --md-sys-color-surface-tint-color: var(--md-sys-color-surface-tint-color-dark);
+ --md-sys-color-on-medium-emphasis: var(--md-sys-color-on-medium-emphasis-dark);
 }

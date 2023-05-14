@@ -184,6 +184,12 @@
 .surface-tint-color-text {
   color: var(--md-sys-color-surface-tint-color);
 }
+.medium-emphasis {
+  background-color: var(--md-sys-color-surface-tint-color);
+}
+.medium-emphasis-text {
+  color: var(--md-sys-color-surface-tint-color);
+}
 .elevation-0 {
   box-shadow: var(--md-sys-elevation-0);
 }

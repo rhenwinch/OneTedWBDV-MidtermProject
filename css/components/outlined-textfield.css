@@ -20,7 +20,7 @@
 .outlined-textfield-container textarea {
     resize: none; /* Make textarea non-resizable */
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .outlined-textfield-input:focus {

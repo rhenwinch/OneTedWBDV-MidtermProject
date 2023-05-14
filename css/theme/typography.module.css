@@ -163,28 +163,28 @@
     text-decoration: var(--md-sys-typescale-title-small-text-decoration);
 }
 
-.roboto-thin {
+.font-thin {
     font-weight: 100;
 }
 
-.roboto-light {
+.font-light {
     font-weight: 300;
 }
 
-.roboto-regular {
+.font-regular {
     font-weight: 400;
 }
 
-.roboto-medium {
+.font-medium {
     font-weight: 500;
 }
 
-.roboto-bold {
-    font-weight: 700;
+.font-bold {
+    font-weight: 600;
 }
 
-.roboto-black {
-    font-weight: 900;
+.font-black {
+    font-weight: 700;
 }
 
 .italic {

@@ -1,15 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="../css/theme/theme.css">
-    <link rel="stylesheet" href="../css/component.css">
-    <title>Index</title>
+
+    <link rel="stylesheet" href="../../css/theme/theme.css">
+    <link rel="stylesheet" href="../../css/user-profile.css">
+    <title>My Bookings</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .body-content {
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        h2 {
+            margin-top: 5rem;
+        }
+
+        .info-main-con {
+            margin-bottom: 3rem;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="column-container">
+        <nav class="navbar">
+            <div class="navbar-content">
+                <div class="navbar-start">
+                    <a href="../index.html" class="navbar-logo">
+                        <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="navbar-center"></div>
+                <div class="navbar-end">
+                    <button class="navbar-profile-btn">
+                        <img src="../../res/images/person.png" alt="Profile" style="margin-right: 1rem">
+                        <div class="column-container title-small text-left">
+                            <span>Hi,
+                                User!
+                            </span>
+                            <span class="font-bold">Membership: None</span>
+                        </div>
+                        <span class="md-24 material-icons-outlined">arrow_drop_down</span>
+                    </button>
+                    <div class="navbar-dropdown">
+                        <div class="column-container">
+                            <a href="" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                                    Profile
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                                    My Bookings
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="row-container center-horizontal">
+                                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                                    Voucher
+                                </div>
+                            </a>
+                            <a href="#" class="navbar-dropdown-item">
+                                <div class="card" style="--card-width: auto">
+                                    <div class="card-content">
+                                        <div class="column-container center">
+                                            <span class="text-center">Log Out</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="wrap-content body-content">
+            <div class="column-container center-start">
+                <h2 class="font-medium text-left">Current Reservation</h2>
+                <div class="card emphasis info-main-con">
+                    <div class="card-content">
+                        <div class="info-main">
+                            <div>
+                                <p>Room Name:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Type:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Address:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Departure</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Arrival</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 70px;">
+                            <p>Confirmation:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                            <p>Status:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+                            <span>Price:
+                                <span class="font-medium">
+
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h2 class="font-medium">Past Bookings</h2>
+                <div class="card info-main-con">
+                    <div class="card-content">
+                        <div class="info-main">
+                            <div>
+                                <p>Room Name:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Type:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Address:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Departure</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Arrival</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 70px;">
+                            <p>Confirmation:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                            <p>Status:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+                            <span>Price:
+                                <span class="font-medium">
+
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card info-main-con">
+                    <div class="card-content">
+                        <div class="info-main">
+                            <div>
+                                <p>Room Name:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Type:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                                <p>Room Address:
+                                    <span class="font-medium">
+
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Departure</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                            <div class="column-container">
+                                <p>Date of Arrival</p>
+                                <span class="font-medium">
+
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 70px;">
+                            <p>Confirmation:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                            <p>Status:
+                                <span class="font-medium">
+
+                                </span>
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 30px; display: flex; justify-content: space-between;">
+                            <span>Price:
+                                <span class="font-medium">
+
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <div class="row-container footer-content">
+            <div class="column-container company-info">
+                <p>Hotel Name: ABC Hotel</p>
+                <p>Address: 123 Main Street, Anytown USA</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@abchotel.com</p>
+                <p>Website: www.abchotel.com</p>
+                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+            </div>
+            <div class="column-container other-info">
+                <p>About Us</p>
+                <p>FAQs</p>
+            </div>
+            <a href="../index.html">
+                <div class="column-container center">
+                    <div class="elevation-2 footer-logo"></div>
+                    <h2 class="surface-text">Grand Eden Oasis</h2>
+                </div>
+            </a>
+        </div>
+        <div class="column-container center copyright-text">
+            <p>&copy; Grand Eden Oasis. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
+
 </html>

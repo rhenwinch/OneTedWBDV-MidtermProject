@@ -59,7 +59,7 @@
 .textfield-container textarea {
     resize: none; /* Make textarea non-resizable */
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 /* Submit button */
@@ -88,6 +88,13 @@
   
 .textfield-container.error-container .error-message {
     visibility: visible;
+}
+
+.start-drawable {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
 }
 
 

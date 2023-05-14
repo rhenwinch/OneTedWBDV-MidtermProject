@@ -1,3 +1,6 @@
+const MINIMUM_GUEST_ALLOWED = 1;
+const MAXIMUM_GUEST_ALLOWED = 19;
+
 function validateEmail(email) {
     // regular expression pattern for email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,7 +21,7 @@ function validatePhilippinePhoneNumber(phoneNumber) {
     const regex = /^(09|639|\+639)\d{9}$/;
     return regex.test(phoneNumber);
 }
-  
+
 function isEmpty(str) {
     return str.trim().length === 0;
 }
@@ -38,6 +41,34 @@ function validateGuestNumber(inputValue) {
     }
 
     return guestNumber;
+}
+
+function validateDates() {
+    const calendarInputs = document.querySelectorAll('.calendar-input');
+    const arrivalDateInput = calendarInputs[0];
+    const departureDateInput = calendarInputs[1];
+
+    const arrivalDate = new Date(arrivalDateInput.value);
+    const departureDate = new Date(departureDateInput.value);
+
+    if (isNaN(arrivalDate.getTime()) || isNaN(departureDate.getTime())) {
+        // At least one of the inputs is not a valid date
+        return {
+            'success': false,
+            'message': 'Please enter valid dates.'
+        };
+    }
+
+    if (departureDate < arrivalDate) {
+        // Departure date is earlier than arrival date
+        return {
+            'success': false,
+            'message': 'Departure date cannot be earlier than arrival date.'
+        };
+    }
+
+    // Dates are valid
+    return { 'success': true };
 }
 
 
@@ -61,12 +92,12 @@ function validateExpDate(expMonthInput, expYearInput) {
         expYearInput.parentElement.classList.add('error-container');
         return;
     }
-    
-    if(expYear === currentYear && expMonth < currentMonth || expMonth < MIN_MONTH || expMonth > MAX_MONTH) {
+
+    if (expYear === currentYear && expMonth < currentMonth || expMonth < MIN_MONTH || expMonth > MAX_MONTH) {
         expMonthInput.parentElement.classList.add('error-container');
         return;
     }
-    
+
     expMonthInput.parentElement.classList.remove('error-container');
     expYearInput.parentElement.classList.remove('error-container');
 }

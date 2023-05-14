@@ -3,7 +3,8 @@
     --elevation: 0.063rem; /* Card elevation */
     --card-border-radius: 0.5rem; /* Card border radius */
     --card-width: 19rem; /* Card width */
-    --card-height: 13rem; /* Card height */
+    /* --card-height: 13rem; Card height */
+    --card-height: 100%; /* Card height */
     --card-color: var(--md-sys-color-surface);
 }
 
@@ -16,7 +17,6 @@
     background-color: var(--card-color);
     display: flex; /* Use flexbox to create a column layout */
     flex-direction: column; /* Set flex direction to column */
-    height: 100%;
 }
 
 .card-content {
