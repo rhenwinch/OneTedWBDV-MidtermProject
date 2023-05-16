@@ -47,8 +47,8 @@ buttons.forEach((button, index) => {
 
         // Add the "active" class to the clicked button
         button.classList.add('active');
-        roomLists[previousSelectedFilter].classList.toggle('invisible');
-        roomLists[index].classList.toggle('invisible');
+        roomLists[previousSelectedFilter].classList.toggle('hidden');
+        roomLists[index].classList.toggle('hidden');
         previousSelectedFilter = index;
     });
 });

@@ -1,0 +1,32 @@
+@media (max-width: 1186px) {
+    :root {
+        --card-width: 90vw;
+    }
+
+    .content {
+        flex-direction: column;
+    }
+
+    .booking-summary-info {
+        width: 100%;
+        margin-bottom: 5rem;
+    }
+
+    .booking-summary-header {
+        margin-bottom: 2rem;
+    }
+
+    .payment-container {
+        width: 100%;
+    }
+
+    .payment-container h3 {
+        font-size: 2.8125rem;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .payment-card {
+        margin: 3rem auto;
+    }
+}

@@ -1,0 +1,13 @@
+@media (max-width: 1186px) {
+    .main-content {
+        width: calc(100vw - 2rem);
+    }
+    
+    .forms {
+        flex-wrap: wrap;
+    }
+
+    .navbar-logo {
+        display: initial !important;
+    }
+}

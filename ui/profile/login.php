@@ -13,7 +13,7 @@ $userRepository = new UserRepository($jsonFilePath);
 // Check if user is already logged in
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
     // Redirect to home page or any other authorized page
-    header('Location: ../index.html');
+    header('Location: ../');
     exit;
 }
 
@@ -57,46 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../../css/theme/theme.css">
-    <style>
-        /* Override global variables */
-        :root {
-            --logo-width: 8.5rem;
-            --logo-height: 8.5rem;
-            --textfield-width: 15.625rem;
-            --button-size: 1rem 2rem;
-            --gradient-image-width: 100%;
-            --gradient-image-height: 100vh;
-            --divider-height: 75vh;
-        }
-
-        .login-form {
-            padding-left: 3.5rem;
-        }
-
-        .login-header {
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .login-field {
-            margin-top: 3rem;
-        }
-
-        .login-button {
-            margin-top: 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .login-form-divider {
-            margin-left: 3.5rem;
-            margin-right: 3.5rem;
-        }
-
-        .login-headliner-image {
-            width: 100%;
-            padding-left: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="../../css/login-mobile.css">
     <title>Login</title>
 </head>
 
@@ -113,8 +75,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+    <nav class="navbar sticky-navbar" id="navbar">
+        <div class="navbar-content">
+            <div class="navbar-start">
+                <a class="navbar-navigation-icon hidden">
+                    <img src="../../res/images/arrow_back.svg" alt="Logo">
+                </a>
+                <a href="../index.html" class="navbar-logo">
+                    <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="navbar-center"></div>
+            <div class="navbar-end"></div>
+        </div>
+    </nav>
+
     <div class="row-container">
-        <div class="row-container center fill-parent">
+        <div class="row-container center main-content fill-parent">
             <div class="column-container login-form">
                 <h1 class="display-medium text-center login-header">Log in</h1>
                 <div class="card center ">
@@ -152,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <img src="../../res/images/image-placeholder.svg" alt="Login Landscape">
         </div>
     </div>
-    
+
     <footer class="main-footer">
         <div class="row-container footer-content">
             <div class="column-container company-info">
@@ -179,6 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </footer>
 </body>
+<script src="../../scripts/navbar.js"></script>
 <script src="../../scripts/dialog.js"></script>
 <script src="../../scripts/validators.js"></script>
 <script>

@@ -13,7 +13,7 @@ $userRepository = new UserRepository($jsonFilePath);
 // Check if user is already logged in
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
     // Redirect to home page or any other authorized page
-    header('Location: ../index.html');
+    header('Location: ../');
     exit;
 }
 
@@ -58,46 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="../../css/theme/theme.css">
-    <style>
-        /* Override global variables */
-        :root {
-            --logo-width: 8.5rem;
-            --logo-height: 8.5rem;
-            --textfield-width: 15.625rem;
-            --button-size: 1rem 2rem;
-            --gradient-image-width: 100%;
-            --gradient-image-height: 100vh;
-            --divider-height: 75vh;
-        }
-
-        .signup-form {
-            padding-left: 3.5rem;
-        }
-
-        .signup-header {
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .signup-field {
-            margin-top: 3rem;
-        }
-
-        .signup-button {
-            margin-top: 6rem;
-            margin-bottom: 4rem;
-        }
-
-        .signup-form-divider {
-            margin-left: 3.5rem;
-            margin-right: 3.5rem;
-        }
-
-        .signup-headliner-image {
-            width: 100%;
-            padding-left: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/signup.css">
+    <link rel="stylesheet" href="../../css/signup-mobile.css">
     <title>Sign up</title>
 </head>
 <body>
@@ -113,8 +75,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
+    <nav class="navbar sticky-navbar" id="navbar">
+        <div class="navbar-content">
+            <div class="navbar-start">
+                <a class="navbar-navigation-icon hidden">
+                    <img src="../../res/images/arrow_back.svg" alt="Logo">
+                </a>
+                <a href="../index.html" class="navbar-logo">
+                    <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                </a>
+            </div>
+            <div class="navbar-center"></div>
+            <div class="navbar-end"></div>
+        </div>
+    </nav>
+
     <div class="row-container">
-        <div class="row-container center fill-parent">
+        <div class="row-container center main-content fill-parent">
             <div class="column-container signup-form">
                 <h1 class="display-medium text-center signup-header">Sign up</h1>
                 <div class="card center ">
@@ -182,6 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </footer>
 </body>
+<script src="../../scripts/navbar.js"></script>
 <script src="../../scripts/dialog.js"></script>
 <script src="../../scripts/validators.js"></script>
 <script>

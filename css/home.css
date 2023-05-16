@@ -66,7 +66,7 @@ input {
 }
 
 .headline-container {
-    height: 75vh;
+    height: 163rem;
 }
 
 .headline-image {
@@ -75,7 +75,7 @@ input {
     left: 0;
     height: 100%;
     width: 100%;
-    background-image: url("../res/images/image-placeholder.svg");
+    background-image: url("../res/images/content/pexels-leon-kohle-13349987\(Adjusted\)\ 1.png");
     background-size: cover;
     background-position: center;
     z-index: 1;
@@ -210,10 +210,12 @@ input.guest-no-left-margin {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    padding-left: 33%;
+    padding-left: 41%;
+    width: 80%;
 }
 
 .about-us-container {
+    height: calc(100vh - 500px);
     margin: 1rem 8rem;
 }
 
@@ -323,7 +325,7 @@ input.guest-no-left-margin {
     margin: 0 6.5rem;
 }
 
-.amenity-img-1 {
+.amenity-img {
     height: 16.6rem;
     width: 46rem;
     background-image: url('../res/images/image-placeholder.svg');

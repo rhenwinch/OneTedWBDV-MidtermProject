@@ -45,6 +45,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
 
     <link rel="stylesheet" href="../css/theme/theme.css">
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/home-mobile.css">
     <title>Grand Eden Oasis</title>
 </head>
 
@@ -64,6 +65,9 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                 <div class="navbar-center"></div>
                 <div class="navbar-end">
                     <?php if ($isLoggedIn) { ?>
+                        <button class="navbar-menu hidden" id="drawer-toggle">
+                            <img src="../../res/images/menu.svg" alt="Navigation menu icon">
+                        </button>
                         <button class="navbar-profile-btn">
                             <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" alt="Profile" style="margin-right: 1rem">
                             <div class="column-container title-small text-left">
@@ -122,32 +126,35 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                     <div class="card elevation-2 logo clickable"></div>
                 </a>
 
-                <div class="row-container navigation-button-container center-spaced">
-                    <?php if ($isLoggedIn) { ?>
-                        <a href="./profile/" class="button navigation-button font-medium"">
-                            <div class=" row-container center">
-                            <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" class="user" alt="Profile" style="margin-right: 1rem">
-                            <div class="column-container title-small text-left">
-                                <span>Hi,
-                                    <?php echo $currentLoggedInUser->getName(); ?>!
-                                </span>
-                                <span class="font-bold">Membership: None</span>
-                            </div>
+                <?php if ($isLoggedIn) { ?>
+                <div class="row-container navigation-button-container profile-container center-spaced">
+                    <a href="./profile/" class="button navigation-button font-medium"">
+                        <div class=" row-container center">
+                        <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" class="user" alt="Profile" style="margin-right: 1rem">
+                        <div class="column-container title-small text-left profile-info">
+                            <span>Hi,
+                                <?php echo $currentLoggedInUser->getName(); ?>!
+                            </span>
+                            <span class="font-bold">Membership: None</span>
+                        </div>
+                    </div>
+                    </a>
                 </div>
-                </a>
-            <?php } else { ?>
-                <a href="./profile/sign_up.php" class="button navigation-button font-medium">Sign Up</a>
-                <a href="./profile/login.php" class="button navigation-button font-medium">Login</a>
-            <?php } ?>
+                <?php } else { ?>
+                    <div class="row-container navigation-button-container center-spaced auth-button">
+                        <a href="./profile/sign_up.php" class="button navigation-button font-medium">Sign Up</a>
+                        <a href="./profile/login.php" class="button navigation-button font-medium">Login</a>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 
         <div class="column-container">
-            <div id="top-content">
-                <div class="relative-container headline-container">
+            <div id="top-content" class="column-container">
+                <div class="relative-container headline-container fill-parent">
                     <div class="headline-image"></div>
                     <div class="column-container center headline-content">
-                        <h1 class="display-large font-black">Grand Eden Oasis</h1>
+                        <h1 class="display-large font-black text-center">Grand Eden Oasis</h1>
                         <div class="card elevation-2 booking-selector-container">
                             <form class="h100" method="POST" action="./rooms/booking-form.php" id="form">
                                 <div class="row-container center-spaced h100">
@@ -155,9 +162,9 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                         <button class="button booking-selector-button" id="roomButton">
                                             <div class="row-container center">
                                                 <img class="booking-selector-button-icon" src="../res/images/Lable.svg" alt="An icon of rooms button">
-                                                <input type="text" id="room-id" name="room_id" readonly hidden required/>
-                                                <input type="text" id="room-type" name="room_type" readonly hidden required/>
-                                                <input type="text" id="room-name" value="Rooms" readonly required/>
+                                                <input type="text" id="room-id" name="room_id" readonly hidden required />
+                                                <input type="text" id="room-type" name="room_type" readonly hidden required />
+                                                <input type="text" id="room-name" value="Rooms" readonly required />
                                             </div>
                                         </button>
                                         <div id="roomTypeDropdown" class="dropdown">
@@ -170,45 +177,36 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
 
                                         <div class="dropdown roomDropdown">
                                             <ul>
-                                                <?php 
-                                                    foreach ($roomRepository->getAllRoomsByType("standard") as $room) {
+                                                <?php
+                                                foreach ($roomRepository->getAllRoomsByType("standard") as $room) {
                                                 ?>
-                                                    <li 
-                                                        class="dropdown-room-item"
-                                                        data-id="<?php echo $room["id"]; ?>"
-                                                    ><?php echo $room["name"]; ?></li>
-                                                <?php 
-                                                    }
+                                                    <li class="dropdown-room-item" data-id="<?php echo $room["id"]; ?>"><?php echo $room["name"]; ?></li>
+                                                <?php
+                                                }
                                                 ?>
                                             </ul>
                                         </div>
 
                                         <div class="dropdown roomDropdown">
                                             <ul>
-                                                <?php 
-                                                    foreach ($roomRepository->getAllRoomsByType("suite") as $room) {
+                                                <?php
+                                                foreach ($roomRepository->getAllRoomsByType("suite") as $room) {
                                                 ?>
-                                                    <li 
-                                                        class="dropdown-room-item"
-                                                        data-id="<?php echo $room["id"]; ?>"
-                                                    ><?php echo $room["name"]; ?></li>
-                                                <?php 
-                                                    }
+                                                    <li class="dropdown-room-item" data-id="<?php echo $room["id"]; ?>"><?php echo $room["name"]; ?></li>
+                                                <?php
+                                                }
                                                 ?>
                                             </ul>
                                         </div>
 
                                         <div class="dropdown roomDropdown">
                                             <ul>
-                                                <?php 
-                                                    foreach ($roomRepository->getAllRoomsByType("deluxe") as $room) {
+                                                <?php
+                                                foreach ($roomRepository->getAllRoomsByType("deluxe") as $room) {
                                                 ?>
-                                                    <li 
-                                                        class="dropdown-room-item"
-                                                        data-id="<?php echo $room["id"]; ?>"
-                                                    ><?php echo $room["name"]; ?></li>
-                                                <?php 
-                                                    }
+                                                    <li class="dropdown-room-item" data-id="<?php echo $room["id"]; ?>"><?php echo $room["name"]; ?></li>
+                                                <?php
+                                                }
                                                 ?>
                                             </ul>
                                         </div>
@@ -218,7 +216,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                         <button class="button booking-selector-button" id="datesButton">
                                             <div class="row-container center">
                                                 <img class="booking-selector-button-icon" src="../res/images/Date_range.svg" alt="An icon of dates button">
-                                                <input type="text" id="date" name="date" value="Dates" readonly required/>
+                                                <input type="text" id="date" name="date" value="Dates" readonly required />
                                             </div>
                                         </button>
                                         <div class="calendar-dropdown">
@@ -230,16 +228,16 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                                     <span class="material-icons-outlined next-month">navigate_next</span>
                                                 </div>
                                                 <div class="calendar"></div>
-                                            </div>  
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="vertical-divider booking-selector-divider"></div>
                                     <div class="row-container guest-no-container center-start">
                                         <div class="textfield-container">
                                             <div class="start-drawable guest-no-icon">
-                                                <img src="../res/images/User.svg" alt="An icon of guest number button">
+                                                <img src="../res/images/User.svg" class="booking-selector-button-icon" alt="An icon of guest number button">
                                             </div>
-                                            <input type="number" name="guest_no" id="guest_no" class="textfield-input guest-no-left-margin" placeholder="Guest No." required/>
+                                            <input type="number" name="guest_no" id="guest_no" class="textfield-input guest-no-left-margin" placeholder="Guest No." required />
                                         </div>
                                     </div>
                                     <button class="button booking-button" id="book">Book</button>
@@ -247,10 +245,10 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                             </form>
                         </div>
 
-                        <h4 class="display-small font-light">Check in for the night, check out our tech might</h1>
+                        <h4 class="display-small font-light text-center">Check in for the night, check out our tech might</h1>
                     </div>
                 </div>
-                <div class="column-container about-us-container ce">
+                <div class="column-container about-us-container fill-parent">
                     <h4 class="title-large font-bold">About Us</h1>
                         <p class="body-large about-us-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                             Proin aliquet, urna ac congue volutpat, urna lectus ullamcorper enim, vitae facilisis
@@ -313,7 +311,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                 }
                                 ?>
                             </ul>
-                            <ul id="suite" class="list invisible">
+                            <ul id="suite" class="list hidden">
                                 <?php
                                 foreach ($roomRepository->getAllRoomsByType("suite") as $room) {
                                 ?>
@@ -356,7 +354,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                 }
                                 ?>
                             </ul>
-                            <ul id="deluxe" class="list invisible">
+                            <ul id="deluxe" class="list hidden">
                                 <?php
                                 foreach ($roomRepository->getAllRoomsByType("deluxe") as $room) {
                                 ?>
@@ -418,7 +416,8 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
 
                         <!-- Amenity item -->
                         <div class="row-container center">
-                            <div class="amenity-img-1"></div>
+                            <h2 class="font-bold hidden">Amenity Title</h2>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/VENUES/VENUES4.jpg');"></div>
                             <div class="column-container amenities-text-container">
                                 <h2 class="font-bold">Amenity Title</h2>
                                 <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
@@ -430,6 +429,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
 
                         <!-- Amenity item -->
                         <div class="row-container center">
+                            <h2 class="font-bold hidden">Amenity Title</h2>
                             <div class="column-container amenities-text-container">
                                 <h2 class="font-bold">Amenity Title</h2>
                                 <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
@@ -437,36 +437,13 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                     mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
                                     tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
                             </div>
-                            <div class="amenity-img-1"></div>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/POOLS/images\ \(77\).jpeg');"></div>
                         </div>
 
                         <!-- Amenity item -->
                         <div class="row-container center">
-                            <div class="amenity-img-1"></div>
-                            <div class="column-container amenities-text-container">
-                                <h2 class="font-bold">Amenity Title</h2>
-                                <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
-                                    luctus maximus volutpat. Phasellus pellentesque nunc ut massa tincidunt suere,
-                                    mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
-                                    tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
-                            </div>
-                        </div>
-
-                        <!-- Amenity item -->
-                        <div class="row-container center">
-                            <div class="column-container amenities-text-container">
-                                <h2 class="font-bold">Amenity Title</h2>
-                                <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
-                                    luctus maximus volutpat. Phasellus pellentesque nunc ut massa tincidunt suere,
-                                    mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
-                                    tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
-                            </div>
-                            <div class="amenity-img-1"></div>
-                        </div>
-
-                        <!-- Amenity item -->
-                        <div class="row-container center">
-                            <div class="amenity-img-1"></div>
+                            <h2 class="font-bold hidden">Amenity Title</h2>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/GYM/images\ \(73\).jpeg');"></div>
                             <div class="column-container amenities-text-container">
                                 <h2 class="font-bold">Amenity Title</h2>
                                 <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
@@ -478,6 +455,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
 
                         <!-- Amenity item -->
                         <div class="row-container center">
+                            <h2 class="font-bold hidden">Amenity Title</h2>
                             <div class="column-container amenities-text-container">
                                 <h2 class="font-bold">Amenity Title</h2>
                                 <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
@@ -485,7 +463,33 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
                                     mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
                                     tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
                             </div>
-                            <div class="amenity-img-1"></div>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/ENTERTAINMENT/Entertainment1.jpg');"></div>
+                        </div>
+
+                        <!-- Amenity item -->
+                        <div class="row-container center">
+                            <h2 class="font-bold hidden">Amenity Title</h2>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/FOODS/BEVERAGE\ STATION-FOODS7.jpg');"></div>
+                            <div class="column-container amenities-text-container">
+                                <h2 class="font-bold">Amenity Title</h2>
+                                <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
+                                    luctus maximus volutpat. Phasellus pellentesque nunc ut massa tincidunt suere,
+                                    mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
+                                    tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
+                            </div>
+                        </div>
+
+                        <!-- Amenity item -->
+                        <div class="row-container center">
+                            <h2 class="font-bold hidden">Amenity Title</h2>
+                            <div class="column-container amenities-text-container">
+                                <h2 class="font-bold">Amenity Title</h2>
+                                <p>n eleifend leo, vitae eleifend odio. Donec elementum pretium aliquet. Phasellus
+                                    luctus maximus volutpat. Phasellus pellentesque nunc ut massa tincidunt suere,
+                                    mauris ante aliquam arcu, a fringilla massa arcu at nisl. Donec et elit quis
+                                    tortor gravida euismod. Aliquam eget orci tincidunt, imperdie</p>
+                            </div>
+                            <div class="amenity-img" style="background-image: url('../res/images/content/ENTERTAINMENT/ENtertainment\ 2.jpg');"></div>
                         </div>
                     </div>
 
@@ -643,7 +647,50 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
             </section>
         </div>
     </div>
-    
+
+    <div id="drawer" class="drawer hidden">
+        <div class="column-container drawer-menu">
+            <a href="" class="drawer-logo">
+                <img src="<?php 
+            
+                    if($currentLoggedInUser != null) {
+                        echo $currentLoggedInUser->getProfilePicture();
+                    } else {
+                        echo "../../res/images/image-placeholder.svg";
+                    }
+                
+                ?>" alt="Logo">
+            </a>
+            <a href="./profile/index.php" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                    Profile
+                </div>
+            </a>
+            <a href="./profile/booking-history.html" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                    My Bookings
+                </div>
+            </a>
+            <a href="#" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                    Voucher
+                </div>
+            </a>
+            <a href="#" class="navbar-dropdown-item">
+                <div class="card" style="--card-width: auto">
+                    <div class="card-content">
+                        <div class="column-container center">
+                            <span class="text-center">Log Out</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>   
     <div id="snackbar" class="error-snackbar">Error: Something went wrong.</div>
     <footer class="main-footer">
         <div class="row-container footer-content">
@@ -671,6 +718,7 @@ if ($isSiteHardRefreshed && $isLoggedIn) {
         </div>
     </footer>
 </body>
+<script src="../scripts/navbar.js"></script>
 <script src="../scripts/calendar.js"></script>
 <script src="../scripts/home/handle-booking.js"></script>
 <script src="../scripts/home/calendar-dropdown.js"></script>

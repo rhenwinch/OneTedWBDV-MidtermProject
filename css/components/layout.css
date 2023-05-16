@@ -62,12 +62,6 @@
     flex-direction: column;
 }
 
-@media (max-width: 767px) {
-    .column-container {
-        flex-direction: row; /* Switch to a horizontal layout */
-    }
-}
-
 /* CSS for the relative position column */
 .relative-container {
     position: relative;
@@ -87,7 +81,7 @@
     display: inline-block;
 }
 
-.invisible {
+.hidden {
     display: none !important;
 }
 

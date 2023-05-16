@@ -32,3 +32,29 @@
 .copyright-text {
     padding-bottom: 1rem;
 }
+
+@media (max-width: 1186px) {
+    .footer-content {
+        padding: 3rem 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: start;
+    }
+
+    .company-info {
+        width: 50%;
+    }
+
+    .other-info {
+        width: 50%;
+    }
+    
+    .footer-content a {
+        margin-top: 4rem;
+    }
+
+    .footer-logo {
+        height: 8rem;
+        width: 8rem;
+    }
+}

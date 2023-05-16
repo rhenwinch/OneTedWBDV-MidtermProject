@@ -15,6 +15,22 @@
             ],
             "price": 10000,
             "availability": 5
+        },
+        {
+            "id": 4,
+            "name": "Premium Suite",
+            "description": "An extravagant suite with top-notch amenities.",
+            "type": "Suite",
+            "address": "Luxury Avenue, Countryland",
+            "maxHeads": 6,
+            "maxBeds": 3,
+            "gallery": [
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg"
+            ],
+            "price": 20000,
+            "availability": 2
         }
     ],
     "standard": [
@@ -33,6 +49,22 @@
             ],
             "price": 5000,
             "availability": 10
+        },
+        {
+            "id": 5,
+            "name": "Economy Room",
+            "description": "An affordable room with basic amenities.",
+            "type": "Standard",
+            "address": "Downtown Area, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "gallery": [
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg",
+                "..\/..\/res\/images\/image-placeholder.svg"
+            ],
+            "price": 3000,
+            "availability": 8
         }
     ],
     "deluxe": [
@@ -51,6 +83,22 @@
             ],
             "price": 15000,
             "availability": 3
+        },
+        {
+            "id": 6,
+            "name": "Superior Deluxe",
+            "description": "An enhanced deluxe room with additional features.",
+            "type": "Deluxe",
+            "address": "Premium Street, Countryland",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "gallery": [
+                "../../res/images/image-placeholder.svg",
+                "../../res/images/image-placeholder.svg",
+                "../../res/images/image-placeholder.svg"
+            ],
+            "price": 18000,
+            "availability": 5
         }
     ]
 }

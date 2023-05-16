@@ -1,0 +1,43 @@
+/* Override global variables */
+:root {
+    --divider-width: 100%;
+    --textfield-width: 100%;
+    --button-size: 0.65rem 3rem;
+}
+
+.booking-summary-header {
+    margin-bottom: 5rem;
+}
+
+.booking-summary-info {
+    margin-right: 3rem;
+    width: 30vw;
+}
+
+.label-margin {
+    margin: 1.5rem 0 0.8rem -1.5rem;
+}
+
+.button-container {
+    margin-top: 2rem;
+}
+
+.payment-field {
+    margin-top: 1.938rem;
+}
+
+.field-margin {
+    margin-bottom: 2.5rem;
+}
+
+.field-margin-1 {
+    margin-right: 0.938rem;
+}
+
+.payment-field.hidden {
+    display: none;
+}
+
+.content {
+    margin-bottom: 9rem;
+}

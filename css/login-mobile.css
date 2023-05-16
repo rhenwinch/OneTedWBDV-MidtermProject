@@ -1,0 +1,19 @@
+@media (max-width: 1186px) {
+
+    .gradient-image-container,
+    .login-form-divider {
+        display: none;
+    }
+
+    .main-content {
+        height: 100vh;
+    }
+
+    .login-form {
+        padding: 4rem 0;
+    }
+
+    #navbar {
+        display: initial !important;
+    }
+}

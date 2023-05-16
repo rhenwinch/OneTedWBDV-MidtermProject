@@ -1,0 +1,42 @@
+/* Override global variables */
+:root {
+    --logo-width: 8.5rem;
+    --logo-height: 8.5rem;
+    --textfield-width: 15.625rem;
+    --button-size: 1rem 2rem;
+    --gradient-image-width: 100%;
+    --gradient-image-height: 100vh;
+    --divider-height: 75vh;
+}
+
+#navbar {
+    display: none;
+}
+
+.login-form {
+    padding-left: 3.5rem;
+}
+
+.login-header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.login-field {
+    margin-top: 3rem;
+}
+
+.login-button {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+}
+
+.login-form-divider {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+}
+
+.login-headliner-image {
+    width: 100%;
+    padding-left: 1rem;
+}

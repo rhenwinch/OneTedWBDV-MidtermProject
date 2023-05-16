@@ -15,14 +15,12 @@
         }
 
         .success-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100vw;
+            height: 100vh;
         }
 
-        .button-margin {
-            margin-top: 5rem;
+        .success-message > * {
+            margin: 1rem 0;
         }
     </style>
 </head>
@@ -34,8 +32,12 @@
                     <a href="#" class="navbar-logo">
                         <img src="../../res/images/image-placeholder.svg" alt="Logo">
                     </a>
+                    <a class="navbar-navigation-icon hidden">
+                        <img src="../../res/images/arrow_back.svg" alt="Logo">
+                    </a>
                 </div>
                 <div class="navbar-center">
+                    <h2 class="progress hidden">Booking Confirmation</h2>
                     <div class="progress-bar">
                         <div class="progress-item active">
                             <div class="progress-circle">✔</div>
@@ -54,8 +56,11 @@
                     </div>
                 </div>
                 <div class="navbar-end">
+                    <button class="navbar-menu hidden" id="drawer-toggle">
+                        <img src="../../res/images/menu.svg" alt="Navigation menu icon">
+                    </button>
                     <button class="navbar-profile-btn">
-                        <img src="../../res/images/person.png" alt="Profile">
+                        <img src="../../res/images/person.png" alt="Profile icon">
                         <span class="md-24 material-icons-outlined">arrow_drop_down</span>
                     </button>
                     <div class="navbar-dropdown">
@@ -92,14 +97,75 @@
                 </div>
             </div>
         </nav>
-        <div class="success-message">
+
+        <div class="column-container center success-message">
             <h1 class="display-large font-black text-center">Transaction Done!</h1>
             <p class="title-medium font-black text-center">You can now view this reservation in your profile</p>
             <div class="row-container center button-margin">
-                <button class="button text-center">Go to Profile</button>
+                <a href="../profile/index.php" class="button text-center">Go to Profile</a>
             </div>
         </div>
-          
     </div>
+    <div id="drawer" class="drawer hidden">
+        <div class="column-container drawer-menu">
+            <a href="../" class="drawer-logo">
+                <img src="../../res/images/image-placeholder.svg" alt="Logo">
+            </a>
+            <a href="../profile/index.php" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
+                    Profile
+                </div>
+            </a>
+            <a href="#" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
+                    My Bookings
+                </div>
+            </a>
+            <a href="#" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
+                    Voucher
+                </div>
+            </a>
+            <a href="#" class="navbar-dropdown-item">
+                <div class="card" style="--card-width: auto">
+                    <div class="card-content">
+                        <div class="column-container center">
+                            <span class="text-center">Log Out</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div id="overlay" class="overlay"></div>   
+    <footer class="main-footer">
+        <div class="row-container footer-content">
+            <div class="column-container company-info">
+                <p>Hotel Name: ABC Hotel</p>
+                <p>Address: 123 Main Street, Anytown USA</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@abchotel.com</p>
+                <p>Website: www.abchotel.com</p>
+                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+            </div>
+            <div class="column-container other-info">
+                <p>About Us</p>
+                <p>FAQs</p>
+            </div>
+            <a href="">
+                <div class="column-container center">
+                    <div class="elevation-2 footer-logo"></div>
+                    <h2 class="surface-text">Grand Eden Oasis</h2>
+                </div>
+            </a>
+        </div>
+        <div class="column-container center copyright-text">
+            <p>&copy; Grand Eden Oasis. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
+<script src="../../scripts/navbar.js"></script>
 </html>

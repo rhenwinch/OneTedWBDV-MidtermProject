@@ -1,0 +1,17 @@
+@media (max-width: 1186px) {
+    .gradient-image-container,.signup-form-divider {
+        display: none;
+    }
+
+    .main-content {
+        height: 100vh;
+    }
+
+    .signup-form {
+        padding: 4rem 0;
+    }
+
+    #navbar {
+        display: initial !important;
+    }
+}

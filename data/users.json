@@ -3,7 +3,7 @@
         "userId": 1,
         "email": "wenepoc942@vootin.com",
         "password": "AqkA4A5SDDBmT5U",
-        "bookingHistory":  [
+        "bookingHistory": [
             {
                 "roomDetails": {
                     "roomName": "Amanda",
@@ -11,11 +11,11 @@
                     "roomAddress": "5th Flr, SUITE Bldg."
                 },
                 "bookingDate": "Apr 07, 2023 Fri",
-                "bookingPrice": 0,
+                "bookingPrice": 1400,
                 "bookingStatus": "Booked",
                 "bookingId": "1515ASDAQ35730807784",
-                "departureDate": "Apr 14, 2023 Fri",
-                "arrivalDate": "Apr 07, 2023 Fri"
+                "departureDate": "Apr 07, 2023 Fri",
+                "arrivalDate": "Apr 14, 2023 Fri"
             }
         ],
         "name": "Rhen Aranes",
@@ -29,6 +29,16 @@
         "password": "1234",
         "bookingHistory": [],
         "name": "Admin Account",
+        "profilePicture": "..\/..\/res\/images\/person.png",
+        "phoneNumber": "",
+        "isMember": false
+    },
+    {
+        "userId": 3,
+        "email": "rhen@gmail.com",
+        "password": "123456789",
+        "bookingHistory": [],
+        "name": "",
         "profilePicture": "..\/..\/res\/images\/person.png",
         "phoneNumber": "",
         "isMember": false

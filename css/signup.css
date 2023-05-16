@@ -1,0 +1,42 @@
+/* Override global variables */
+:root {
+    --logo-width: 8.5rem;
+    --logo-height: 8.5rem;
+    --textfield-width: 15.625rem;
+    --button-size: 1rem 2rem;
+    --gradient-image-width: 100%;
+    --gradient-image-height: 100vh;
+    --divider-height: 75vh;
+}
+
+.signup-form {
+    padding-left: 3.5rem;
+}
+
+.signup-header {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.signup-field {
+    margin-top: 3rem;
+}
+
+.signup-button {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+}
+
+.signup-form-divider {
+    margin-left: 3.5rem;
+    margin-right: 3.5rem;
+}
+
+.signup-headliner-image {
+    width: 100%;
+    padding-left: 1rem;
+}
+
+#navbar {
+    display: none;
+}

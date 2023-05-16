@@ -1,0 +1,118 @@
+@media (max-width: 1186px) {
+    .header-container {
+        margin: 0 2rem;
+        width: calc(100vw - 5rem);
+    }
+
+    .logo {
+        border-radius: 50%;
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .navigation-button-container {
+        width: 50%;
+    }
+
+    .headline-container {
+        height: 56vh;
+    }
+
+    .headline-content h4 {
+        margin: 3rem 3rem;
+    }
+    
+    .headline-container h1 {
+        margin-top: 10rem;
+    }
+
+    .booking-selector-container {
+        width: 100%;
+        margin: 0 2rem;
+        width: calc(100vw - 2rem);
+    }
+
+    .booking-selector-button-icon {
+        margin: auto 0.3rem;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    input.guest-no-left-margin {
+        width: 75%;
+        padding-left: 60%;
+    }
+
+    .about-us-container {
+        margin: 1rem 3rem;
+    }
+
+    .about-us-text {
+        margin: auto 2rem;
+        font-size: 14px;
+    }
+
+    .down-arrow {
+        margin-top: 34%;
+    }
+
+    .display-large {
+        font-size: 3rem;
+    }
+
+    .display-small {
+        font-size: 2rem;
+    }
+
+    .amenities-container > div {
+        flex-direction: column;
+    }
+
+    .amenities-container > div > h2 {
+        display: initial !important;
+    }
+
+    .amenity-img {
+        width: 85vw;
+        margin: 0 auto;
+        border-radius: 5%;
+    }
+    
+    .amenities-text-container {
+        display: none;
+    }
+
+    .partners-container > div {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .partners-logo {
+        margin: 0 1rem;
+        height: 4.5rem;
+        width: 4.5rem;
+    }
+
+    .navbar-logo {
+        display: initial !important;
+    }
+
+    .profile-info {
+        display: none;
+    }
+
+    .profile-container {
+        width: 18%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user {
+        margin-right: 0 !important;
+    }
+
+    .auth-button {
+        width: 50%;
+    }
+}
