@@ -6,31 +6,61 @@
         "bookingHistory": [
             {
                 "roomDetails": {
+                    "roomId": 1,
                     "roomName": "Amanda",
                     "roomType": "Suite",
                     "roomAddress": "5th Flr, SUITE Bldg."
                 },
                 "bookingDate": "Apr 07, 2023 Fri",
                 "bookingPrice": 1400,
-                "bookingStatus": "Booked",
+                "bookingStatus": "Completed",
                 "bookingId": "1515ASDAQ35730807784",
-                "departureDate": "Apr 07, 2023 Fri",
-                "arrivalDate": "Apr 14, 2023 Fri"
+                "departureDate": "Apr 14, 2023 Fri",
+                "arrivalDate": "Apr 07, 2023 Fri"
+            },
+            {
+                "roomDetails": {
+                    "roomId": 1,
+                    "roomName": "Suite Room",
+                    "roomType": "Suite",
+                    "roomAddress": "Don Jose Bldg., Marikina"
+                },
+                "bookingDate": "May 23, 2023 Tue",
+                "bookingPrice": 18000,
+                "bookingStatus": "Confirmed",
+                "bookingId": "R41G468O",
+                "departureDate": "Dec 28, 2023 Thu",
+                "arrivalDate": "Dec 11, 2023 Mon"
             }
         ],
-        "name": "Rhen Aranes",
+        "name": "Mingming Puspus",
         "profilePicture": "..\/..\/res\/images\/users\/1\/butter miming.jpg",
-        "phoneNumber": "",
+        "phoneNumber": "09095347212",
         "isMember": false
     },
     {
         "userId": 2,
         "email": "admin",
         "password": "1234",
-        "bookingHistory": [],
-        "name": "Admin Account",
-        "profilePicture": "..\/..\/res\/images\/person.png",
-        "phoneNumber": "",
+        "bookingHistory": [
+            {
+                "roomDetails": {
+                    "roomId": 1,
+                    "roomName": "Suite Room",
+                    "roomType": "Suite",
+                    "roomAddress": "Don Jose Bldg., Marikina"
+                },
+                "bookingDate": "May 23, 2023 Tue",
+                "bookingPrice": 13500,
+                "bookingStatus": "Confirmed",
+                "bookingId": "5BG80J1T",
+                "departureDate": "May 31, 2023 Wed",
+                "arrivalDate": "May 24, 2023 Wed"
+            }
+        ],
+        "name": "bun bun mon",
+        "profilePicture": "..\/..\/res\/images\/users\/2\/bunny hopper.jpg",
+        "phoneNumber": "09050232093",
         "isMember": false
     },
     {
@@ -41,6 +71,45 @@
         "name": "",
         "profilePicture": "..\/..\/res\/images\/person.png",
         "phoneNumber": "",
+        "isMember": false
+    },
+    {
+        "userId": 4,
+        "email": "comoestas@gmail.com",
+        "password": "7nf=&amp;A])P&gt;CL}uH",
+        "bookingHistory": [
+            {
+                "roomDetails": {
+                    "roomId": 11,
+                    "roomName": "Ameifire",
+                    "roomType": "Connecting",
+                    "roomAddress": "Family Avenue, Cityville"
+                },
+                "bookingDate": "May 23, 2023 Tue",
+                "bookingPrice": 9900,
+                "bookingStatus": "In Progress",
+                "bookingId": "IS892HUU",
+                "departureDate": "May 31, 2023 Wed",
+                "arrivalDate": "May 23, 2023 Tue"
+            },
+            {
+                "roomDetails": {
+                    "roomId": 19,
+                    "roomName": "Stella",
+                    "roomType": "Executive",
+                    "roomAddress": "Skyline Road, Cityville"
+                },
+                "bookingDate": "May 23, 2023 Tue",
+                "bookingPrice": 13050,
+                "bookingStatus": "Confirmed",
+                "bookingId": "2A5FLPCD",
+                "departureDate": "May 31, 2023 Wed",
+                "arrivalDate": "May 24, 2023 Wed"
+            }
+        ],
+        "name": "Mark sinaksak",
+        "profilePicture": "..\/..\/res\/images\/person.png",
+        "phoneNumber": "09095656445",
         "isMember": false
     }
 ]

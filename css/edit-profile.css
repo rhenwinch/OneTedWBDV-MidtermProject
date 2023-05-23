@@ -11,6 +11,10 @@
     height: 100vh;
 }
 
+.main-content {
+    height: auto;
+}
+
 .profile-pic {
     position: relative;
     width: 150px;

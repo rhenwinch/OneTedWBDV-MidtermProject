@@ -5,9 +5,10 @@ require_once __DIR__ . '/../interfaces/Enum.php';
  * Enum class for booking status.
  */
 class BookingStatus implements Enum {
-    const BOOKED = 'Booked';
     const CANCELLED = 'Cancelled';
     const CONFIRMED = 'Confirmed';
+    const IN_PROGRESS = 'In Progress';
+    const COMPLETED = 'Completed';
 
     public static function fromString(string $value): ?string {
         $value = strtolower($value); // Convert input to lowercase for case-insensitive comparison

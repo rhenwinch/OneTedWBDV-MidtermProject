@@ -32,7 +32,3 @@ guestButtons.forEach(guestButton => {
 })
 
 document.getElementById('confirm').addEventListener('click', handleSubmit);
-document.getElementById('cancel').addEventListener('click', (e) => {
-    e.preventDefault();
-    history.back();
-});

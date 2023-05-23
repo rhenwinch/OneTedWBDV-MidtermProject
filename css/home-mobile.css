@@ -5,7 +5,6 @@
     }
 
     .logo {
-        border-radius: 50%;
         height: 5rem;
         width: 5rem;
     }
@@ -114,5 +113,24 @@
 
     .auth-button {
         width: 50%;
+    }
+
+    .calendar-dropdown {
+        flex-wrap: wrap;
+    }
+
+    .filters-container {
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    .room-category-filter {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+
+    .about-us-text {
+        text-align: justify;
     }
 }

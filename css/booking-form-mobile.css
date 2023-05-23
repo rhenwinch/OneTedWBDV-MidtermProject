@@ -1,0 +1,74 @@
+@media (max-width: 1186px) {
+    :root {
+        --select-width: 60%;
+    }
+
+    .horizontal-divider {
+        height: 1px !important;
+        width: 95%;
+    }
+
+    .navbar {
+        width: 100vw !important;
+    }
+
+    .form-element-container {
+        flex-wrap: wrap !important;
+    }
+
+    .calendar-container label {
+        text-align: center;
+    }
+
+    .mobile-margin {
+        margin-top: 2.5rem;
+    }
+
+    .second-form-container {
+        width: 85vw;
+    }
+
+    .mobile-margin-email-label {
+        margin-right: 3.8rem !important;
+    }
+
+    .mobile-margin-room-label {
+        margin-right: 4rem !important;
+    }
+
+    .form-content {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .guest-buttons {
+        display: none;
+    }
+    
+    .label-margin-1 {
+        margin-right: 0 !important;
+    }
+
+    .special-request-container {
+        width: 95%;
+    }
+    
+    .price-container {
+        font-size: 1.8rem;
+    }
+
+    .booking-form-buttons {
+        padding: 0.85rem 1rem;
+        border-radius: 15%;
+    }
+}
+
+@media (min-width: 466px) {
+    .guest-buttons {
+        display: flex !important;
+    }
+    
+    .label-margin-1 {
+        margin-right: 5rem !important;
+    }
+}

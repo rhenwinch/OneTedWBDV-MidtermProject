@@ -1,7 +1,6 @@
 <?php
 session_start(); // Start the session
 
-require_once '../../data/common/Response.php';
 require_once '../../data/service/Sanitizer.php';
 require_once '../../data/model/User.php';
 require_once '../../data/repository/UserRepository.php';
@@ -45,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // User is valid, redirect to the homepage or other authenticated page
     $_SESSION["loggedIn"] = true;
     $_SESSION["user"] = serialize($userRepository->getUserByEmail($user->getEmail()));
-    header("Location: ../index.html");
+    header("Location: ../");
     exit;
 }
 ?>
@@ -57,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <link rel="icon" href="../../res/images/site_logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/theme/theme.css">
     <link rel="stylesheet" href="../../css/signup.css">
     <link rel="stylesheet" href="../../css/signup-mobile.css">
@@ -78,11 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav class="navbar sticky-navbar" id="navbar">
         <div class="navbar-content">
             <div class="navbar-start">
-                <a class="navbar-navigation-icon hidden">
+                <a href="../" class="navbar-navigation-icon hidden">
                     <img src="../../res/images/arrow_back.svg" alt="Logo">
                 </a>
-                <a href="../index.html" class="navbar-logo">
-                    <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                <a href="../" class="navbar-logo">
+                    <img src="../../res/images/site_logo.svg" alt="Logo">
                 </a>
             </div>
             <div class="navbar-center"></div>
@@ -128,24 +128,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="vertical-divider signup-form-divider"></div>
         </div>
-        <div class="gradient-image-container signup-headliner-image">
-            <img src="../../res/images/image-placeholder.svg" alt="Sign up Landscape">
-        </div>
+        <a href="../" class="gradient-image-container signup-headliner-image">
+            <img src="../../res/images/content/LOG IN LOG OUT/<?php echo rand(1, 3) ?>.jpeg" class="headliner-image" alt="Signup Landscape">
+        </a>
     </div>
     
     <footer class="main-footer">
         <div class="row-container footer-content">
             <div class="column-container company-info">
-                <p>Hotel Name: ABC Hotel</p>
+                <p>Hotel Name: Grand Eden Oasis</p>
                 <p>Address: 123 Main Street, Anytown USA</p>
                 <p>Phone: (123) 456-7890</p>
-                <p>Email: info@abchotel.com</p>
-                <p>Website: www.abchotel.com</p>
-                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+                <p>Email: info@geoasis.com</p>
+                <p>Website: www.geoasis.com</p>
+                <p>Site Developed by OneTed Devs</p>
             </div>
             <div class="column-container other-info">
-                <p>About Us</p>
-                <p>FAQs</p>
+                <p><a href="../others/about-us.php" class="on-primary-text">About Us</a></p>
+                <p><a href="../others/faqs.php" class="on-primary-text">FAQs</a></p>
             </div>
             <a href="../">
                 <div class="column-container center">

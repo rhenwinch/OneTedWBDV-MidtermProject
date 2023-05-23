@@ -37,6 +37,10 @@
     padding-left: 1rem;
 }
 
+.headliner-image {
+    object-fit: cover;
+}
+
 #navbar {
     display: none;
 }

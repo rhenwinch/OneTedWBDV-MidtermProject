@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nameInput.addEventListener('input', (e) => {
         const parentContainer = e.target.parentElement;
-        const isValid = isEmpty(e.target.value);
+        const isValid = !isEmpty(e.target.value);
 
         if (isValid) {
             parentContainer.classList.remove('error-container');

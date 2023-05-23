@@ -1,12 +1,11 @@
 <?php
 require_once __DIR__ . '/../model/User.php';
 require_once __DIR__ . '/../repository/UserRepository.php';
-require_once __DIR__ . '/../interfaces/UserUpdater.php';
 
 /**
  * The UserService class handles the business logic for user-related functionality.
  */
-class UserService implements UserUpdater {
+class UserService {
     /**
      * The UserRepository instance.
      *

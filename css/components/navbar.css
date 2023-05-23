@@ -38,12 +38,23 @@
     margin-left: 1.5rem;
 }
 
+.navbar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .navbar-logo img {
     height: var(--navbar-logo-size);
     width: var(--navbar-logo-size);
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid var(--md-sys-color-on-surface);
+    margin-right: 1rem;
+}
+
+.navbar-logo h3 {
+    font-size: 1.3rem;
 }
 
 .navbar-center {
@@ -56,6 +67,18 @@
 .navbar-end {
     position: relative;
     margin-right: 1rem;
+}
+
+.navbar-item {
+    background-color: transparent;
+    color: var(--md-sys-color-on-surface);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.navbar-item.active {
+    border-radius: 5%;
+    border-bottom: 5px solid var(--md-sys-color-primary);
 }
 
 .navbar-navigation-icon {
@@ -213,7 +236,15 @@
         display: none;
     }
 
+    .navbar-logo h3 {
+        display: none;
+    }
+
     .navbar-profile-btn {
+        display: none;
+    }
+
+    .navbar-item {
         display: none;
     }
 
@@ -241,7 +272,7 @@ Usage guide:
     <div class="navbar-content">
         <div class="navbar-start">
             <a href="#" class="navbar-logo">
-                <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                <img src="../../res/images/site_logo.svg" alt="Logo">
             </a>
         </div>
         <div class="navbar-center">

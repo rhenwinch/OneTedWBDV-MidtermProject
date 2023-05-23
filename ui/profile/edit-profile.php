@@ -24,7 +24,7 @@ $userService = new UserService($userRepository);
 $currentLoggedInUser = unserialize($_SESSION['user']);
 
 // Check if site has been hard refreshed
-$isSiteHardRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache');
+$isSiteHardRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && isset($_SESSION["user"]) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache');
 if ($isSiteHardRefreshed) {
     $updatedUser = $userService->getUpdatedUser($currentLoggedInUser->getUserId());
     $_SESSION['user'] = serialize($updatedUser);
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Create a new User object
-    $currentLoggedInUser = $userUpdater->updateUser(
+    $currentLoggedInUser = $userService->updateUser(
         $currentLoggedInUser,
         $email,
         $password,
@@ -89,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" href="../../res/images/site_logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/theme/theme.css">
     <link rel="stylesheet" href="../../css/edit-profile.css">
     <link rel="stylesheet" href="../../css/edit-profile-mobile.css">
@@ -113,7 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="navbar-content">
                 <div class="navbar-start">
                     <a href="../" class="navbar-logo">
-                        <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                        <img src="../../res/images/site_logo.svg" alt="Logo">
+                        <h3>Home</h3>
                     </a>
                 </div>
                 <div class="navbar-center"></div>
@@ -121,47 +123,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <button class="navbar-menu hidden" id="drawer-toggle">
                         <img src="../../res/images/menu.svg" alt="Navigation menu icon">
                     </button>
-                    <button class="navbar-profile-btn">
-                        <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" alt="Profile" style="margin-right: 1rem">
-                        <div class="column-container title-small text-left">
-                            <span>Hi,
-                                <?php echo $currentLoggedInUser->getName(); ?>!
-                            </span>
-                            <span class="font-bold">Membership: None</span>
-                        </div>
-                        <span class="md-24 material-icons-outlined">arrow_drop_down</span>
-                    </button>
-                    <div class="navbar-dropdown">
-                        <div class="column-container">
-                            <a href="./profile/" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
-                                    Profile
-                                </div>
-                            </a>
-                            <a href="./profile/booking-history.html" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
-                                    My Bookings
-                                </div>
-                            </a>
-                            <a href="#" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
-                                    Voucher
-                                </div>
-                            </a>
-                            <a href="#" class="navbar-dropdown-item">
-                                <div class="card" style="--card-width: auto">
-                                    <div class="card-content">
-                                        <div class="column-container center">
-                                            <span class="text-center">Log Out</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <a href="../rooms/index.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Rooms
+                    </a>
+                    <a href="./" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Profile
+                    </a>
+                    <a class="button navbar-item active" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Settings
+                    </a>
+                    <a href="./booking-history.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        History
+                    </a>
+                    <a href="./logout.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Logout
+                    </a>
                 </div>
             </div>
         </nav>
@@ -223,28 +199,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     <div id="drawer" class="drawer hidden">
         <div class="column-container drawer-menu">
-            <a href="../" class="drawer-logo">
-                <img src="../../res/images/image-placeholder.svg" alt="Logo">
+            <a href="" class="drawer-logo">
+                <img src="<?php
+
+                            if ($currentLoggedInUser != null) {
+                                echo $currentLoggedInUser->getProfilePicture();
+                            } else {
+                                echo "../../res/images/image-placeholder.svg";
+                            }
+
+                            ?>" alt="Logo">
             </a>
-            <a href="../profile/index.php" class="navbar-dropdown-item">
+            <a href="./index.php" class="navbar-dropdown-item">
                 <div class="row-container center-horizontal">
                     <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
                     Profile
                 </div>
             </a>
-            <a href="#" class="navbar-dropdown-item">
+            <a href="./edit-profile.php" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">settings</span>
+                    Settings
+                </div>
+            </a>
+            <a href="./booking-history.php" class="navbar-dropdown-item">
                 <div class="row-container center-horizontal">
                     <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
                     My Bookings
                 </div>
             </a>
-            <a href="#" class="navbar-dropdown-item">
-                <div class="row-container center-horizontal">
-                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
-                    Voucher
-                </div>
-            </a>
-            <a href="#" class="navbar-dropdown-item">
+            <a href="./logout.php" class="navbar-dropdown-item">
                 <div class="card" style="--card-width: auto">
                     <div class="card-content">
                         <div class="column-container center">
@@ -259,16 +243,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <footer class="main-footer">
         <div class="row-container footer-content">
             <div class="column-container company-info">
-                <p>Hotel Name: ABC Hotel</p>
+                <p>Hotel Name: Grand Eden Oasis</p>
                 <p>Address: 123 Main Street, Anytown USA</p>
                 <p>Phone: (123) 456-7890</p>
-                <p>Email: info@abchotel.com</p>
-                <p>Website: www.abchotel.com</p>
-                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+                <p>Email: info@geoasis.com</p>
+                <p>Website: www.geoasis.com</p>
+                <p>Site Developed by OneTed Devs</p>
             </div>
             <div class="column-container other-info">
-                <p>About Us</p>
-                <p>FAQs</p>
+                <p><a href="../others/about-us.php" class="on-primary-text">About Us</a></p>
+                <p><a href="../others/faqs.php" class="on-primary-text">FAQs</a></p>
             </div>
             <a href="../">
                 <div class="column-container center">

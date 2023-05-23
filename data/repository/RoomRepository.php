@@ -82,7 +82,7 @@ class RoomRepository {
     public function getRoomById($id) {
         foreach ($this->rooms as $roomType => $rooms) {
             if (isset($rooms[$id])) {
-              return $rooms[$id];
+                return $rooms[$id];
             }
         }
         return null;
@@ -97,9 +97,9 @@ class RoomRepository {
     public function bookRoomById($id) {
         foreach ($this->rooms as $roomType => &$rooms) {
             if (isset($rooms[$id]) && $rooms[$id]['availability'] > 0) {
-              $rooms[$id]['availability']--;
-              $this->saveRooms();
-              return true;
+                $rooms[$id]['availability']--;
+                $this->saveRooms();
+                return true;
             }
         }
         return false;

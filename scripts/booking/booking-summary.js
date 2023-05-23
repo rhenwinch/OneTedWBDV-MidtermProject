@@ -25,6 +25,7 @@ function handleSubmit(e) {
 
             if (isEmpty) {
                 showSnackbar("Error: Fill out all required fields!");
+                break;
             } else {
                 // Form validation passed, continue with submission or other actions
                 form.submit();
@@ -152,7 +153,3 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 document.getElementById('confirm').addEventListener('click', handleSubmit);
-document.getElementById('cancel').addEventListener('click', (e) => {
-    e.preventDefault();
-    history.back();
-});

@@ -20,7 +20,7 @@ class Booking implements JsonSerializerInterface {
     /** @var string A unique receipt ID */
     private $bookingId;
 
-    /** @var BookingStatus The current status of the booking (Pending, Reserved, Completed) */
+    /** @var BookingStatus The current status of the booking (CONFIRMED, Reserved, Completed) */
     private $bookingStatus;
 
     /** @var float The total price to pay */
@@ -45,12 +45,6 @@ class Booking implements JsonSerializerInterface {
         $this->bookingId = $bookingId;
         $this->bookingStatus = $bookingStatus;
         $this->bookingPrice = $bookingPrice;
-
-        if ($bookingPrice <= 0) {
-            $this->bookingPrice = $this->calculateBookingPrice();
-        } else {
-            $this->bookingPrice = $bookingPrice;
-        }
     }
     
 
@@ -117,41 +111,6 @@ class Booking implements JsonSerializerInterface {
         return $this->bookingPrice;
     }
 
-    /**
-     * Calculate the duration of the booking in days.
-     *
-     * @return int The duration of the booking in days.
-     */
-    private function calculateDuration(): int {
-        $interval = $this->arrivalDate->diff($this->departureDate);
-        return $interval->days;
-    }
-
-    /**
-     * Calculate the total price of the booking.
-     *
-     * @return float The total price of the booking.
-     */
-    public function calculateBookingPrice(): float {
-        $duration = $this->calculateDuration();
-        $roomPrice = RoomType::getRoomPrice($this->roomDetails->getRoomType());
-        return $duration * $roomPrice;
-    }
-
-    /**
-     * Confirm the booking.
-     */
-    public function confirmBooking(): void {
-        $this->bookingStatus = BookingStatus::CONFIRMED;
-    }
-
-    /**
-     * Cancel the booking.
-     */
-    public function cancelBooking(): void {
-        $this->bookingStatus = BookingStatus::CANCELLED;
-    }
-
      /**
      * Convert Booking object to an associative array
      */
@@ -179,9 +138,9 @@ class Booking implements JsonSerializerInterface {
         // Create Booking object
         return new Booking(
             Room::fromJson($json->roomDetails),
+            new DateTime($json->bookingDate),
             new DateTime($json->arrivalDate),
             new DateTime($json->departureDate),
-            new DateTime($json->bookingDate),
             $json->bookingId,
             BookingStatus::fromString($json->bookingStatus),
             $json->bookingPrice

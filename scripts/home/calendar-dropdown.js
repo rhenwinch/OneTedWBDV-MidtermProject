@@ -1,12 +1,15 @@
 const datesButton = document.getElementById('datesButton');
 const dropdown = document.querySelector(".calendar-dropdown");
-const selectMonthElement = document.querySelector('.select-month');
-const selectYearElement = document.querySelector('.select-year');
-const prevMonth = document.querySelector('.prev-month');
-const nextMonth = document.querySelector('.next-month');
-const date = document.getElementById("date");
-let dates = document.querySelectorAll("td");
-let selectedDateElement = null;
+const selectMonthElements = document.querySelectorAll('.select-month');
+const selectYearElements = document.querySelectorAll('.select-year');
+const prevMonths = document.querySelectorAll('.prev-month');
+const nextMonths = document.querySelectorAll('.next-month');
+const durationElement = document.getElementById("duration");
+const dateInputs = document.querySelectorAll(".date-input");
+const departureInput = document.getElementById("duration");
+let dates = [document.querySelectorAll(".arrival td"), document.querySelectorAll(".departure td")];
+let selectedDateElements = [null, null];
+let selectedDates = [null, null];
 
 datesButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -26,35 +29,91 @@ document.addEventListener("click", (event) => {
     }
 });
 
-selectMonthElement.addEventListener('change', resetDates);
-selectYearElement.addEventListener('change', resetDates);
-prevMonth.addEventListener('click', resetDates);
-nextMonth.addEventListener('click', resetDates);
+selectMonthElements.forEach((item, index) => {
+    item.addEventListener('change', () => {
+        resetDates(index)
+    });
+});
+selectYearElements.forEach((item, index) => {
+    item.addEventListener('change', () => {
+        resetDates(index)
+    });
+});
+prevMonths.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        resetDates(index)
+    });
+});
+nextMonths.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        resetDates(index)
+    });
+});
 
-function resetDates() {
-    dates = document.querySelectorAll("td");
-    selectedDateElement = null;
-    initializeDates();
+function resetDates(index) {
+    let datesXpath = ".arrival td";
+    if (index == 1) {
+        datesXpath = ".departure td";
+    }
+    
+    dates[index] = document.querySelectorAll(datesXpath);
+    selectedDateElements[index] = null;
+    initializeDates(index);
 }
 
-function initializeDates() {
-    dates.forEach(td => {
+function initializeDates(index) {
+    dates[index].forEach(td => {
         td.addEventListener('click', (e) => {
-            if(!e.target.classList.contains("disabled")) {
-                if(selectedDateElement)
-                selectedDateElement.classList.remove('selected');
+            if (!e.target.classList.contains("disabled")) {
+                if (selectedDateElements[index])
+                    selectedDateElements[index].classList.remove('selected');
 
                 const day = e.target.textContent;
-                const month = months.indexOf(selectMonthElement.options[selectMonthElement.selectedIndex].text);
-                const year = selectYearElement.options[selectYearElement.selectedIndex].text;
+                const month = months.indexOf(selectMonthElements[index].options[selectMonthElements[index].selectedIndex].text);
+                const year = selectYearElements[index].options[selectYearElements[index].selectedIndex].text;
 
-
-                date.value = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`;
                 e.target.classList.add('selected');
-                selectedDateElement = e.target;
+                selectedDateElements[index] = e.target;
+                selectedDates[index] = `${year}-${month + 1}-${day.toString().padStart(2, '0')}`;
+
+                if(index == 0) {
+                    selectedDates[1] = null;
+                    dateInputs[1].value = "";
+                    durationElement.textContent = "Dates";
+                }
+
+                if (selectedDates[0] && index == 1) {
+                    const timeDiff = (new Date(selectedDates[index])).getTime() - (new Date(selectedDates[0])).getTime();
+                    const durationDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    const durationMonths = Math.floor(durationDays / 30);
+                    const durationYears = Math.floor(durationMonths / 12);
+
+                    if (isNaN(timeDiff)) {
+                        alert('Invalid date!');
+                    } else {
+                        let duration;
+
+                        if (durationYears > 0) {
+                            duration = `${durationYears} year(s)`;
+                        } else if (durationMonths > 0) {
+                            duration = `${durationMonths} month(s)`;
+                        } else {
+                            duration = `${durationDays} day(s)`;
+                        }
+
+                        durationElement.textContent = duration;
+                        dateInputs[0].value = selectedDates[0];
+                        dateInputs[1].value = selectedDates[1];
+                    }
+
+
+                } else {
+                    resetDates(1);
+                }
             }
         });
     });
 }
 
-initializeDates();
+initializeDates(0);
+initializeDates(1);

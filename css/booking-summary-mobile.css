@@ -29,4 +29,9 @@
     .payment-card {
         margin: 3rem auto;
     }
+
+    .navbar-navigation-icon {
+        background-color: transparent;
+        border: none;
+    }
 }

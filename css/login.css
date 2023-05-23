@@ -28,7 +28,7 @@
 
 .login-button {
     margin-top: 6rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
 }
 
 .login-form-divider {
@@ -39,4 +39,13 @@
 .login-headliner-image {
     width: 100%;
     padding-left: 1rem;
+}
+
+.login-footer {
+    margin-top: 4rem;
+}
+
+.headliner-image {
+    object-fit: cover;
+    z-index: 999;
 }

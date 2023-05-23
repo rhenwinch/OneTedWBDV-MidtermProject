@@ -1,12 +1,15 @@
 <?php
 require_once __DIR__ . "/../../data/model/User.php";
-require_once '../../data/service/Sanitizer.php';
+require_once __DIR__ . '/../../data/service/Sanitizer.php';
 require_once __DIR__ . '/../../data/repository/UserRepository.php';
+require_once __DIR__ . '/../../data/repository/RoomRepository.php';
+require_once __DIR__ . "/../../data/service/BookingService.php";
 
 session_start(); // Start the session
 
-$jsonFilePath = __DIR__ . '/../../data/users.json'; // path to the JSON file containing user data
-$userRepository = new UserRepository($jsonFilePath);
+$roomRepository = new RoomRepository(__DIR__ . '/../../data/rooms.json');
+$userRepository = new UserRepository(__DIR__ . '/../../data/users.json');
+$bookingService = new BookingService($userRepository);
 
 // Check if user is not logged in
 if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false) {
@@ -16,9 +19,11 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] === false) {
 }
 
 $currentLoggedInUser = unserialize($_SESSION['user']);
+$currentLoggedInUser = $bookingService->updateUserBookings($currentLoggedInUser);
+$_SESSION['user'] = serialize($currentLoggedInUser);
 
 // Check if site has been hard refreshed
-$isSiteHardRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache');
+$isSiteHardRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && isset($_SESSION["user"]) && ($_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0' || $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache');
 if ($isSiteHardRefreshed) {
     // Create a new user repository with the JSON data provider
     $_SESSION['user'] = serialize($userRepository->getUserById($currentLoggedInUser->getUserId()));
@@ -35,6 +40,7 @@ if ($isSiteHardRefreshed) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Profile</title>
+    <link rel="icon" href="../../res/images/site_logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="../../css/theme/theme.css">
     <link rel="stylesheet" href="../../css/user-profile.css">
 </head>
@@ -44,8 +50,9 @@ if ($isSiteHardRefreshed) {
         <nav class="navbar sticky-navbar" id="navbar">
             <div class="navbar-content">
                 <div class="navbar-start">
-                    <a href="#" class="navbar-logo">
-                        <img src="../../res/images/image-placeholder.svg" alt="Logo">
+                    <a href="../" class="navbar-logo">
+                        <img src="../../res/images/site_logo.svg" alt="Logo">
+                        <h3>Home</h3>
                     </a>
                 </div>
                 <div class="navbar-center"></div>
@@ -53,53 +60,36 @@ if ($isSiteHardRefreshed) {
                     <button class="navbar-menu hidden" id="drawer-toggle">
                         <img src="../../res/images/menu.svg" alt="Navigation menu icon">
                     </button>
-                    <button class="navbar-profile-btn">
-                        <img src="<?php echo $currentLoggedInUser->getProfilePicture(); ?>" alt="Profile" style="margin-right: 1rem">
-                        <div class="column-container title-small text-left">
-                            <span>Hi,
-                                <?php echo $currentLoggedInUser->getName(); ?>!
-                            </span>
-                            <span class="font-bold">Membership: None</span>
-                        </div>
-                        <span class="md-24 material-icons-outlined">arrow_drop_down</span>
-                    </button>
-                    <div class="navbar-dropdown">
-                        <div class="column-container">
-                            <a href="./profile/" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
-                                    Profile
-                                </div>
-                            </a>
-                            <a href="./profile/booking-history.html" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
-                                    My Bookings
-                                </div>
-                            </a>
-                            <a href="#" class="navbar-dropdown-item">
-                                <div class="row-container center-horizontal">
-                                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
-                                    Voucher
-                                </div>
-                            </a>
-                            <a href="#" class="navbar-dropdown-item">
-                                <div class="card" style="--card-width: auto">
-                                    <div class="card-content">
-                                        <div class="column-container center">
-                                            <span class="text-center">Log Out</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <a href="../rooms/index.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Rooms
+                    </a>
+                    <a class="button navbar-item active" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Profile
+                    </a>
+                    <a href="./edit-profile.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Settings
+                    </a>
+                    <a href="./booking-history.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        History
+                    </a>
+                    <a href="./logout.php" class="button navbar-item" style="--button-border-radius: 0; margin: 0 0.8rem; padding: 0.625rem 3rem;">
+                        Logout
+                    </a>
                 </div>
             </div>
         </nav>
 
         <div class="header">
-            <div class="background"></div>
+            <div class="background" style="background-image: url(<?php
+            
+            $rooms = $roomRepository->getAllRooms();
+            $roomCategories = array_keys($rooms);
+            $randomCategory = $roomCategories[array_rand($roomCategories)];
+            $categoryRooms = $rooms[$randomCategory];
+            $randomRoom = $categoryRooms[array_rand($categoryRooms)];
+            echo "../../res/images/content/ROOMS/".ucfirst($randomCategory)."/".$randomRoom["name"]."/".rand(1,3).".jpg";
+            
+            ?>);"></div>
             <span class="welcome display-large">
                 Welcome back,
                 <span class="font-bold">
@@ -108,44 +98,44 @@ if ($isSiteHardRefreshed) {
             </span>
         </div>
 
-        <div class="status-con">
-            <p style="font-size: 22px; font-weight: 300;">Reservation Status: <span class="font-bold">Accepted</span></p>
-        </div>
 
         <?php
         // Only show card if booking history is not empty!
         $bookingHistory = $currentLoggedInUser->getBookingHistory();
         if (!empty($bookingHistory)) {
+            $latestBooking = $bookingHistory[count($bookingHistory) - 1];
+            foreach ($bookingHistory as $booking) {
+                if ($booking->getBookingStatus() == BookingStatus::IN_PROGRESS) {
+                    $latestBooking = $booking;
+                    break;
+                } else if ($booking->getBookingStatus() == BookingStatus::CONFIRMED) {
+                    $latestBooking = $booking;
+                    break;
+                }
+            }
         ?>
-            <?php $room = $bookingHistory[0]->getRoom(); ?>
+            <div class="status-con">
+                <p style="font-size: 22px; font-weight: 300;">Latest Reservations:</p>
+            </div>
+            <?php $room = $latestBooking->getRoom(); ?>
             <div class="info-con">
-                <p class="info-con-header">
-                    <?php
-
-                    if ($bookingHistory[0]->getBookingStatus() == BookingStatus::BOOKED) {
-                        echo "In progress";
-                    } else {
-                        echo "Completed";
-                    }
-
-                    ?>
-                </p>
+                <p class="info-con-header"><?php echo $latestBooking->getBookingStatus(); ?></p>
                 <div class="card emphasis info-main-con">
                     <div class="card-content">
                         <div class="info-main">
-                            <div>
+                            <div class="font-regular">
                                 <p>Room Name:
-                                    <span class="font-medium">
+                                    <span class="font-bold">
                                         <?php echo $room->getRoomName(); ?>
                                     </span>
                                 </p>
                                 <p>Room Type:
-                                    <span class="font-medium">
+                                    <span class="font-bold">
                                         <?php echo $room->getRoomType(); ?>
                                     </span>
                                 </p>
                                 <p>Room Address:
-                                    <span class="font-medium">
+                                    <span class="font-bold">
                                         <?php echo $room->getRoomAddress(); ?>
                                     </span>
                                 </p>
@@ -153,13 +143,13 @@ if ($isSiteHardRefreshed) {
                             <div class="column-container">
                                 <p>Date of Departure</p>
                                 <span class="font-medium">
-                                    <?php echo $bookingHistory[0]->getDepartureDate(); ?>
+                                    <?php echo $latestBooking->getDepartureDate(); ?>
                                 </span>
                             </div>
                             <div class="column-container">
                                 <p>Date of Arrival</p>
                                 <span class="font-medium">
-                                    <?php echo $bookingHistory[0]->getArrivalDate(); ?>
+                                    <?php echo $latestBooking->getArrivalDate(); ?>
                                 </span>
                             </div>
                         </div>
@@ -172,16 +162,28 @@ if ($isSiteHardRefreshed) {
                             </p>
                             <p>Status:
                                 <span class="font-medium">
-                                    <?php echo $bookingHistory[0]->getBookingStatus(); ?>
+                                    <?php echo $latestBooking->getBookingStatus(); ?>
                                 </span>
                             </p>
                         </div>
 
                         <div style="margin-top: 30px; display: flex; justify-content: space-between;">
-                            <span>Price:<span class="font-medium"> ₱<?php echo number_format($bookingHistory[0]->calculateBookingPrice(), 2, '.', ','); ?></span></span>
+                            <span>Price:<span class="font-medium"> ₱<?php echo number_format($latestBooking->getBookingPrice(), 2, '.', ','); ?></span></span>
                             <img src="../../res/images/barcode.png" alt="" class="barcode">
                         </div>
                     </div>
+                </div>
+            </div>
+        <?php } ?>
+
+        <?php
+        if (empty($bookingHistory)) {
+        ?>
+            <div class="column-container center empty-message">
+                <h1 class="display-large font-black text-center">You have no bookings yet!</h1>
+                <p class="title-medium font-black text-center">You can start reserving now</p>
+                <div class="row-container center button-margin">
+                    <a href="../rooms/index.php" class="button text-center">Go to Rooms</a>
                 </div>
             </div>
         <?php } ?>
@@ -189,35 +191,35 @@ if ($isSiteHardRefreshed) {
     <div id="drawer" class="drawer hidden">
         <div class="column-container drawer-menu">
             <a href="" class="drawer-logo">
-                <img src="<?php 
-            
-                    if($currentLoggedInUser != null) {
-                        echo $currentLoggedInUser->getProfilePicture();
-                    } else {
-                        echo "../../res/images/image-placeholder.svg";
-                    }
-                
-                ?>" alt="Logo">
+                <img src="<?php
+
+                            if ($currentLoggedInUser != null) {
+                                echo $currentLoggedInUser->getProfilePicture();
+                            } else {
+                                echo "../../res/images/image-placeholder.svg";
+                            }
+
+                            ?>" alt="Logo">
             </a>
-            <a href="./profile/index.php" class="navbar-dropdown-item">
+            <a href="./index.php" class="navbar-dropdown-item">
                 <div class="row-container center-horizontal">
                     <span class="material-icons navbar-dropdown-item-icon">account_circle</span>
                     Profile
                 </div>
             </a>
-            <a href="./profile/booking-history.html" class="navbar-dropdown-item">
+            <a href="./edit-profile.php" class="navbar-dropdown-item">
+                <div class="row-container center-horizontal">
+                    <span class="material-icons navbar-dropdown-item-icon">settings</span>
+                    Settings
+                </div>
+            </a>
+            <a href="./booking-history.php" class="navbar-dropdown-item">
                 <div class="row-container center-horizontal">
                     <span class="material-icons navbar-dropdown-item-icon">auto_stories</span>
                     My Bookings
                 </div>
             </a>
-            <a href="#" class="navbar-dropdown-item">
-                <div class="row-container center-horizontal">
-                    <span class="material-icons navbar-dropdown-item-icon">local_activity</span>
-                    Voucher
-                </div>
-            </a>
-            <a href="#" class="navbar-dropdown-item">
+            <a href="./logout.php" class="navbar-dropdown-item">
                 <div class="card" style="--card-width: auto">
                     <div class="card-content">
                         <div class="column-container center">
@@ -228,21 +230,21 @@ if ($isSiteHardRefreshed) {
             </a>
         </div>
     </div>
-    <div id="overlay" class="overlay"></div>   
+    <div id="overlay" class="overlay"></div>
     <div id="snackbar" class="error-snackbar">Error: Something went wrong.</div>
     <footer class="main-footer">
         <div class="row-container footer-content">
             <div class="column-container company-info">
-                <p>Hotel Name: ABC Hotel</p>
+                <p>Hotel Name: Grand Eden Oasis</p>
                 <p>Address: 123 Main Street, Anytown USA</p>
                 <p>Phone: (123) 456-7890</p>
-                <p>Email: info@abchotel.com</p>
-                <p>Website: www.abchotel.com</p>
-                <p>Social Media: Links to Facebook, Twitter, Instagram, LinkedIn</p>
+                <p>Email: info@geoasis.com</p>
+                <p>Website: www.geoasis.com</p>
+                <p>Site Developed by OneTed Devs</p>
             </div>
             <div class="column-container other-info">
-                <p>About Us</p>
-                <p>FAQs</p>
+                <p><a href="../others/about-us.php" class="on-primary-text">About Us</a></p>
+                <p><a href="../others/faqs.php" class="on-primary-text">FAQs</a></p>
             </div>
             <a href="../">
                 <div class="column-container center">
@@ -257,4 +259,5 @@ if ($isSiteHardRefreshed) {
     </footer>
 </body>
 <script src="../../scripts/navbar.js"></script>
+
 </html>

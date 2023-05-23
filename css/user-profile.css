@@ -131,6 +131,11 @@
     font-weight: 300;
 }
 
+.empty-message {
+    height: 38vh;
+    margin-bottom: 50px;
+}
+
 @media (max-width: 1186px) {
     .background {
         height: 21rem;

@@ -22,6 +22,15 @@ class UserRepository {
     }
 
     /**
+     * Obtain all users from database
+     *
+     * @return array Arraylist of users
+     */
+    public function getAllUsers(): array {
+        return $this->users;
+    }
+
+    /**
      * Create a new user and add it to the repository.
      *
      * @param User $user The user object to be created and added.
@@ -38,7 +47,8 @@ class UserRepository {
         $this->users[] = new User(
             $user->getEmail(),
             $user->getPassword(),
-            count($this->users) + 1
+            count($this->users) + 1,
+            $user->getName()
         );
 
         // Save users to JSON file
@@ -118,7 +128,7 @@ class UserRepository {
         // Check if a given user exists in the repository
         $email = $user->getEmail();
         $user_ = $this->getUserByEmail($email);
-        if($user === null)
+        if($user_ === null)
             return false;
         
         $index = $this->getUserIndexById($user_->getUserId());

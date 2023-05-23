@@ -15,12 +15,3 @@ try {
 		overlay.classList.toggle("show");
 	});
 } catch (error) {}
-
-
-try {
-	const navigationButton = document.querySelector(".navbar-navigation-icon");
-	navigationButton.addEventListener("click", (e) => {
-		e.preventDefault();
-		history.back();
-	});
-} catch (error) {}

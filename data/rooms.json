@@ -1,104 +1,284 @@
 {
-    "suite": [
-        {
-            "id": 1,
-            "name": "Suite Room",
-            "description": "A comfortable bedroom with a view.",
-            "type": "Suite",
-            "address": "Don Jose Bldg., Marikina",
-            "maxHeads": 4,
-            "maxBeds": 2,
-            "gallery": [
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg"
-            ],
-            "price": 10000,
-            "availability": 5
-        },
-        {
-            "id": 4,
-            "name": "Premium Suite",
-            "description": "An extravagant suite with top-notch amenities.",
-            "type": "Suite",
-            "address": "Luxury Avenue, Countryland",
-            "maxHeads": 6,
-            "maxBeds": 3,
-            "gallery": [
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg"
-            ],
-            "price": 20000,
-            "availability": 2
-        }
-    ],
     "standard": [
         {
             "id": 2,
-            "name": "Standard Room",
-            "description": "A cozy standard room with all the essentials.",
+            "name": "Sophia",
+            "description": {
+                "short": "Indulge in grandeur and comfort in a room that transcends time.",
+                "long": "From the richly textured fabrics to the intricately designed furnishings, this room envelops you in an atmosphere of grandeur, offering a sanctuary of comfort and indulgence that transcends time, allowing you to unwind and relish in the pleasures of a bygone era."
+            },
             "type": "Standard",
             "address": "Main Street, Cityville",
             "maxHeads": 6,
             "maxBeds": 3,
-            "gallery": [
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg"
-            ],
             "price": 5000,
-            "availability": 10
+            "sqm": 25,
+            "maxRooms": 2
         },
         {
-            "id": 5,
-            "name": "Economy Room",
-            "description": "An affordable room with basic amenities.",
+            "id": 3,
+            "name": "Emma",
+            "description": {
+                "short": "Experience contemporary chic in a suite of urban sophistication.",
+                "long": "Experience the epitome of contemporary chic in our suite, where sleek lines, minimalist aesthetics, and cutting-edge technology converge to create a haven of urban sophistication."
+            },
             "type": "Standard",
-            "address": "Downtown Area, Cityville",
+            "address": "Downtown Avenue, Cityville",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "price": 4500,
+            "sqm": 20,
+            "maxRooms": 2
+        },
+        {
+            "id": 4,
+            "name": "Olivia",
+            "description": {
+                "short": "Discover a haven of serenity and tranquility with panoramic views.",
+                "long": "Discover a haven of serenity and tranquility in our enchanting room, where soft hues, plush furnishings, and panoramic views combine to create a sanctuary that soothes the senses and nurtures the soul."
+            },
+            "type": "Standard",
+            "address": "Quiet Lane, Cityville",
             "maxHeads": 2,
             "maxBeds": 1,
-            "gallery": [
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg"
-            ],
-            "price": 3000,
-            "availability": 8
+            "price": 4000,
+            "sqm": 15,
+            "maxRooms": 2
+        }
+    ],
+    "suite": [
+        {
+            "id": 5,
+            "name": "Isabella",
+            "description": {
+                "short": "Create cherished moments of togetherness in a captivating family retreat.",
+                "long": "The timeless elegance and modern comfort converge to create a captivating haven that seamlessly accommodates both parents and children, offering an abundance of space, thoughtful amenities, and an enchanting ambiance that ignites the imagination and fosters cherished moments of togetherness, ensuring an unforgettable family retreat."
+            },
+            "type": "Suite",
+            "address": "Seaside Road, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 8000,
+            "sqm": 35,
+            "maxRooms": 1
+        },
+        {
+            "id": 6,
+            "name": "Mia",
+            "description": {
+                "short": "Immerse yourself in refined luxury and enchantment in an exquisite junior suite.",
+                "long": "Indulge in refined luxury and sophistication in our exquisite junior suite. Experience tranquility and enchantment as every detail is meticulously curated to elevate your stay. With captivating aesthetics, plush furnishings, and panoramic views, unwind and immerse yourself in blissful serenity. Discover unparalleled elegance at its finest."
+            },
+            "type": "Suite",
+            "address": "Central Square, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 7500,
+            "sqm": 30,
+            "maxRooms": 1
+        },
+        {
+            "id": 7,
+            "name": "Ava",
+            "description": {
+                "short": "Escape to a private oasis of opulence and seclusion.",
+                "long": "Indulge in the ultimate luxury of seclusion and opulence in our private oasis. Surrounded by lush landscapes and adorned with elegant decor, this sanctuary offers an unparalleled experience of tranquility and serenity. Allow yourself to be pampered and rejuvenated in an exclusive haven designed for the most discerning guests."
+            },
+            "type": "Suite",
+            "address": "Garden Street, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 9000,
+            "sqm": 40,
+            "maxRooms": 1
+        }
+    ],
+    "accessible": [
+        {
+            "id": 8,
+            "name": "Chloe",
+            "description": {
+                "short": "Spacious and accessible room with modern amenities.",
+                "long": "A spacious layout with accessible furniture, a comfortable bed, and a well-equipped accessible bathroom awaits you. Throughout your stay, stay connected with modern amenities and enjoy a welcoming and inclusive environment."
+            },
+            "type": "Accessible",
+            "address": "Accessible Street, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 4500,
+            "sqm": 20,
+            "maxRooms": 1
+        },
+        {
+            "id": 9,
+            "name": "Lily",
+            "description": {
+                "short": "Enchanting and accessible room with thoughtful amenities.",
+                "long": "Experience the epitome of accessibility and comfort in our enchanting Lily room. With thoughtful amenities and a touch of elegance, this space ensures a delightful and accessible stay."
+            },
+            "type": "Accessible",
+            "address": "Convenient Avenue, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 4000,
+            "sqm": 18,
+            "maxRooms": 1
+        },
+        {
+            "id": 10,
+            "name": "Grace",
+            "description": {
+                "short": "Relaxing and accessible room with modern amenities.",
+                "long": "Enjoy a relaxing layout, easily accessible furniture, and a well-equipped bathroom. Throughout your stay, enjoy convenience and modern amenities in a welcoming environment."
+            },
+            "type": "Accessible",
+            "address": "Wheelchair Lane, Cityville",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "price": 5000,
+            "sqm": 22,
+            "maxRooms": 1
+        }
+    ],
+    "connecting": [
+        {
+            "id": 11,
+            "name": "Ameifire",
+            "description": {
+                "short": "Exquisite connecting room for shared experiences.",
+                "long": "Unite your loved ones in the exquisite Ameifire connecting room. Discover a seamless blend of comfort and connectivity as you relish this captivating space designed for shared experiences."
+            },
+            "type": "Connecting",
+            "address": "Family Avenue, Cityville",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "price": 6000,
+            "sqm": 25,
+            "maxRooms": 2
+        },
+        {
+            "id": 12,
+            "name": "Harper",
+            "description": {
+                "short": "Deluxe suite with sophistication and functionality.",
+                "long": "Discover the epitome of comfort and convenience in our deluxe suite, where luxury meets functionality. Immerse yourself in a haven of sophistication, boasting modern amenities and stylish furnishings that create a serene and inviting ambiance. Experience the perfect blend of elegance and practicality, ensuring a memorable stay that exceeds your expectations."
+            },
+            "type": "Connecting",
+            "address": "Connecting Lane, Cityville",
+            "maxHeads": 6,
+            "maxBeds": 3,
+            "price": 7000,
+            "sqm": 30,
+            "maxRooms": 2
+        },
+        {
+            "id": 13,
+            "name": "Ella",
+            "description": {
+                "short": "Thoughtfully furnished rooms for larger groups or families.",
+                "long": "Designed for larger groups or families seeking comfort and convenience. These thoughtfully furnished rooms feature cozy seating areas, comfortable beds, and well-appointed bathrooms. Enjoy amenities such as flat-screen TVs and high-speed Wi-Fi. Experience the perfect balance of privacy and togetherness, with access to hotel amenities and services for a delightful stay."
+            },
+            "type": "Connecting",
+            "address": "Family Lane, Cityville",
+            "maxHeads": 8,
+            "maxBeds": 4,
+            "price": 8000,
+            "sqm": 35,
+            "maxRooms": 2
         }
     ],
     "deluxe": [
         {
-            "id": 3,
-            "name": "Deluxe Room",
-            "description": "A luxurious suite with premium amenities.",
+            "id": 14,
+            "name": "Scarlett",
+            "description": {
+                "short": "Warm and contemporary room for a luxurious stay.",
+                "long": "Scarlett provides the utmost comfort and luxury for your family's stay, with a warm and contemporary ambiance. It provides the perfect retreat for a weekend getaway or extended family vacation, providing an unforgettable experience."
+            },
             "type": "Deluxe",
-            "address": "Luxury Avenue, Countryland",
+            "address": "Luxury Street, Cityville",
             "maxHeads": 2,
             "maxBeds": 1,
-            "gallery": [
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg",
-                "..\/..\/res\/images\/image-placeholder.svg"
-            ],
-            "price": 15000,
-            "availability": 3
+            "price": 7000,
+            "sqm": 30,
+            "maxRooms": 1
         },
         {
-            "id": 6,
-            "name": "Superior Deluxe",
-            "description": "An enhanced deluxe room with additional features.",
+            "id": 15,
+            "name": "Aria",
+            "description": {
+                "short": "Exquisite room with unrivaled elegance and relaxation.",
+                "long": "Experience deluxe perfection in our Aria room. Luxurious. Comfortable. Exquisite. Indulge in unrivaled elegance and relaxation. Immerse yourself in opulence. A remarkable retreat awaits."
+            },
             "type": "Deluxe",
-            "address": "Premium Street, Countryland",
+            "address": "Luxury Avenue, Cityville",
             "maxHeads": 4,
             "maxBeds": 2,
-            "gallery": [
-                "../../res/images/image-placeholder.svg",
-                "../../res/images/image-placeholder.svg",
-                "../../res/images/image-placeholder.svg"
-            ],
-            "price": 18000,
-            "availability": 5
+            "price": 8000,
+            "sqm": 35,
+            "maxRooms": 1
+        },
+        {
+            "id": 16,
+            "name": "Luna",
+            "description": {
+                "short": "Harmonious blend of comfort and style for travelers.",
+                "long": "Luna is a harmonious blend of comfort and style, providing an exceptional stay for leisure and business travelers. It offers the perfect combination of comfort and functionality, with attentive service to make your stay memorable."
+            },
+            "type": "Deluxe",
+            "address": "City View Road, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 7500,
+            "sqm": 32,
+            "maxRooms": 1
+        }
+    ],
+    "executive": [
+        {
+            "id": 17,
+            "name": "Penelope",
+            "description": {
+                "short": "Sophisticated executive room for an elevated stay.",
+                "long": "Elevate your stay to new heights of sophistication in our Executive room, Penelope. Immerse yourself in a world of refined luxury and impeccable style. Unwind in spacious comfort and revel in the finest amenities. Experience a haven of tranquility and exclusivity. The epitome of elegance awaits you in Penelope."
+            },
+            "type": "Executive",
+            "address": "Business District, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 9000,
+            "sqm": 40,
+            "maxRooms": 1
+        },
+        {
+            "id": 18,
+            "name": "Victoria",
+            "description": {
+                "short": "Luxury and elegance in our Executive room, Victoria.",
+                "long": "Indulge in the epitome of luxury and sophistication in our Executive room, Victoria. Experience a seamless blend of comfort and elegance. Immerse yourself in a sanctuary of refined amenities and exquisite design. Unwind in style and enjoy unparalleled city views. Victoria offers an unparalleled experience of opulence and serenity."
+            },
+            "type": "Executive",
+            "address": "Corporate Avenue, Cityville",
+            "maxHeads": 4,
+            "maxBeds": 2,
+            "price": 10000,
+            "sqm": 45,
+            "maxRooms": 1
+        },
+        {
+            "id": 19,
+            "name": "Stella",
+            "description": {
+                "short": "Unparalleled luxury in the Stella Executive room.",
+                "long": "Unparalleled luxury awaits in the Stella Executive room. Elegant design, breathtaking views, and impeccable amenities combine for an extraordinary stay. Experience the pinnacle of comfort and style in this exclusive retreat."
+            },
+            "type": "Executive",
+            "address": "Skyline Road, Cityville",
+            "maxHeads": 2,
+            "maxBeds": 1,
+            "price": 9500,
+            "sqm": 42,
+            "maxRooms": 1
         }
     ]
 }

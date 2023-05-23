@@ -1,0 +1,21 @@
+.viewpager-container {
+    position: relative;
+    overflow: hidden;
+    width: 50%;
+}
+
+.viewpager {
+    display: flex;
+    transition: transform 0.5s;
+}
+
+.page {
+    flex: 0 0 100%;
+    display: flex;
+}
+
+@media (max-width: 452px) {
+    .viewpager-container {
+        width: 65% !important;
+    }
+}

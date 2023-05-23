@@ -26,20 +26,10 @@ clickableItems.forEach(item => {
 const buttons = document.querySelectorAll('.row-container .room-category-filter'); // Get all the buttons within the row container
 
 // Attach click event listener to each button
-const roomLists = [
-    document.getElementById('standard'),
-    document.getElementById('suite'),
-    document.getElementById('deluxe')
-];
-let activeElement = null;
+const roomLists = document.querySelectorAll(".list");
 let previousSelectedFilter = 0;
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
-        if (activeElement) {
-            activeElement.classList.remove('active');
-            activeElement = null;
-        }
-
         // Remove the "active" class from the current active button
         const currentActiveButton = document.querySelector('.row-container .button.active');
         currentActiveButton.classList.remove('active');

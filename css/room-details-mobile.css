@@ -29,6 +29,10 @@
         overflow: hidden;
     }
 
+    .room-item {
+        width: 55%;
+    }
+
     .room-item-content {
         margin: 0;
         overflow: hidden;
@@ -54,8 +58,8 @@
     }
 
     .gallery-item {
-        height: 10.3rem;
-        width: 16.5rem;
+        height: 14rem;
+        width: 85vw;
         margin: 1rem 0;
     }
 
@@ -71,5 +75,26 @@
 
     .reviews-item {
         margin: 1.5rem 0;
-    }      
+    }
+
+    .filters-container {
+        flex-wrap: wrap;
+        margin-top: 1rem;
+        justify-content: center;
+    }
+
+    .room-category-filter {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+}
+
+@media (max-width: 1682px) {
+    .left-arrow img {
+        margin: auto;
+    }
+
+    .right-arrow img {
+        margin: auto;
+    }
 }

@@ -17,7 +17,7 @@
     left: 0;
     width: var(--gradient-image-width);
     height: var(--gradient-image-height);
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.71) 0%, rgba(0,0,0,0) 100%);
     z-index: 1;
 }
 
