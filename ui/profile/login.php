@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // User is valid, redirect to the homepage or other authenticated page
         $_SESSION["loggedIn"] = true;
         $_SESSION["user"] = serialize($userRepository->getUserByEmail($user->getEmail()));
-        header("Location: ../../home.php");
+        header("Location: ../../");
         exit;
     }
 
